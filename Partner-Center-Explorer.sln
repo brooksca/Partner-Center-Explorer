@@ -1,0 +1,98 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.25928.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C9E5EA6B-5107-4BD1-B467-308EE5FD294C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{FB268EBE-DF7B-4959-9724-85F00E95AC1D}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Introduction.md = docs\Introduction.md
+		docs\Overview.md = docs\Overview.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{2D96328A-BE7C-4276-A7C8-143D1761EFFF}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Images\aadappmgmt01.png = docs\Images\aadappmgmt01.png
+		docs\Images\aadappmgmt02.png = docs\Images\aadappmgmt02.png
+		docs\Images\aadappmgmt03.png = docs\Images\aadappmgmt03.png
+		docs\Images\aadappmgmt04.png = docs\Images\aadappmgmt04.png
+		docs\Images\aadappmgmt05.png = docs\Images\aadappmgmt05.png
+		docs\Images\aadappmgmt06.png = docs\Images\aadappmgmt06.png
+		docs\Images\aadappmgmt07.png = docs\Images\aadappmgmt07.png
+		docs\Images\aadappmgmt08.png = docs\Images\aadappmgmt08.png
+		docs\Images\aadappmgmt09.png = docs\Images\aadappmgmt09.png
+		docs\Images\aadappmgmt10.png = docs\Images\aadappmgmt10.png
+		docs\Images\aadappmgmt11.png = docs\Images\aadappmgmt11.png
+		docs\Images\aadappmgmt12.png = docs\Images\aadappmgmt12.png
+		docs\Images\aadappmgmt13.png = docs\Images\aadappmgmt13.png
+		docs\Images\appinsights-explorer01.png = docs\Images\appinsights-explorer01.png
+		docs\Images\appinsights01.png = docs\Images\appinsights01.png
+		docs\Images\appinsights02.png = docs\Images\appinsights02.png
+		docs\Images\appinsights03.png = docs\Images\appinsights03.png
+		docs\Images\appinsights04.png = docs\Images\appinsights04.png
+		docs\Images\appinsights06.png = docs\Images\appinsights06.png
+		docs\Images\appinsights07.png = docs\Images\appinsights07.png
+		docs\Images\appinsights08.png = docs\Images\appinsights08.png
+		docs\Images\appmgmt01.png = docs\Images\appmgmt01.png
+		docs\Images\appmgmt02.png = docs\Images\appmgmt02.png
+		docs\Images\appmgmt03.png = docs\Images\appmgmt03.png
+		docs\Images\rediscache01.png = docs\Images\rediscache01.png
+		docs\Images\rediscache02.png = docs\Images\rediscache02.png
+		docs\Images\rediscache03.png = docs\Images\rediscache03.png
+		docs\Images\rediscache04.png = docs\Images\rediscache04.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{16AB4070-A38F-4956-9820-29FB8D320550}"
+	ProjectSection(SolutionItems) = preProject
+		azuredeploy.json = azuredeploy.json
+		azuredeploy.param.json = azuredeploy.param.json
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Explorer", "src\Explorer\Explorer.csproj", "{19EA3F66-4454-405F-A094-872AA7806DA9}"
+EndProject
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "Deployment", "src\Deployment\Deployment.deployproj", "{B4453C5F-0A35-4F81-9D21-1417F4BB1AE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{890DA8B9-78CF-4C1C-900E-7D59A6A3891E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Explorer.Tests", "test\Explorer.Tests\Explorer.Tests.csproj", "{BD761EAD-EA78-4551-B973-E1EB8A48F431}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Labs", "Labs", "{FEA388BC-9CA3-45AC-8A90-E0283D1AAE30}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Labs\AppInsights.md = docs\Labs\AppInsights.md
+		docs\Labs\RedisCache.md = docs\Labs\RedisCache.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19EA3F66-4454-405F-A094-872AA7806DA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19EA3F66-4454-405F-A094-872AA7806DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19EA3F66-4454-405F-A094-872AA7806DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19EA3F66-4454-405F-A094-872AA7806DA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4453C5F-0A35-4F81-9D21-1417F4BB1AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4453C5F-0A35-4F81-9D21-1417F4BB1AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4453C5F-0A35-4F81-9D21-1417F4BB1AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4453C5F-0A35-4F81-9D21-1417F4BB1AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD761EAD-EA78-4551-B973-E1EB8A48F431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD761EAD-EA78-4551-B973-E1EB8A48F431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD761EAD-EA78-4551-B973-E1EB8A48F431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD761EAD-EA78-4551-B973-E1EB8A48F431}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D96328A-BE7C-4276-A7C8-143D1761EFFF} = {FB268EBE-DF7B-4959-9724-85F00E95AC1D}
+		{19EA3F66-4454-405F-A094-872AA7806DA9} = {C9E5EA6B-5107-4BD1-B467-308EE5FD294C}
+		{B4453C5F-0A35-4F81-9D21-1417F4BB1AE1} = {C9E5EA6B-5107-4BD1-B467-308EE5FD294C}
+		{BD761EAD-EA78-4551-B973-E1EB8A48F431} = {890DA8B9-78CF-4C1C-900E-7D59A6A3891E}
+		{FEA388BC-9CA3-45AC-8A90-E0283D1AAE30} = {FB268EBE-DF7B-4959-9724-85F00E95AC1D}
+	EndGlobalSection
+EndGlobal

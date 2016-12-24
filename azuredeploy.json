@@ -1,0 +1,169 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "_artifactsLocation": {
+      "type": "string"
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring"
+    },
+    "AccountId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ExplorerApplicationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ExplorerApplicationSecret": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ExplorerPackageFolder": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "WebDeploy package location. This path is relative to the _artifactsLocation parameter"
+      }
+    },
+    "ExplorerPackageFileName": {
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "Name of the webdeploy package"
+      }
+    },
+    "hostingPlanName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "PartnerCenterApplicationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "PartnerCenterApplicationSecret": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repoUrl": {
+      "type": "string",
+      "minLength": 1
+    },
+    "skuName": {
+      "type": "string",
+      "defaultValue": "F1",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "S2",
+        "S3",
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "metadata": {
+        "description": "Describes plan's pricing tier and instance size. Check details at https://azure.microsoft.com/en-us/pricing/details/app-service/"
+      }
+    },
+    "skuCapacity": {
+      "type": "int",
+      "defaultValue": 1,
+      "minValue": 1,
+      "metadata": {
+        "description": "Describes plan's instance count"
+      }
+    },
+    "webSiteName": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "variables": {
+    "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-08-01",
+      "name": "[parameters('hostingPlanName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "HostingPlan"
+      },
+      "sku": {
+        "name": "[parameters('skuName')]",
+        "capacity": "[parameters('skuCapacity')]"
+      },
+      "properties": {
+        "name": "[parameters('hostingPlanName')]"
+      }
+    },
+    {
+      "apiVersion": "2015-08-01",
+      "name": "[parameters('webSiteName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]": "Resource",
+        "displayName": "Website"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
+      ],
+      "properties": {
+        "name": "[parameters('webSiteName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+      },
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[concat('Microsoft.Web/sites/', parameters('webSiteName'))]"
+          ],
+          "tags": {
+            "displayName": "ApplicationSettings"
+          },
+          "properties": {
+            "AccountId": "[parameters('AccountId')]",
+            "Explorer.ApplicationId": "[parameters('ExplorerApplicationId')]",
+            "Explorer.ApplicationSecret": "[parameters('ExplorerApplicationSecret')]",
+            "PartnerCenter.ApplicationId": "[parameters('PartnerCenterApplicationId')]",
+            "PartnerCenter.ApplicationSecret": "[parameters('PartnerCenterApplicationSecret')]"
+          }
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "sourcecontrols",
+          "dependsOn": [
+            "[concat('Microsoft.Web/sites/', parameters('webSiteName'))]",
+            "[concat('Microsoft.Web/Sites/', parameters('webSiteName'), '/config/appsettings')]"
+          ],
+          "properties": {
+            "RepoUrl": "[parameters('repoUrl')]",
+            "branch": "[parameters('branch')]",
+            "IsManualIntegration": true
+          }
+        }
+      ]
+    }
+  ],
+  "outputs": {
+    "WebsiteUrl": {
+      "type": "string",
+      "value": "[concat('https://',reference(resourceId('Microsoft.Web/sites', parameters('webSiteName'))).hostNames[0])]"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>b4453c5f-0a35-4f81-9d21-1417f4bb1ae1</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkIdentifier>Deployment</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>1.0</TargetFrameworkVersion>
+    <PrepareForBuildDependsOn>
+    </PrepareForBuildDependsOn>
+  </PropertyGroup>
+  <Import Condition=" Exists('Deployment.targets') " Project="Deployment.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- vertag<:>start tokens<:>maj.min -->
+  <Import Condition=" Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets') " Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Deployment\1.1\DeploymentProject.targets" />
+  <!-- vertag<:>end -->
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Deployment.targets">
+      <Visible>False</Visible>
+    </None>
+    <Content Include="Deploy-AzureResourceGroup.ps1" />
+    <None Include="Templates\appinsights.json" />
+    <None Include="Templates\appinsights.parameters.json" />
+    <None Include="Templates\fullenvironment..parameters.json" />
+    <None Include="Templates\fullenvironment.json" />
+    <None Include="Templates\rediscache.json" />
+    <None Include="Templates\rediscache.parameters.json" />
+    <None Include="Templates\website.json" />
+    <None Include="Templates\website.parameters.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Explorer\Explorer.csproj">
+      <Targets>Build;Package</Targets>
+      <AdditionalProperties>PackageLocation=..\Deployment\$(ProjectReferencesOutputPath)\Explorer\package.zip</AdditionalProperties>
+      <IncludeFilePath>$(ProjectReferencesOutputPath)\Explorer\package.zip</IncludeFilePath>
+    </ProjectReference>
+  </ItemGroup>
+  <Target Name="GetReferenceAssemblyPaths" />
+</Project>

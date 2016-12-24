@@ -1,0 +1,23 @@
+﻿<div id="CustomerContainer" class="FullSize">
+    <!-- ko if: viewModel.ShowProgress() -->
+    <div class="Progress FullSize center">
+        <img class="verticalCenteredProgress" src="~/Content/Images/Plugins/ripple.gif" />
+    </div>
+    <!-- /ko -->
+    <!-- ko if: viewModel.IsSet() -->
+    <div class="Padded">
+        <div class="row">
+            <label class="section">Billing Information</label>
+        </div>
+        <div class="row section-divider"></div>
+        <div class="row">
+            <div class="left-float medium-text">
+                <label class="medium-text" data-bind="text: viewModel.Summary().BillingProfile.CompanyName"></label><br />
+                <label class="medium-text" data-bind="text: viewModel.Summary().BillingProfile.FirstName"></label>&nbsp;
+                <label class="medium-text" data-bind="text: viewModel.Summary().BillingProfile.LastName"></label><br />
+                <label class="medium-text" data-bind="text: viewModel.Summary().BillingProfile.Email"></label><br />
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</div>

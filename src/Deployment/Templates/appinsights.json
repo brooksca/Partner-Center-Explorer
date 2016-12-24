@@ -1,0 +1,32 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appInsightsName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Applications Insights to be created."
+      }
+    }
+  },
+  "resources": [
+    {
+      "name": "[parameters('appInsightsName')]",
+      "type": "Microsoft.Insights/components",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2014-04-01",
+      "tags": {
+        "displayName": "insightsComponents"
+      },
+      "properties": {
+        "ApplicationId": "[parameters('appInsightsName')]"
+      }
+    }
+  ],
+  "outputs": {
+    "instrumentationKey": {
+      "type": "string",
+      "value": "[reference(concat('Microsoft.Insights/components/', parameters('appInsightsName'))).InstrumentationKey]"
+    }
+  }
+}

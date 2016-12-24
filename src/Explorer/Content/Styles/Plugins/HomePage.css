@@ -1,0 +1,68 @@
+﻿#CustomersContainer .customers-content {
+    padding: 15px;
+}
+
+.customers-table {
+    width: 100%;
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    color: white;
+    background-color: #3D3C3A;
+    position: relative;
+}
+
+    .footer .rightAlignedElement {
+        float: right;
+        padding-right: 20px;
+        color: white !important;
+    }
+
+
+
+.customers-title-row {
+    width: 500px;
+    position: relative;
+}
+
+.customers-links {
+    position: absolute;
+    top: 42%;
+    right: 0px;
+}
+
+    .customers-links a {
+        margin-right: 5px;
+        margin-left: 5px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+.collapse_up,
+.collapse_down {
+    padding: 4px 21px 4px 4px;
+    cursor: pointer;
+}
+
+.collapse_up {
+    background: url(data:image/gif;base64,R0lGODlhCwALAJEAAAAAAP///xUVFf///yH5BAEAAAMALAAAAAALAAsAAAIRnC2nKLnT4or00Puy3rx7VQAAOw==) no-repeat center right !important;
+    background-size: 15px;
+}
+
+.collapse_down {
+    background: url(data:image/gif;base64,R0lGODlhCwALAJEAAAAAAP///xUVFf///yH5BAEAAAMALAAAAAALAAsAAAIPnI+py+0/hJzz0IruwjsVADs=) no-repeat center right !important;
+    background-size: 15px;
+}
+
+
+tr.CustomerRow {
+    cursor: pointer;
+    display: table-row;
+}
+
+tr.CustomerActionsRow {
+    display: none;
+}
+

@@ -1,0 +1,53 @@
+﻿<div id="CustomersContainer" class="FullSize">
+    <!-- ko if: viewModel.ShowProgress() -->
+    <div class="Progress FullSize center">
+        <img class="verticalCenteredProgress" src="~/Content/Images/Plugins/ripple.gif" />
+    </div>
+    <!-- /ko -->
+    <!-- ko if: viewModel.IsSet() -->
+    <div class="customers-content">
+        <table class="customers-table">
+            <tbody>
+                <tr>
+                    <td width="80%">
+                        <label class="section">@Resources.CustomersTableSection</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="section-divider"></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="customers-table" cellspacing="1" cellpadding="5">
+            <tbody>
+                <tr class="medium-text">
+                    <td>
+                        @Resources.CustomersTableName
+                    </td>
+                    <td>
+                        @Resources.CustomersTableDomain
+                    </td>
+                    <td>
+                        @Resources.CustomersTableIdentifier
+                    </td>
+                    <td />
+                    <td />
+                </tr>
+                <!-- ko foreach: viewModel.Details().Customers -->
+                <tr class="CustomerRow" data-bind="click: $root.onCustomerClicked">
+                    <td>
+                        <label data-bind="text: $data.CompanyProfile.CompanyName"></label>
+                    </td>
+                    <td class="left-aligned">
+                        <label data-bind="text: $data.CompanyProfile.Domain"></label>
+                    </td>
+                    <td>
+                        <label data-bind="text: $data.Id"></label>
+                    </td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+    <!-- /ko -->
+</div>

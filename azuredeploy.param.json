@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "branch": {
+      "value": "dev"
+    },
+    "hostingPlanName": {
+      "value": "Free"
+    },
+    "AccountId": {
+      "value": ""
+    },
+    "ExplorerApplicationId": {
+      "value": ""
+    },
+    "ExplorerApplicationSecret": {
+      "value": ""
+    },
+    "PartnerCenterApplicationId": {
+      "value": ""
+    },
+    "PartnerCenterApplicationSecret": {
+      "value": ""
+    },
+    "repoUrl": {
+      "value": "https://github.com/Microsoft/Partner-Center-Explorer"
+    },
+    "webSiteName": {
+      "value": ""
+    }
+  }
+}

@@ -6,11 +6,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Logic
 {
+    using System;
+    using System.Threading.Tasks;
     using Authentication;
     using Cache;
     using Configuration;
-    using System;
-    using System.Threading.Tasks;
     using Telemetry;
 
     /// <summary>
@@ -18,45 +18,51 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
     /// </summary>
     public class ExplorerService : IExplorerService
     {
-        private static bool _initialized;
-        private static ICacheService _cache;
-        private static ITelemetryProvider _telemetry;
-        private static Localization _localization;
+        private static bool initialized;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ExplorerService"/> class.
+        /// Provides the ability to cache often used objects. 
         /// </summary>
-        public ExplorerService()
-        { }
+        private static ICacheService cache;
 
         /// <summary>
-        /// Service that provides caching functionality.
+        /// Provides the ability to track telemetry data.
+        /// </summary>
+        private static ITelemetryProvider telemetry;
+
+        /// <summary>
+        /// Provides localization functionality for the portal.
+        /// </summary>
+        private static Localization localization;
+
+        /// <summary>
+        /// Gets the service that provides caching functionality.
         /// </summary>
         public ICacheService CachingService
         {
             get
             {
-                if (_cache != null)
+                if (cache != null)
                 {
-                    return _cache;
+                    return cache;
                 }
 
-                _cache = new CacheService();
+                cache = new CacheService();
 
-                return _cache;
+                return cache;
             }
         }
 
         /// <summary>
-        /// Service provides localization functionality.
+        /// Gets the localization functionality.
         /// </summary>
         public ILocalization Localization
         {
             get
             {
-                if (_initialized && _localization != null)
+                if (initialized && localization != null)
                 {
-                    return _localization;
+                    return localization;
                 }
 
                 throw new LocalizationException(Resources.ExplorerServiceNotInitializedException);
@@ -64,70 +70,78 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
         }
 
         /// <summary>
-        /// Service that interacts with the Partner Center Managed API.
+        /// Gets the Partner Center service reference.
         /// </summary>
-        public IAggregatePartner PartnerCenter => GetPartnerCenterClient().Invoke();
+        public IAggregatePartner PartnerCenter => this.GetPartnerCenterClient().Invoke();
 
         /// <summary>
-        /// Service that provides a mechanism to record telemetry data.
+        /// Gets the telemetry service reference.
         /// </summary>
         public ITelemetryProvider Telemetry
         {
             get
             {
-                if (_telemetry != null)
+                if (telemetry != null)
                 {
-                    return _telemetry;
+                    return telemetry;
                 }
 
                 if (string.IsNullOrEmpty(ApplicationConfiguration.AppInsightsInstrumentationKey))
                 {
-                    _telemetry = new EmptyTelemetryProvider();
+                    telemetry = new EmptyTelemetryProvider();
                 }
                 else
                 {
-                    _telemetry = new ApplicationInsightsTelemetryProvider(
-                        ApplicationConfiguration.AppInsightsInstrumentationKey);
+                    telemetry = new ApplicationInsightsTelemetryProvider();
                 }
 
-                return _telemetry;
+                return telemetry;
             }
         }
 
         /// <summary>
         /// Initializes the application core services.
         /// </summary>
-        /// <returns>A task for asynchronous purposes.</returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous operations.</returns>
         public async Task InitializeAsync()
         {
-            if (_initialized && _localization != null)
+            if (initialized && localization != null)
             {
                 return;
             }
 
-            _localization = new Localization(this);
+            localization = new Localization(this);
 
             // Initialize the localization service by invoking the InitializeAsync function.
-            await _localization.InitializeAsync();
+            await localization.InitializeAsync();
 
-            _initialized = true;
+            initialized = true;
         }
 
         /// <summary>
         /// Obtains a reference to <see cref="IAggregatePartner"/>.
         /// </summary>
         /// <returns>A delegate used to obtain an instance of <see cref="IAggregatePartner"/>.</returns>
-        /// <remarks>
-        /// This function returns a delegate beacuse a custom caching strategy it being utilized. Out of the box 
-        /// the Partner Center SDK will leverage an in-memory technique for caching access tokens.
-        /// </remarks>
         private Func<IAggregatePartner> GetPartnerCenterClient()
         {
             ITokenManagement tokenMgmt = new TokenManagement(this);
 
             return () => PartnerService.Instance.CreatePartnerOperations(
                tokenMgmt.GetPartnerCenterAppOnlyCredentials(
-               $"{ApplicationConfiguration.ActiveDirectoryEndpoint}/{ApplicationConfiguration.AccountId}"));
+               $"{ApplicationConfiguration.ActiveDirectoryEndpoint}/{ApplicationConfiguration.PartnerCenterApplicationTenantId}"));
+        }
+
+        /// <summary>
+        /// Obtains a reference to <see cref="IAggregatePartner"/>.
+        /// </summary>
+        /// <returns>A delegate used to obtain an instance of <see cref="IAggregatePartner"/>.</returns>
+        private Func<IAggregatePartner> GetPartnerCenterUserClient()
+        {
+            ITokenManagement tokenMgmt = new TokenManagement(this);
+
+            return () => PartnerService.Instance.CreatePartnerOperations(
+               tokenMgmt.GetPartnerCenterAppPlusUserCredentials(
+               $"{ApplicationConfiguration.ActiveDirectoryEndpoint}/{ApplicationConfiguration.PartnerCenterApplicationTenantId}"));
         }
     }
 }

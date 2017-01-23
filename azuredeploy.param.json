@@ -8,19 +8,22 @@
     "hostingPlanName": {
       "value": "Free"
     },
-    "AccountId": {
-      "value": ""
-    },
     "ExplorerApplicationId": {
       "value": ""
     },
     "ExplorerApplicationSecret": {
       "value": ""
     },
+    "ExplorerApplicationTenantId": {
+      "value": ""
+    },
     "PartnerCenterApplicationId": {
       "value": ""
     },
     "PartnerCenterApplicationSecret": {
+      "value": ""
+    },
+    "PartnerCenterApplicationTenantId": {
       "value": ""
     },
     "repoUrl": {

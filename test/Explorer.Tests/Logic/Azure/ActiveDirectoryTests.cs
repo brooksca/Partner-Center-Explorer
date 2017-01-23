@@ -40,16 +40,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Tests.Logic.Azure
         }
 
         /// <summary>
-        /// Verifies that an <see cref="ArgumentException"/> is thrown when an assertion token is not specified.
-        /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException), "assertionToken")]
-        public void ActiveDirectoryVerifyCstrAssertionTokenException()
-        {
-            ActiveDirectory ad = new ActiveDirectory(_service, TestHelper.ContosoTenantId, string.Empty);
-        }
-
-        /// <summary>
         /// Verifies that an <see cref="ArgumentException"/> is thrown when a code is not specified.
         /// </summary>
         [TestMethod]

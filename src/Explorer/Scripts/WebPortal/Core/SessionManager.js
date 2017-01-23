@@ -31,6 +31,9 @@ Microsoft.WebPortal.Core.SessionManager.prototype.initialize = function (eventId
     // assign feature presenters
     this.webPortal.registerFeaturePresenter(Microsoft.WebPortal.Feature.Home, Microsoft.WebPortal.HomePagePresenter);
     this.webPortal.registerFeaturePresenter(Microsoft.WebPortal.Feature.Customer, Microsoft.WebPortal.CustomerPagePresenter);
+    this.webPortal.registerFeaturePresenter(Microsoft.WebPortal.Feature.CustomerAddNew, Microsoft.WebPortal.CustomerAddNewPagePresenter);
+    this.webPortal.registerFeaturePresenter(Microsoft.WebPortal.Feature.AddSubscriptions, Microsoft.WebPortal.AddSubscriptionsPresenter);
+    this.webPortal.registerFeaturePresenter(Microsoft.WebPortal.Feature.Subscription, Microsoft.WebPortal.SubscriptionPagePresenter);
 }
 
 Microsoft.WebPortal.Core.SessionManager.prototype.onFeatureDeactivated = function () {
@@ -78,13 +81,13 @@ Microsoft.WebPortal.Core.SessionManager.prototype.fetchPortalOffers = function (
     /// are available or get a rejection if there was a failure retrieving them.</param>
 
     var getPortalOffersServerCall =
-        new Microsoft.WebPortal.Utilities.RetryableServerCall(this.webPortal.Helpers.ajaxCall("api/partnerOffers", Microsoft.WebPortal.HttpMethod.Get))
+        new Microsoft.WebPortal.Utilities.RetryableServerCall(this.webPortal.Helpers.ajaxCall("api/offer", Microsoft.WebPortal.HttpMethod.Get))
 
     var self = this;
 
     getPortalOffersServerCall.execute()
         .done(function (portalOffers) {
-            self.PortalOffers = portalOffers.Offers;
+            self.PortalOffers = portalOffers;
 
             //setup an Id based mapped observable array for Portal offer items.
             self.IdMappedPortalOffers = ko.utils.arrayMap(self.PortalOffers, function (offerItem) {

@@ -6,8 +6,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Filters.WebApi
 {
-    using Logic.Authentication;
     using System.Web.Http.Controllers;
+    using Logic.Authentication;
 
     /// <summary>
     /// Implements portal authorization for Web API controllers.
@@ -26,8 +26,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Filters.WebApi
         /// <summary>
         /// Gets or sets the user role which is allowed access.
         /// </summary>
-        public UserRole UserRole
-        { get; set; }
+        public UserRole UserRole { get; set; }
 
         /// <summary>
         /// Authorizes an incoming request based on the user role.

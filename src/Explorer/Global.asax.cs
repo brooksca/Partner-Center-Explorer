@@ -6,22 +6,31 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer
 {
+    using System.IO;
+    using System.Web;
+    using System.Web.Http;
+    using System.Web.Mvc;
+    using System.Web.Routing;
     using Configuration;
     using Configuration.Bundling;
     using Configuration.Manager;
     using Logic;
     using Practices.Unity;
     using Practices.Unity.Mvc;
-    using System.IO;
-    using System.Web;
-    using System.Web.Http;
-    using System.Web.Mvc;
-    using System.Web.Routing;
 
+    /// <summary>
+    /// Defines the methods and properties that are common to application objects.
+    /// </summary>
     public class MvcApplication : HttpApplication
     {
-        internal static IUnityContainer UnityContainer;
+        /// <summary>
+        /// Gets the unity container for the application.
+        /// </summary>
+        internal static IUnityContainer UnityContainer { get; private set; }
 
+        /// <summary>
+        /// Logic required to start the application.
+        /// </summary>
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

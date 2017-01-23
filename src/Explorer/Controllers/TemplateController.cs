@@ -6,10 +6,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
 {
-    using Configuration;
-    using Configuration.Manager;
     using System.Threading.Tasks;
     using System.Web.Mvc;
+    using Configuration;
+    using Configuration.Manager;
+    using Filters.Mvc;
+    using Logic.Authentication;
 
     /// <summary>
     /// Serves HTML templates to the browser.
@@ -17,12 +19,38 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
     public class TemplateController : Controller
     {
         /// <summary>
+        /// Serves the HTML template for the add subscriptions presenter.
+        /// </summary>
+        /// <returns>The HTML template for the add subscriptions presenter.</returns>
+        [HttpGet]
+        [@Authorize(UserRole = UserRole.Any)]
+        [OutputCache(NoStore = true, Duration = 0)]
+        public ActionResult AddSubscriptions()
+        {
+            return this.PartialView();
+        }
+
+        /// <summary>
         /// Serves the HTML template for the customer page presenter.
         /// </summary>
         /// <returns>The HTML template for the customer page presenter.</returns>
+        [HttpGet]
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Customer()
         {
-            return PartialView();
+            return this.PartialView();
+        }
+
+        /// <summary>
+        /// Serves the HTML template for the customer registration presenter.
+        /// </summary>
+        /// <returns>The HTML template for the customer registration presenter.</returns>
+        [HttpGet]
+        [@Authorize(UserRole = UserRole.Partner)]
+        [OutputCache(NoStore = true, Duration = 0)]
+        public ActionResult CustomerAddNew()
+        {
+            return this.PartialView();
         }
 
         /// <summary>
@@ -33,7 +61,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
         [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Home()
         {
-            return PartialView();
+            return this.PartialView();
         }
 
         /// <summary>
@@ -48,7 +76,18 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
 
             ViewBag.Templates = (await builder.AggregateNonStartupAssets()).Templates;
 
-            return PartialView();
+            return this.PartialView();
+        }
+
+        /// <summary>
+        /// Serves the HTML template for the subscription page presenter.
+        /// </summary>
+        /// <returns>The HTML template for the subscription page presenter.</returns>
+        [HttpGet]
+        [OutputCache(NoStore = true, Duration = 0)]
+        public ActionResult Subscription()
+        {
+            return this.PartialView();
         }
     }
 }

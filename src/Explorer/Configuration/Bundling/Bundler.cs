@@ -29,7 +29,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Bundling
         /// </summary>
         private Bundler()
         {
-            bundles = BundleTable.Bundles;
+            this.bundles = BundleTable.Bundles;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Bundling
         /// </summary>
         public void Clear()
         {
-            bundles.Clear();
+            this.bundles.Clear();
         }
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Bundling
         /// <param name="cssFiles">The CSS files to include in the startup bundle.</param>
         public void BundleStartupAssets(string[] javaScriptFiles, string[] cssFiles)
         {
-            bundles.Add(new ScriptBundle("~/StartupClasses/").Include(javaScriptFiles));
-            bundles.Add(new StyleBundle("~/StartupStyles/").Include(cssFiles));
+            this.bundles.Add(new ScriptBundle("~/StartupClasses/").Include(javaScriptFiles));
+            this.bundles.Add(new StyleBundle("~/StartupStyles/").Include(cssFiles));
         }
 
         /// <summary>
@@ -63,8 +63,8 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Bundling
         /// <param name="cssFiles">The CSS files to include in the non startup bundle.</param>
         public void BundleNonStartupAssets(string[] javaScriptFiles, string[] cssFiles)
         {
-            bundles.Add(new ScriptBundle("~/WebPortalClasses/").Include(javaScriptFiles));
-            bundles.Add(new StyleBundle("~/WebPortalStyles/").Include(cssFiles));
+            this.bundles.Add(new ScriptBundle("~/WebPortalClasses/").Include(javaScriptFiles));
+            this.bundles.Add(new StyleBundle("~/WebPortalStyles/").Include(cssFiles));
         }
     }
 }

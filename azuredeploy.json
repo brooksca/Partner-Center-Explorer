@@ -8,10 +8,6 @@
     "_artifactsLocationSasToken": {
       "type": "securestring"
     },
-    "AccountId": {
-      "type": "string",
-      "minLength": 1
-    },
     "branch": {
       "type": "string",
       "minLength": 1
@@ -21,6 +17,10 @@
       "minLength": 1
     },
     "ExplorerApplicationSecret": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ExplorerApplicationTenantId": {
       "type": "string",
       "minLength": 1
     },
@@ -47,6 +47,10 @@
       "minLength": 1
     },
     "PartnerCenterApplicationSecret": {
+      "type": "string",
+      "minLength": 1
+    },
+    "PartnerCenterApplicationTenantId": {
       "type": "string",
       "minLength": 1
     },
@@ -136,11 +140,12 @@
             "displayName": "ApplicationSettings"
           },
           "properties": {
-            "AccountId": "[parameters('AccountId')]",
             "Explorer.ApplicationId": "[parameters('ExplorerApplicationId')]",
             "Explorer.ApplicationSecret": "[parameters('ExplorerApplicationSecret')]",
+            "Explorer.ApplicationTenantId": "[parameters('ExplorerApplicationTenantId')]",
             "PartnerCenter.ApplicationId": "[parameters('PartnerCenterApplicationId')]",
-            "PartnerCenter.ApplicationSecret": "[parameters('PartnerCenterApplicationSecret')]"
+            "PartnerCenter.ApplicationSecret": "[parameters('PartnerCenterApplicationSecret')]",
+            "PartnerCenter.ApplicationTenantId": "[parameters('PartnerCenterApplicationTenantId')]"            
           }
         },
         {

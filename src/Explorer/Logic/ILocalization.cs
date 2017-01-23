@@ -8,24 +8,25 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
 {
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Represents the localization service used by the portal.
+    /// </summary>
     public interface ILocalization
     {
         /// <summary>
         /// Gets the country ISO2 code.
         /// </summary>
-        string CountryIso2Code
-        { get; }
+        string CountryIso2Code { get; }
 
         /// <summary>
         /// Gets the locale for the application.
         /// </summary>
-        string Locale
-        { get; }
+        string Locale { get; }
 
         /// <summary>
-        /// Initializes a localization service.
+        /// Initializes the localization service.
         /// </summary>
-        /// <returns>A task for asynchronous purposes.</returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
         Task InitializeAsync();
     }
 }

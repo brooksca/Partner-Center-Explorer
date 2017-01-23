@@ -22,7 +22,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         ///     <c>true</c> if the user is authorized; otherwise <c>false</c>
         /// </returns>
         /// <exception cref="System.ArgumentNullException">
-        /// principal 
+        /// <paramref name="principal"/> is null. 
         /// </exception>
         public bool IsAuthorized(CustomerPrincipal principal, UserRole requiredUserRole)
         {

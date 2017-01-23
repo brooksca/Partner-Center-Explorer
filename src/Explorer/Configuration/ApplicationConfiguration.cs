@@ -6,12 +6,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Configuration
 {
-    using Manager;
     using System;
     using System.Collections.Generic;
     using System.Configuration;
     using System.Web;
-    using Telemetry;
+    using Manager;
 
     /// <summary>
     /// Provides quick access to configurations stored in different places such as web.config
@@ -19,33 +18,30 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration
     public static class ApplicationConfiguration
     {
         /// <summary>
-        /// Gets the account identitifer value.
+        /// A lazy reference to client configuration.
         /// </summary>
-        /// <remarks>
-        /// This value can be found in Partner Center on the App Management page. 
-        /// </remarks>
-        public static string AccountId => ConfigurationManager.AppSettings["AccountId"];
+        private static Lazy<IDictionary<string, dynamic>> clientConfiguration = new Lazy<IDictionary<string, dynamic>>(
+            () => WebPortalConfigurationManager.GenerateConfigurationDictionary().Result);
 
         /// <summary>
         /// Gets the Azure Active Directory endpoint.
         /// </summary>
-        /// <remarks>
-        /// This value should either be https://login.microsoftonline.com or https://login.windows.net
-        /// </remarks>
         public static string ActiveDirectoryEndpoint => ConfigurationManager.AppSettings["ActiveDirectoryEndpoint"];
 
         /// <summary>
         /// Gets the Azure Active Directory (AAD) Graph Endpoint
         /// </summary>
-        /// <remarks>
-        /// This value is typically configured to https://graph.windows.net
-        /// </remarks>
         public static string ActiveDirectoryGraphEndpoint => ConfigurationManager.AppSettings["ActiveDirectoryGraphEndpoint"];
 
         /// <summary>
         /// Gets the Application Insights instrumentation key.
         /// </summary>
         public static string AppInsightsInstrumentationKey => ConfigurationManager.AppSettings["AppInsights.InstrumentationKey"];
+
+        /// <summary>
+        /// Gets the Azure Resource Manager (ARM) API endpoint.
+        /// </summary>
+        public static string AzureManagementEndpoint => ConfigurationManager.AppSettings["AzureManagementEndpoint"];
 
         /// <summary>
         /// Gets the client configuration dictionary. 
@@ -55,52 +51,47 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration
         /// <summary>
         /// Gets the application identifier value.
         /// </summary>
-        /// <remarks>
-        /// This is the ClientId of the application being used for authentication purposes.
-        /// </remarks>
         public static string ApplicationId => ConfigurationManager.AppSettings["Explorer.ApplicationId"];
 
         /// <summary>
         /// Gets the application secret value.
         /// </summary>
-        /// <remarks>
-        /// This is the secret key for the application being used for authentication purposes.
-        /// </remarks>
         public static string ApplicationSecret => ConfigurationManager.AppSettings["Explorer.ApplicationSecret"];
+
+        /// <summary>
+        /// Gets the application tenant identifier.
+        /// </summary>
+        public static string ApplicationTenantId => ConfigurationManager.AppSettings["Explorer.ApplicationTenantId"];
+
+        /// <summary>
+        /// Gets a value indicating whether or not the Partner Center tenant is an integration sandbox. 
+        /// </summary>
+        public static bool IsSandboxEnvironment
+            => Convert.ToBoolean(ConfigurationManager.AppSettings["PartnerCenter.IsIntegrationSandbox"]);
 
         /// <summary>
         /// Gets the endpoint value for the Partner Center API.
         /// </summary>
-        /// <remarks>
-        /// This value is typically set to https://api.partnercenter.microsoft.com
-        /// </remarks>
         public static string PartnerCenterEndpoint => ConfigurationManager.AppSettings["PartnerCenterEndpoint"];
 
         /// <summary>
         /// Gets the application identifier value.
         /// </summary>
-        /// <remarks>
-        /// This is the ClientId of the application being used for authentication purposes.
-        /// </remarks>
         public static string PartnerCenterApplicationId => ConfigurationManager.AppSettings["PartnerCenter.ApplicationId"];
 
         /// <summary>
         /// Gets the application secret value.
         /// </summary>
-        /// <remarks>
-        /// This is the secret key for the application being used for authentication purposes.
-        /// </remarks>
         public static string PartnerCenterApplicationSecret => ConfigurationManager.AppSettings["PartnerCenter.ApplicationSecret"];
+
+        /// <summary>
+        /// Gets the tenant identifier for the Partner Center Azure AD application. 
+        /// </summary>
+        public static string PartnerCenterApplicationTenantId => ConfigurationManager.AppSettings["PartnerCenter.ApplicationTenantId"];
 
         /// <summary>
         /// Gets the Redis Cache connection string.
         /// </summary>
-        /// <remarks>
-        /// This is an optional value. It is used by <see cref="DistributedTokenCache"/> in order to cache tokens.
-        /// Obtaining tokens is an expensive operations. Using a presistent caching mechanism allows us to cache tokens
-        /// and not worry about a system reboot impacting the performance of the application. Additional information
-        /// can be found at https://azure.microsoft.com/en-us/documentation/articles/guidance-multitenant-identity-token-cache/.
-        /// </remarks>
         public static string RedisConnection => ConfigurationManager.AppSettings["Redis.Connnection"];
 
         /// <summary>
@@ -118,8 +109,5 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration
                 HttpContext.Current.Application["WebPortalConfigurationManager"] = value;
             }
         }
-
-        private static readonly Lazy<IDictionary<string, dynamic>> clientConfiguration = new Lazy<IDictionary<string, dynamic>>(
-            () => WebPortalConfigurationManager.GenerateConfigurationDictionary().Result);
     }
 }

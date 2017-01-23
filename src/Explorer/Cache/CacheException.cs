@@ -10,6 +10,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Cache
     using System.Runtime.Serialization;
     using System.Security.Permissions;
 
+    /// <summary>
+    /// Exception that is thrown in the event of an issue with the caching service.
+    /// </summary>
     [Serializable]
     public class CacheException : Exception
     {
@@ -17,22 +20,25 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Cache
         /// Initializes a new instance of the <see cref="CacheException"/> class.
         /// </summary>
         public CacheException()
-        { }
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CacheException"/> class.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
         public CacheException(string message) : base(message)
-        { }
+        {
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataProtectorException" /> class.
+        /// Initializes a new instance of the <see cref="CacheException" /> class.
         /// </summary>
         /// <param name="message">The message that describes the error.</param>
         /// <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
         public CacheException(string message, Exception innerException) : base(message, innerException)
-        { }
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CacheException"/> class.
@@ -40,7 +46,8 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Cache
         /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
         protected CacheException(SerializationInfo info, StreamingContext context) : base(info, context)
-        { }
+        {
+        }
 
         /// <summary>
         /// When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with information about the exception.

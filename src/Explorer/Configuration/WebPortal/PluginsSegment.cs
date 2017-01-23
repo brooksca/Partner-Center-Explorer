@@ -45,22 +45,22 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         /// </summary>
         public void Validate()
         {
-            if (Defaults == null)
+            if (this.Defaults == null)
             {
                 throw new InvalidOperationException("Portal defaults not found");
             }
 
-            Defaults.Validate();
+            this.Defaults.Validate();
 
-            if (Commons != null)
+            if (this.Commons != null)
             {
-                foreach (Assets commonAssets in Commons.Assets)
+                foreach (Assets commonAssets in this.Commons.Assets)
                 {
                     commonAssets.Validate();
                 }
             }
 
-            if (Plugins == null || Plugins.Count <= 0)
+            if (this.Plugins == null || this.Plugins.Count <= 0)
             {
                 throw new InvalidOperationException("Portal plugins not found. Please add plugins.");
             }
@@ -85,18 +85,17 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
                 }
 
                 pluginHashtable[plugin.Name] = 0;
-
             }
 
-            if (string.IsNullOrWhiteSpace(DefaultPlugin))
+            if (string.IsNullOrWhiteSpace(this.DefaultPlugin))
             {
-                DefaultPlugin = Plugins[0].Name;
+                this.DefaultPlugin = this.Plugins[0].Name;
             }
             else
             {
-                if (!pluginHashtable.ContainsKey(DefaultPlugin))
+                if (!pluginHashtable.ContainsKey(this.DefaultPlugin))
                 {
-                    throw new InvalidOperationException($"Default plugin not found: {DefaultPlugin}");
+                    throw new InvalidOperationException($"Default plugin not found: {this.DefaultPlugin}");
                 }
             }
         }
@@ -109,10 +108,10 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         {
             PluginsSegment clone = new PluginsSegment
             {
-                Commons = Commons.Clone() as AssetsSegment,
-                DefaultPlugin = DefaultPlugin,
-                Defaults = Defaults.Clone() as PluginDefaults,
-                Plugins = new List<Plugin>(Plugins.Select(plugin => plugin.Clone() as Plugin))
+                Commons = this.Commons.Clone() as AssetsSegment,
+                DefaultPlugin = this.DefaultPlugin,
+                Defaults = this.Defaults.Clone() as PluginDefaults,
+                Plugins = new List<Plugin>(this.Plugins.Select(plugin => plugin.Clone() as Plugin))
             };
 
             return clone;

@@ -7,7 +7,7 @@
     <!-- ko if: viewModel.IsSet() -->
     <div class="Padded">
         <div class="row">
-            <label class="section">Billing Information</label>
+            <label class="section">@Resources.BillingInformation</label>
         </div>
         <div class="row section-divider"></div>
         <div class="row">
@@ -18,6 +18,49 @@
                 <label class="medium-text" data-bind="text: viewModel.Summary().BillingProfile.Email"></label><br />
             </div>
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <label class="section">@Resources.Subscriptions</label>
+        </div>
+        <div class="row section-divider"></div>
+        <table class="subscriptions-table" cellspacing="1" cellpadding="5">
+            <tbody>
+                <tr class="medium-text">
+                    <td>
+                        @Resources.FriendlyName
+                    </td>
+                    <td>
+                        @Resources.BillingType
+                    </td>
+                    <td>
+                        @Resources.OfferName
+                    </td>
+                    <td>
+                        @Resources.Identifier
+                    </td>
+                    <td />
+                </tr>
+                <!-- ko foreach: viewModel.Summary().Subscriptions -->
+                <tr class="CustomerRow" data-bind="click: $root.onSubscriptionClicked">
+                    <td>
+                        <label data-bind="text: $data.FriendlyName"></label>
+                    </td>
+                    <td class="left-aligned">
+                        <label data-bind="text: $data.BillingType"></label>
+                    </td>
+                    <td>
+                        <label data-bind="text: $data.OfferName"></label>
+                    </td>
+                    <td>
+                        <label data-bind="text: $data.SubscriptionId"></label>
+                    </td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
     </div>
     <!-- /ko -->
 </div>

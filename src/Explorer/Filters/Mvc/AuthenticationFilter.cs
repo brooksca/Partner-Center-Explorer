@@ -6,11 +6,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Filters.Mvc
 {
-    using Logic.Authentication;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Mvc.Filters;
+    using Logic.Authentication;
 
+    /// <summary>
+    /// Augments MVC authentication by replacing the principal with a more usable customer portal principal object.
+    /// </summary>
     public class AuthenticationFilter : ActionFilterAttribute, IAuthenticationFilter
     {
         /// <summary>
@@ -27,6 +30,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Filters.Mvc
         /// </summary>
         /// <param name="filterContext">Information about the current request and action.</param>
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
-        { }
+        {
+        }
     }
 }

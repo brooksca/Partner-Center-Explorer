@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="Plugins.cs" company="Microsoft">
+// <copyright file="Plugin.cs" company="Microsoft">
 //     Copyright (c) Microsoft Corporation. All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -20,22 +20,19 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         /// Gets or sets the plugin's default feature.
         /// </summary>
         [JsonProperty]
-        public string DefaultFeature
-        { get; set; }
+        public string DefaultFeature { get; set; }
 
         /// <summary>
         /// Gets or sets the plugin's features.
         /// </summary>
         [JsonProperty]
-        public IList<AssetsSegment> Features
-        { get; set; }
+        public IList<AssetsSegment> Features { get; set; }
 
         /// <summary>
         /// Gets or sets the plugin Name.
         /// </summary>
         [JsonProperty]
-        public string Name
-        { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Sets the plugin default property values using the given defaults if these properties were missing.
@@ -45,29 +42,29 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         {
             if (defaults == null)
             {
-                throw new ArgumentNullException("defaults", "defaults cannot be null");
+                throw new ArgumentNullException(nameof(defaults), "defaults cannot be null");
             }
 
             defaults.Validate();
 
-            if (string.IsNullOrWhiteSpace(AlternateColor))
+            if (string.IsNullOrWhiteSpace(this.AlternateColor))
             {
-                AlternateColor = defaults.AlternateColor;
+                this.AlternateColor = defaults.AlternateColor;
             }
 
-            if (string.IsNullOrWhiteSpace(Color))
+            if (string.IsNullOrWhiteSpace(this.Color))
             {
-                Color = defaults.Color;
+                this.Color = defaults.Color;
             }
 
-            if (string.IsNullOrWhiteSpace(DisplayName))
+            if (string.IsNullOrWhiteSpace(this.DisplayName))
             {
-                DisplayName = defaults.DisplayName;
+                this.DisplayName = defaults.DisplayName;
             }
 
-            if (string.IsNullOrWhiteSpace(Image))
+            if (string.IsNullOrWhiteSpace(this.Image))
             {
-                Image = defaults.Image;
+                this.Image = defaults.Image;
             }
         }
 
@@ -76,27 +73,27 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         /// </summary>
         /// <param name="featureHashtable">A feature hash table useful for cross referencing duplications in other plugins.</param>
         /// <exception cref="InvalidOperationException">If the plugin settings are invalid.</exception>
-        public override void Validate(IDictionary<string, int> featureHashtable)
+        public override void Validate(IDictionary<string, int> featureHashtable = null)
         {
-            base.Validate();
+            base.Validate(featureHashtable);
 
-            if (string.IsNullOrWhiteSpace(Name))
+            if (string.IsNullOrWhiteSpace(this.Name))
             {
                 throw new InvalidOperationException("Name not set");
             }
 
-            if (Features == null || Features.Count <= 0)
+            if (this.Features == null || this.Features.Count <= 0)
             {
                 throw new InvalidOperationException("Features not set");
             }
 
-            if (string.IsNullOrWhiteSpace(DefaultFeature))
+            if (string.IsNullOrWhiteSpace(this.DefaultFeature))
             {
                 // if no default feature is set, set it to the first feature
-                DefaultFeature = Features[0].Name;
+                this.DefaultFeature = this.Features[0].Name;
             }
 
-            foreach (AssetsSegment feature in Features)
+            foreach (AssetsSegment feature in this.Features)
             {
                 if (string.IsNullOrWhiteSpace(feature.Name))
                 {
@@ -116,7 +113,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
                 featureHashtable[feature.Name] = 0;
             }
 
-            if (!featureHashtable.ContainsKey(DefaultFeature))
+            if (!featureHashtable.ContainsKey(this.DefaultFeature))
             {
                 throw new InvalidOperationException("Invalid default feature. Please make sure it is addded to feature list");
             }
@@ -130,14 +127,14 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         {
             return new Plugin()
             {
-                AlternateColor = AlternateColor,
-                Color = Color,
-                CssClass = CssClass,
-                DefaultFeature = DefaultFeature,
-                DisplayName = DisplayName,
-                Features = Features.Clone(),
-                Image = Image,
-                Name = Name
+                AlternateColor = this.AlternateColor,
+                Color = this.Color,
+                CssClass = this.CssClass,
+                DefaultFeature = this.DefaultFeature,
+                DisplayName = this.DisplayName,
+                Features = this.Features.Clone(),
+                Image = this.Image,
+                Name = this.Name
             };
         }
     }

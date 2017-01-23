@@ -6,12 +6,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Manager
 {
-    using Bundling;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Threading.Tasks;
+    using Bundling;
+    using Newtonsoft.Json;
     using WebPortal;
 
     /// <summary>
@@ -28,14 +28,14 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Manager
         {
             if (string.IsNullOrWhiteSpace(configurationFilePath))
             {
-                throw new ArgumentException("configurationFilePath not set", "configurationFilePath");
+                throw new ArgumentException("configurationFilePath not set", nameof(configurationFilePath));
             }
 
             using (StreamReader configReader = new StreamReader(configurationFilePath))
             {
                 // read and process the configuration
-                Configuration = JsonConvert.DeserializeObject<WebPortalConfiguration>(configReader.ReadToEnd());
-                Configuration.Process();
+                this.Configuration = JsonConvert.DeserializeObject<WebPortalConfiguration>(configReader.ReadToEnd());
+                this.Configuration.Process();
             }
         }
 
@@ -77,13 +77,13 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Manager
         {
             if (bundler == null)
             {
-                throw new ArgumentNullException("bundler", "null bundler passed in");
+                throw new ArgumentNullException(nameof(bundler), "null bundler passed in");
             }
 
             bundler.Clear();
 
-            Assets startUpAssets = await AggregateStartupAssets();
-            Assets nonStartUpAssets = await AggregateNonStartupAssets();
+            Assets startUpAssets = await this.AggregateStartupAssets();
+            Assets nonStartUpAssets = await this.AggregateNonStartupAssets();
 
             // build the start up javascript and css files and bundle them
             List<string> startupClasses = new List<string>(startUpAssets.JavaScript);

@@ -27,7 +27,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Telemetry
         /// </summary>
         /// <param name="exception">The exception to log.</param>
         /// <param name="properties">Named string values you can use to classify and search for this exception.</param>
-        /// <param name="metrics">dditional values associated with this exception.</param>
+        /// <param name="metrics">Additional values associated with this exception.</param>
         void TrackException(Exception exception, IDictionary<string, string> properties = null, IDictionary<string, double> metrics = null);
 
         /// <summary>

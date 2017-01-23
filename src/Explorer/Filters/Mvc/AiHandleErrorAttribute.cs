@@ -6,15 +6,15 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Filters.Mvc
 {
-    using Logic;
-    using Practices.Unity;
     using System;
     using System.Web.Mvc;
+    using Logic;
+    using Practices.Unity;
 
     /// <summary>
     /// Attribute used to track exceptions using Application Insights.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class AiHandleErrorAttribute : HandleErrorAttribute
     {
         /// <summary>
@@ -26,7 +26,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Filters.Mvc
         {
             IExplorerService service = MvcApplication.UnityContainer.Resolve<IExplorerService>();
 
-            if (filterContext != null && filterContext.HttpContext != null && filterContext.Exception != null)
+            if (filterContext?.HttpContext != null && filterContext.Exception != null)
             {
                 if (filterContext.HttpContext.IsCustomErrorEnabled)
                 {

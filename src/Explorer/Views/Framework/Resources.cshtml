@@ -6,45 +6,98 @@
     */
     var portalResources = {
         Keys: {
-            InstrumentationKey: "@Microsoft.Store.PartnerCenter.Explorer.Configuration.ApplicationConfiguration.AppInsightsInstrumentationKey"
+            InstrumentationKey: "@Html.Raw(@Microsoft.Store.PartnerCenter.Explorer.Configuration.ApplicationConfiguration.AppInsightsInstrumentationKey)"
         },
         Strings: {
             /*
                 Framework strings
             */
-            Loading: "@Resources.Loading",
-            FailedToLoadPortal: "@Resources.FailedToLoadPortal",
-            PortalConfigurationNotFound: "@Resources.PortalConfigurationNotFound",
-            InvalidPortalConfiguration: "@Resources.InvalidPortalConfiguration",
-            NavigateBackTo: "@Resources.NavigateBackTo",
-            Ellipsis: "@Resources.Ellipsis",
-            MoreActionsTooltip: "@Resources.MoreActionsTooltip",
-            Yes: "@Resources.Yes",
-            No: "@Resources.No",
-            OK: "@Resources.OK",
-            Cancel: "@Resources.Cancel",
-            Retry: "@Resources.RetryCapital",
-            Next: "@Resources.Next",
-            Back: "@Resources.Back",
-            Add: "@Resources.AddCapital",
-            Delete: "@Resources.Delete",
-            Save: "@Resources.Save",
-            Undo: "@Resources.Undo",
-            NotificationsSummary: "@Resources.NotificationsSummary",
-            TemplateLoadFailureMessage: "@Resources.TemplateLoadFailureMessage",
-            TemplateLoadRetryMessage: "@Resources.TemplateLoadRetryMessage",
-            EmptyListMessage: "@Resources.EmptyListMessage",
-            AccessDeniedMessage: "@Resources.AccessDeniedMessage",
+            CurrentLocale: "@Html.Raw(@Resources.Culture.Name)",
+            Loading: "@Html.Raw(@Resources.Loading)",
+            FailedToLoadPortal: "@Html.Raw(@Resources.FailedToLoadPortal)",
+            PortalConfigurationNotFound: "@Html.Raw(@Resources.PortalConfigurationNotFound)",
+            InvalidPortalConfiguration: "@Html.Raw(@Resources.InvalidPortalConfiguration)",
+            NavigateBackTo: "@Html.Raw(@Resources.NavigateBackTo)",
+            Ellipsis: "@Html.Raw(@Resources.Ellipsis)",
+            MoreActionsTooltip: "@Html.Raw(@Resources.MoreActionsTooltip)",
+            Yes: "@Html.Raw(@Resources.Yes)",
+            No: "@Html.Raw(@Resources.No)",
+            OK: "@Html.Raw(@Resources.OK)",
+            Cancel: "@Html.Raw(@Resources.Cancel)",
+            Retry: "@Html.Raw(@Resources.RetryCapital)",
+            Next: "@Html.Raw(@Resources.Next)",
+            Back: "@Html.Raw(@Resources.Back)",
+            Add: "@Html.Raw(@Resources.AddCaption)",
+            Delete: "@Html.Raw(@Resources.Delete)",
+            Save: "@Html.Raw(@Resources.Save)",
+            Undo: "@Html.Raw(@Resources.Undo)",
+            NotificationsSummary: "@Html.Raw(@Resources.NotificationsSummary)",
+            TemplateLoadFailureMessage: "@Html.Raw(@Resources.TemplateLoadFailureMessage)",
+            TemplateLoadRetryMessage: "@Html.Raw(@Resources.TemplateLoadRetryMessage)",
+            EmptyListMessage: "@Html.Raw(@Resources.EmptyListMessage)",
+            SignOut: "@Html.Raw(@Resources.Signout)",
+            SignOutToolTipCaption: "@Html.Raw(@Resources.SignOutToolTipCaption)",
+            AccessDeniedMessage: "@Html.Raw(@Resources.AccessDeniedMessage)",
+
+            /*
+                Localized Country strings
+            */
+
+            Countries: {
+                AU: "@Html.Raw(@Resources.CountryNameAU)",
+                AT: "@Html.Raw(@Resources.CountryNameAT)",
+                BE: "@Html.Raw(@Resources.CountryNameBE)",
+                BG: "@Html.Raw(@Resources.CountryNameBG)",
+                CA: "@Html.Raw(@Resources.CountryNameCA)",
+                HR: "@Html.Raw(@Resources.CountryNameHR)",
+                CY: "@Html.Raw(@Resources.CountryNameCY)",
+                CZ: "@Html.Raw(@Resources.CountryNameCZ)",
+                DK: "@Html.Raw(@Resources.CountryNameDK)",
+                EE: "@Html.Raw(@Resources.CountryNameEE)",
+                FI: "@Html.Raw(@Resources.CountryNameFI)",
+                FR: "@Html.Raw(@Resources.CountryNameFR)",
+                DE: "@Html.Raw(@Resources.CountryNameDE)",
+                GR: "@Html.Raw(@Resources.CountryNameGR)",
+                HU: "@Html.Raw(@Resources.CountryNameHU)",
+                IS: "@Html.Raw(@Resources.CountryNameIS)",
+                IE: "@Html.Raw(@Resources.CountryNameIE)",
+                IT: "@Html.Raw(@Resources.CountryNameIT)",
+                JP: "@Html.Raw(@Resources.CountryNameJP)",
+                LV: "@Html.Raw(@Resources.CountryNameLV)",
+                LI: "@Html.Raw(@Resources.CountryNameLI)",
+                LT: "@Html.Raw(@Resources.CountryNameLT)",
+                LU: "@Html.Raw(@Resources.CountryNameLU)",
+                MT: "@Html.Raw(@Resources.CountryNameMT)",
+                MC: "@Html.Raw(@Resources.CountryNameMC)",
+                NL: "@Html.Raw(@Resources.CountryNameNL)",
+                NZ: "@Html.Raw(@Resources.CountryNameNZ)",
+                NO: "@Html.Raw(@Resources.CountryNameNO)",
+                PO: "@Html.Raw(@Resources.CountryNamePO)",
+                PT: "@Html.Raw(@Resources.CountryNamePT)",
+                RO: "@Html.Raw(@Resources.CountryNameRO)",
+                SK: "@Html.Raw(@Resources.CountryNameSK)",
+                SL: "@Html.Raw(@Resources.CountryNameSL)",
+                ES: "@Html.Raw(@Resources.CountryNameES)",
+                SE: "@Html.Raw(@Resources.CountryNameSE)",
+                CH: "@Html.Raw(@Resources.CountryNameCH)",
+                GB: "@Html.Raw(@Resources.CountryNameGB)",
+                US: "@Html.Raw(@Resources.CountryNameUS)"
+            },
 
             /*
                 Plugin strings
             */
 
             Plugins: {
-                BadInputGenericMessage: "@Resources.BadInputGenericMessage",
-                InvalidInput: "@Resources.InvalidInput",
+                BadInputGenericMessage: "@Html.Raw(@Resources.BadInputGenericMessage)",
+                InvalidInput: "@Html.Raw(@Resources.InvalidInput)",
                 HomePage: {
-                    CouldNotRetrievePartnerOffers: "@Resources.CouldNotRetrieveCustomers"
+                    CouldNotRetrieveCustomers: "@Html.Raw(@Resources.CouldNotRetrieveCustomer)",
+                    CouldNotRetrieveOffers: "@Html.Raw(@Resources.CouldNotRetrieveOffer)"
+                }, 
+                AddSubscriptionsView: {
+                    SelectOfferErrorMessage: "@Html.Raw(@Resources.SelectOfferErrorMessage)",
+                    EmptyListCaption: "@Html.Raw(@Resources.EmptyListCaption)"
                 }
             }
         },

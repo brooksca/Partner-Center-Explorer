@@ -1,0 +1,62 @@
+﻿<script id="addSubscriptions-template" type="text/html">
+    <!-- ko stopBinding: true -->
+    <div id="SubscriptionsList"></div>
+    <!-- /ko -->
+    <div class="add-plan-header">
+        <label data-bind="click: onAddOfferClicked" class="Link medium-text">@Resources.AddSubscriptionsMessage</label>
+    </div>
+</script>
+
+<script id="subscriptionEntry-template" type="text/html">
+    <table cellspacing="5">
+        <tr>
+            <td colspan="2" width="70%">
+                <label class="offer-title" data-bind="text: row.offer.Name"></label>
+            </td>
+            <td class="right-padded fit-to-content" width="10%">
+                <label class="monthly-fee">@Resources.UserLicencesCaption</label>
+            </td>
+            <td class="right-aligned" width="10%">
+            </td>
+        </tr>
+        <tr style="vertical-align: top">
+            <td class="fit-to-content" width="5%" style="padding-top: 30px;">
+            </td>
+            <td class="left-padded" width="65%">
+                <!-- ko if: row.offer.Subtitle -->
+                <label class="SubTitle" data-bind="text: row.offer.Subtitle"></label>
+                <!-- /ko -->
+            </td>
+            <td class="right-padded fit-to-content" valign="top" width="10%">
+                <br />
+                <br />
+                <input type="number" class="order-quantity" data-bind="textInput: row.quantity, uniqueName: true" data-rule-required="true" data-rule-digits="true" data-rule-min="1" data-rule-max="1000" />
+            </td>
+            <td class="right-aligned" valign="top" width="10%">
+                <br />
+                <br />
+                <label class="Link remove-link" data-bind="click: function () { $parents[3].remove(row); $('#SubscriptionsList').height($('#SubscriptionsList table').height());}">@Resources.RemoveFromCart</label>
+            </td>
+        </tr>
+    </table>
+</script>
+
+<script id="emptyOffersErrorMessage-template" type="text/html">
+    <div class="empty-offers-error-message">
+        <label>Resources.EmptyOffersErrorMessage</label>
+    </div>
+</script>
+
+<script id="offerPicker-template" type="text/html">
+    <div id="OfferSelectionWizard">
+        <label>@Resources.SelectMicrosoftOfferCaption</label>
+
+        <!-- ko stopBinding: true -->
+        <div id="offerList" class="MicrosoftOfferList"></div>
+        <!-- /ko -->
+
+        <div class="OfferErrorMessage">
+            <label data-bind="text: errorMessage" class="MetroMediumLight error"></label>
+        </div>
+    </div>
+</script>

@@ -1,0 +1,50 @@
+﻿<div id="SubscriptionContainer" class="FullSize">
+    <!-- ko if: viewModel.ShowProgress() -->
+    <div class="Progress FullSize center">
+        <img class="verticalCenteredProgress" src="~/Content/Images/Plugins/ripple.gif" />
+    </div>
+    <!-- /ko -->
+    <!-- ko if: viewModel.IsSet() -->
+    <div class="Padded">
+        <div class="row">
+            <label class="section">@Resources.Incidents</label>
+        </div>
+        <div class="row section-divider"></div>
+        <table class="incidents-table" cellspacing="1" cellpadding="5">
+            <tbody>
+                <tr class="medium-text">
+                    <td>
+                        @Resources.Name
+                    </td>
+                    <td>
+                        @Resources.Identifier
+                    </td>
+                    <td>
+                        @Resources.Status
+                    </td>
+                    <td>
+                        @Resources.Description
+                    </td>
+                    <td />
+                </tr>
+                <!-- ko foreach: viewModel.Summary().Incidents -->
+                <tr class="IncidentRow">
+                    <td>
+                        <label data-bind="text: $data.Name"></label>
+                    </td>
+                    <td class="left-aligned">
+                        <label data-bind="text: $data.Id"></label>
+                    </td>
+                    <td>
+                        <label data-bind="text: $data.Status"></label>
+                    </td>
+                    <td>
+                        <label data-bind="text: $data.Description"></label>
+                    </td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+    <!-- /ko -->
+</div>

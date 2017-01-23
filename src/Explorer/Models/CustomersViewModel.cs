@@ -6,8 +6,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Models
 {
-    using PartnerCenter.Models.Customers;
     using System.Collections.Generic;
+    using PartnerCenter.Models.Customers;
 
     /// <summary>
     /// Provides a view model for listing customer(s).
@@ -17,7 +17,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Models
         /// <summary>
         /// Gets or sets the collection of customers that belong to the partner.
         /// </summary>
-        public List<Customer> Customers
-        { get; set; }
+        public List<Customer> Customers { get; set; }
     }
 }

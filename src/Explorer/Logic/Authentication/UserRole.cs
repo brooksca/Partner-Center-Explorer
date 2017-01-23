@@ -12,19 +12,22 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
     public enum UserRole
     {
         /// <summary>
-        /// A customer or a partner.
+        /// A customer or a partner
         /// </summary>
         Any,
+
         /// <summary>
-        /// A customer of the partner.
+        /// A customer of the partner
         /// </summary>
         Customer,
+
         /// <summary>
-        /// An unauthenticated user.
+        /// An unauthenticated user
         /// </summary>
         None,
+
         /// <summary>
-        /// A partner user.
+        /// A partner user
         /// </summary>
         Partner
     }

@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcceptTerms" xml:space="preserve">
+    <value>利用規約に同意します。</value>
+  </data>
+  <data name="AcceptTermsValidationMessage" xml:space="preserve">
+    <value>諸条件に同意する必要があります。</value>
+  </data>
+  <data name="CustomerAddNew" xml:space="preserve">
+    <value>新しい顧客を追加します。</value>
+  </data>
+  <data name="CustomerDeleteInvalidException" xml:space="preserve">
+    <value>顧客の削除操作は統合サンド ボックス テナントでのみサポートされます。</value>
+  </data>
+  <data name="CustomerOrganizationNameCaption" xml:space="preserve">
+    <value>組織名</value>
+  </data>
+  <data name="CustomerOrganizationRequired" xml:space="preserve">
+    <value>組織名は必須です。</value>
+  </data>
+  <data name="CustomerProfileAddressLine1Caption" xml:space="preserve">
+    <value>住所行 1</value>
+  </data>
+  <data name="CustomerProfileAddressLine1Required" xml:space="preserve">
+    <value>住所行 1 が必要です。</value>
+  </data>
+  <data name="CustomerProfileAddressLine2Caption" xml:space="preserve">
+    <value>住所 2 行目</value>
+  </data>
+  <data name="CustomerProfileCityCaption" xml:space="preserve">
+    <value>市</value>
+  </data>
+  <data name="CustomerProfileCityRequired" xml:space="preserve">
+    <value>都市が必要です。</value>
+  </data>
+  <data name="CustomerProfileCompanyCountryCaption" xml:space="preserve">
+    <value>国</value>
+  </data>
+  <data name="CustomerProfileCompanyCountryRequired" xml:space="preserve">
+    <value>国は必須です。</value>
+  </data>
+  <data name="CustomerProfileCompanyInfoSectionCaption" xml:space="preserve">
+    <value>会社情報</value>
+  </data>
+  <data name="CustomerProfileContactInfoSectionCaption" xml:space="preserve">
+    <value>連絡先情報</value>
+  </data>
+  <data name="CustomerProfileDomainInfoCaption" xml:space="preserve">
+    <value>ドメイン プレフィックスが表示されます後、@ あなたのドメインのメール アドレスで。一意である必要があり、任意の句読点を含めることはできません。例: ' 会社 '。</value>
+  </data>
+  <data name="CustomerProfileDomainPrefixCaption" xml:space="preserve">
+    <value>ドメイン プレフィックス</value>
+  </data>
+  <data name="CustomerProfileDomainPrefixRequired" xml:space="preserve">
+    <value>ドメイン プレフィックスが必要です。</value>
+  </data>
+  <data name="CustomerProfileEmailAddressIdCaption" xml:space="preserve">
+    <value>メール アドレス</value>
+  </data>
+  <data name="CustomerProfileEmailAddressIdRequired" xml:space="preserve">
+    <value>電子メールのフィールドは、有効な電子メール アドレスではありません。</value>
+  </data>
+  <data name="CustomerProfileEmailWarningCaption" xml:space="preserve">
+    <value>有効な電子メール アドレスを入力することを確認します。それは、支払いデータを設定する開始するための重要な情報を送信する連絡先の主なポイントになります。</value>
+  </data>
+  <data name="CustomerProfileFirstNameCaption" xml:space="preserve">
+    <value>最初の名前</value>
+  </data>
+  <data name="CustomerProfileFirstNameRequired" xml:space="preserve">
+    <value>最初の名前が必要です。</value>
+  </data>
+  <data name="CustomerProfileLastNameCaption" xml:space="preserve">
+    <value>最後の名前</value>
+  </data>
+  <data name="CustomerProfileLastNameRequired" xml:space="preserve">
+    <value>最後の名前が必要です。</value>
+  </data>
+  <data name="DataProtectionUnprotectException" xml:space="preserve">
+    <value>指定されたデータの保護を解除できませんでした。</value>
+  </data>
+  <data name="DomainNotAvailable" xml:space="preserve">
+    <value>ドメインは利用できません。別のドメイン プレフィックスを入力してください。</value>
+  </data>
+  <data name="DomainPrefixValidationMessage" xml:space="preserve">
+    <value>有効なドメインのプレフィックスを入力してください。</value>
+  </data>
+  <data name="ExplorerServiceNotInitializedException" xml:space="preserve">
+    <value>ローカリゼーション サービスが初期化されていません。</value>
+  </data>
+  <data name="InvalidInputInFormCaption" xml:space="preserve">
+    <value>1 つ以上のフィールドが無効です。くださいそれらを修正し、送信。</value>
+  </data>
+  <data name="PhoneHeaderCaption" xml:space="preserve">
+    <value>電話番号</value>
+  </data>
+  <data name="PhoneHeaderRequired" xml:space="preserve">
+    <value>電話番号が必要です。</value>
+  </data>
+  <data name="RedisCacheConnectionException" xml:space="preserve">
+    <value>指定したインスタンスへの接続に失敗しました。</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>送信</value>
+  </data>
+  <data name="Subscriptions" xml:space="preserve">
+    <value>サブスクリプション</value>
+  </data>
+  <data name="UserUnauthorizedException" xml:space="preserve">
+    <value>認証されたユーザーはこの操作を実行できません。</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>読み込み</value>
+  </data>
+  <data name="FailedToLoadPortal" xml:space="preserve">
+    <value>ポータルのコンテンツを取得できませんでした。</value>
+  </data>
+  <data name="PortalConfigurationNotFound" xml:space="preserve">
+    <value>ポータルの構成が見つかりませんでした。</value>
+  </data>
+  <data name="InvalidPortalConfiguration" xml:space="preserve">
+    <value>ポータルの構成が無効であると思われる</value>
+  </data>
+  <data name="Ellipsis" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="NavigateBackTo" xml:space="preserve">
+    <value>戻ってください。</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="MoreActionsTooltip" xml:space="preserve">
+    <value>他の操作.</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>違います</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>わかりました</value>
+  </data>
+  <data name="RetryCapital" xml:space="preserve">
+    <value>再試行</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>うん</value>
+  </data>
+  <data name="AddCapital" xml:space="preserve">
+    <value>追加</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>戻る</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>次に</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="NotificationsSummary" xml:space="preserve">
+    <value>新しい通知</value>
+  </data>
+  <data name="TemplateLoadFailureMessage" xml:space="preserve">
+    <value>機能の内容を取得できませんでした。</value>
+  </data>
+  <data name="TemplateLoadRetryMessage" xml:space="preserve">
+    <value>機能の内容を取得</value>
+  </data>
+  <data name="EmptyListMessage" xml:space="preserve">
+    <value>見つけたないエンティティ</value>
+  </data>
+  <data name="AccessDeniedMessage" xml:space="preserve">
+    <value>このエリアにアクセスするための権限がありません。</value>
+  </data>
+  <data name="BadInputGenericMessage" xml:space="preserve">
+    <value>入力エラーが発生しました。入力を確認して、もう一度やり直してください。</value>
+  </data>
+  <data name="InvalidInput" xml:space="preserve">
+    <value>入力したフィールドのいずれかで問題が発生しました。</value>
+  </data>
+  <data name="CouldNotRetrieveCustomer" xml:space="preserve">
+    <value>顧客の詳細を取得できませんでした。後でもう一度試してください。</value>
+  </data>
+  <data name="CouldNotRetrieveOffer" xml:space="preserve">
+    <value>オファーの詳細を取得できませんでした。後でもう一度試してください。</value>
+  </data>
+  <data name="ProductTitle" xml:space="preserve">
+    <value>エクスプ ローラー</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="NotificationSectionTooltip" xml:space="preserve">
+    <value>アクティブな通知</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>再試行</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>すべてクリア</value>
+  </data>
+  <data name="UsernameLabel" xml:space="preserve">
+    <value>ユーザー名:</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>パスワード:</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>私を覚えなさい</value>
+  </data>
+  <data name="First" xml:space="preserve">
+    <value>まずは</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>前の</value>
+  </data>
+  <data name="CustomersTableSection" xml:space="preserve">
+    <value>利用のお客様</value>
+  </data>
+  <data name="CustomersTableName" xml:space="preserve">
+    <value>顧客名</value>
+  </data>
+  <data name="CustomersTableDomain" xml:space="preserve">
+    <value>ドメイン</value>
+  </data>
+  <data name="CustomersTableIdentifier" xml:space="preserve">
+    <value>識別子</value>
+  </data>
+  <data name="BillingType" xml:space="preserve">
+    <value>請求の種類</value>
+  </data>
+  <data name="FriendlyName" xml:space="preserve">
+    <value>フレンドリ名</value>
+  </data>
+  <data name="Identifier" xml:space="preserve">
+    <value>識別子</value>
+  </data>
+  <data name="OfferName" xml:space="preserve">
+    <value>プラン名</value>
+  </data>
+  <data name="BillingInformation" xml:space="preserve">
+    <value>請求先情報</value>
+  </data>
+  <data name="Incidents" xml:space="preserve">
+    <value>インシデント</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>ステータス</value>
+  </data>
+  <data name="AddSubscriptions" xml:space="preserve">
+    <value>サブスクリプションを追加します。</value>
+  </data>
+  <data name="EmptyListCaption" xml:space="preserve">
+    <value>サブスクリプションを追加してください。</value>
+  </data>
+  <data name="SelectOfferErrorMessage" xml:space="preserve">
+    <value>オファーを選択してください。</value>
+  </data>
+  <data name="CustomerProfileStateCaption" xml:space="preserve">
+    <value>都道府県/州</value>
+  </data>
+  <data name="CustomerProfileZipPostalCaption" xml:space="preserve">
+    <value>郵便番号/郵便番号</value>
+  </data>
+  <data name="CountryNameAT" xml:space="preserve">
+    <value>オーストリア</value>
+  </data>
+  <data name="CountryNameAU" xml:space="preserve">
+    <value>オーストラリア</value>
+  </data>
+  <data name="CountryNameBE" xml:space="preserve">
+    <value>ベルギー</value>
+  </data>
+  <data name="CountryNameBG" xml:space="preserve">
+    <value>ブルガリア</value>
+  </data>
+  <data name="CountryNameCA" xml:space="preserve">
+    <value>カナダ</value>
+  </data>
+  <data name="CountryNameCH" xml:space="preserve">
+    <value>スイス</value>
+  </data>
+  <data name="CountryNameCY" xml:space="preserve">
+    <value>キプロス</value>
+  </data>
+  <data name="CountryNameCZ" xml:space="preserve">
+    <value>チェコ共和国</value>
+  </data>
+  <data name="CountryNameDE" xml:space="preserve">
+    <value>ドイツ</value>
+  </data>
+  <data name="CountryNameDK" xml:space="preserve">
+    <value>デンマーク</value>
+  </data>
+  <data name="CountryNameEE" xml:space="preserve">
+    <value>エストニア</value>
+  </data>
+  <data name="CountryNameES" xml:space="preserve">
+    <value>スペイン</value>
+  </data>
+  <data name="CountryNameFI" xml:space="preserve">
+    <value>フィンランド</value>
+  </data>
+  <data name="CountryNameFR" xml:space="preserve">
+    <value>フランス</value>
+  </data>
+  <data name="CountryNameGB" xml:space="preserve">
+    <value>英国</value>
+  </data>
+  <data name="CountryNameGR" xml:space="preserve">
+    <value>ギリシャ</value>
+  </data>
+  <data name="CountryNameHR" xml:space="preserve">
+    <value>クロアチア</value>
+  </data>
+  <data name="CountryNameHU" xml:space="preserve">
+    <value>ハンガリー</value>
+  </data>
+  <data name="CountryNameIE" xml:space="preserve">
+    <value>アイルランド</value>
+  </data>
+  <data name="CountryNameIS" xml:space="preserve">
+    <value>アイスランド</value>
+  </data>
+  <data name="CountryNameIT" xml:space="preserve">
+    <value>イタリア</value>
+  </data>
+  <data name="CountryNameJP" xml:space="preserve">
+    <value>日本</value>
+  </data>
+  <data name="CountryNameLI" xml:space="preserve">
+    <value>リヒテンシュタイン</value>
+  </data>
+  <data name="CountryNameLT" xml:space="preserve">
+    <value>リトアニア</value>
+  </data>
+  <data name="CountryNameLU" xml:space="preserve">
+    <value>ルクセンブルク</value>
+  </data>
+  <data name="CountryNameLV" xml:space="preserve">
+    <value>ラトビア</value>
+  </data>
+  <data name="CountryNameMC" xml:space="preserve">
+    <value>モナコ</value>
+  </data>
+  <data name="CountryNameMT" xml:space="preserve">
+    <value>マルタ</value>
+  </data>
+  <data name="CountryNameNL" xml:space="preserve">
+    <value>オランダ</value>
+  </data>
+  <data name="CountryNameNO" xml:space="preserve">
+    <value>ノルウェー</value>
+  </data>
+  <data name="CountryNameNZ" xml:space="preserve">
+    <value>ニュージーランド</value>
+  </data>
+  <data name="CountryNamePO" xml:space="preserve">
+    <value>ポーランド</value>
+  </data>
+  <data name="CountryNamePT" xml:space="preserve">
+    <value>ポルトガル</value>
+  </data>
+  <data name="CountryNameRO" xml:space="preserve">
+    <value>ルーマニア</value>
+  </data>
+  <data name="CountryNameSE" xml:space="preserve">
+    <value>スウェーデン</value>
+  </data>
+  <data name="CountryNameSK" xml:space="preserve">
+    <value>スロバキア</value>
+  </data>
+  <data name="CountryNameSL" xml:space="preserve">
+    <value>スロベニア</value>
+  </data>
+  <data name="CountryNameUS" xml:space="preserve">
+    <value>米国</value>
+  </data>
+  <data name="AddCaption" xml:space="preserve">
+    <value>追加</value>
+  </data>
+  <data name="Signout" xml:space="preserve">
+    <value>サインアウトします。</value>
+  </data>
+  <data name="SignOutToolTipCaption" xml:space="preserve">
+    <value>アプリケーションからサインアウトします。</value>
+  </data>
+  <data name="AddSubscriptionsMessage" xml:space="preserve">
+    <value>他のサブスクリプションを追加します。</value>
+  </data>
+  <data name="RemoveFromCart" xml:space="preserve">
+    <value>カートから削除します。</value>
+  </data>
+  <data name="SelectMicrosoftOfferCaption" xml:space="preserve">
+    <value>1 つまたは複数のオファーを選択します。</value>
+  </data>
+  <data name="UserLicencesCaption" xml:space="preserve">
+    <value>ライセンス</value>
+  </data>
+</root>

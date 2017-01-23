@@ -6,26 +6,26 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Telemetry
 {
-    using ApplicationInsights;
-    using Logic;
     using System;
     using System.Collections.Generic;
+    using ApplicationInsights;
 
     /// <summary>
-    /// Records telemetry data using Application Insights.
+    /// Provides the ability to capture telemetry using Application Insights.
     /// </summary>
     public class ApplicationInsightsTelemetryProvider : ITelemetryProvider
     {
-        private readonly TelemetryClient _telemetry;
+        /// <summary>
+        /// Used to send events, metrics, and other telemetry to Application Insights.
+        /// </summary>
+        private readonly TelemetryClient telemetry;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationInsightsTelemetryProvider" /> class.
         /// </summary>
-        /// <param name="instrumentationKey">The instrumentation key.</param>
-        public ApplicationInsightsTelemetryProvider(string instrumentationKey)
+        public ApplicationInsightsTelemetryProvider()
         {
-            instrumentationKey.AssertNotEmpty(nameof(instrumentationKey));
-            _telemetry = new TelemetryClient();
+            this.telemetry = new TelemetryClient();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Telemetry
         /// <param name="metrics">Measurements associated with this event.</param>
         public void TrackEvent(string eventName, IDictionary<string, string> properties = null, IDictionary<string, double> metrics = null)
         {
-            _telemetry.TrackEvent(eventName, properties, metrics);
+            this.telemetry.TrackEvent(eventName, properties, metrics);
         }
 
         /// <summary>
@@ -44,10 +44,10 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Telemetry
         /// </summary>
         /// <param name="exception">The exception to log.</param>
         /// <param name="properties">Named string values you can use to classify and search for this exception.</param>
-        /// <param name="metrics">dditional values associated with this exception.</param>
+        /// <param name="metrics">Additional values associated with this exception.</param>
         public void TrackException(Exception exception, IDictionary<string, string> properties = null, IDictionary<string, double> metrics = null)
         {
-            _telemetry.TrackException(exception, properties, metrics);
+            this.telemetry.TrackException(exception, properties, metrics);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Telemetry
         /// <param name="message">The message to display</param>
         public void TrackTrace(string message)
         {
-            _telemetry.TrackTrace(message);
+            this.telemetry.TrackTrace(message);
         }
     }
 }

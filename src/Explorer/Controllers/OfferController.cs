@@ -6,17 +6,18 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
 {
-    using Cache;
-    using Filters.WebApi;
-    using Logic;
-    using Logic.Authentication;
-    using PartnerCenter.Models;
-    using PartnerCenter.Models.Offers;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Http;
+    using Cache;
+    using Filters.WebApi;
+    using Logic;
+    using Logic.Authentication;
+    using Models;
+    using PartnerCenter.Models;
+    using PartnerCenter.Models.Offers;
 
     /// <summary>
     /// Provides the ability to manage Partner Center offers.
@@ -25,20 +26,21 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
     public class OfferController : BaseApiController
     {
         /// <summary>
-        /// Initialize a new instance of <see cref="CustomerController" /> class.
+        /// Initializes a new instance of the <see cref="OfferController" /> class.
         /// </summary>
         /// <param name="service">Provides access to all the core services.</param>
         /// <exception cref="ArgumentNullException">
-        /// service
+        /// <paramref name="service"/> is null.
         /// </exception>
         public OfferController(IExplorerService service)
             : base(service)
-        { }
+        {
+        }
 
         [@Authorize(UserRole = UserRole.Any)]
         [HttpGet]
         [Route("")]
-        public async Task<IEnumerable<Offer>> GetOffersAsync()
+        public async Task<IEnumerable<OfferViewModel>> GetOffersAsync()
         {
             DateTime startTime;
             Dictionary<string, double> eventMeasurements;
@@ -67,7 +69,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
                         (offer.PrerequisiteOffers == null || !offer.PrerequisiteOffers.Any()) && offer.IsAvailableForPurchase);
 
                 // Capture the request for the customer summary for analysis.
-                eventProperties = new Dictionary<string, string>()
+                eventProperties = new Dictionary<string, string>
                 {
                     { "CountryIso2Code", Services.Localization.CountryIso2Code },
                 };
@@ -75,12 +77,18 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
                 // Track the event measurements for analysis.
                 eventMeasurements = new Dictionary<string, double>()
                 {
-                    {"ElapsedMilliseconds", DateTime.Now.Subtract(startTime).TotalMilliseconds }
+                    { "ElapsedMilliseconds", DateTime.Now.Subtract(startTime).TotalMilliseconds }
                 };
 
                 Services.Telemetry.TrackEvent("/api/offer", eventProperties, eventMeasurements);
 
-                return eligibleOffers;
+                return eligibleOffers.Select(o => new OfferViewModel
+                {
+                    Category = o.Category.Name,
+                    Description = o.Description,
+                    Id = o.Id,
+                    Name = o.Name
+                });
             }
             finally
             {

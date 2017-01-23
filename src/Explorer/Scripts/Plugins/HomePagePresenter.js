@@ -13,6 +13,11 @@ Microsoft.WebPortal.HomePagePresenter = function (webPortal, feature) {
         IsSet: ko.observable(false),
     }
 
+    this.onAddCustomerClicked = function () {
+        // go to the add customer page
+        webPortal.Journey.advance(Microsoft.WebPortal.Feature.CustomerAddNew);
+    }
+
     this.onCustomerClicked = function (data) {
         var customerInfo = { Id: data.Id }
         // Activate the customer page presenter and pass it the selected customer.

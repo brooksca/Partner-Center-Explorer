@@ -24,7 +24,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         public static IList<T> Clone<T>(this IEnumerable<T> collection)
             where T : ICloneable
         {
-            return collection.Select(item => (T) item.Clone()).ToList();
+            return collection.Select(item => (T)item.Clone()).ToList();
         }
 
         /// <summary>
@@ -76,7 +76,8 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
             if (assetSegmentList != null)
             {
                 combinedSegmentListAssets = assetSegmentList.Aggregate(
-                    combinedSegmentListAssets, (current, segmentAssets) =>
+                    combinedSegmentListAssets, 
+                    (current, segmentAssets) =>
                         current + segmentAssets.Assets.GetAssetsByVersion(segmentAssets.DefaultAssetVersion));
             }
 

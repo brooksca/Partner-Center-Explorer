@@ -62,22 +62,22 @@ with every attempt to access the Partner Center API.
 ### Configuring the Application for Pre-consent
 Perform the following steps to configure the application that will be used to access the Partner Center API for pre-consent 
 
-1. Install Azure AD PowerShell Module (instruction available [here](https://msdn.microsoft.com/en-us/library/azure/jj151815.aspx#bkmk_installmodule)).
+1. Install Azure AD PowerShell Module (instruction available [here](https://docs.microsoft.com/en-us/powershell/azuread/)).
 2. Update the _AppId_ and _DisplayName_ variables in the PowerShell script below
 3. Execute the modified PowerShell script. When prompted for authentication specify credentials that belong to the tenant where the application was created and that have global 
 admin privileges  
 
 ```powershell
-Connect-MsolService
+Connect-AzureAD
 
 $AppId = 'INSERT-APPLICATION-ID-HERE'
 $DisplayName = 'INSERT-APPLICATION-DISPLAY-NAME-HERE'
 
-$g = Get-MsolGroup | ? {$_.DisplayName -eq 'AdminAgents'} 
-$s = Get-MsolServicePrincipal | ? {$_.AppPrincipalId -eq $AppId}
+$g = Get-AzureADGroup | ? {$_.DisplayName -eq 'AdminAgents'}
+$s = Get-AzureADServicePrincipal | ? {$_.AppId -eq $AppId}
 
-if ($s -eq $null) { $s = New-MsolServicePrincipal -DisplayName $DisplayName -AppPrincipalId $AppId }
-Add-MsolGroupMember -GroupObjectId $g.ObjectId -GroupMemberType ServicePrincipal -GroupMemberObjectId $s.ObjectId
+if ($s -eq $null) { $s = New-AzureADServicePrincipal -AppId $AppId -DisplayName $DisplayName }
+Add-AzureADGroupMember -ObjectId $g.ObjectId -RefObjectId $s.ObjectId
 ```
 
 ## Code of Conduct 

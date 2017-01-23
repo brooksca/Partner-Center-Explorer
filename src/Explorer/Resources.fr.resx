@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AcceptTerms" xml:space="preserve">
+    <value>J’accepte les termes et conditions</value>
+  </data>
+  <data name="AcceptTermsValidationMessage" xml:space="preserve">
+    <value>Vous devez accepter les termes et conditions</value>
+  </data>
+  <data name="CustomerAddNew" xml:space="preserve">
+    <value>Ajouter un nouveau client</value>
+  </data>
+  <data name="CustomerDeleteInvalidException" xml:space="preserve">
+    <value>Opérations de suppression de client sont pris en charge uniquement avec le locataire de bac à sable d’intégration.</value>
+  </data>
+  <data name="CustomerOrganizationNameCaption" xml:space="preserve">
+    <value>Nom de l’Organisation</value>
+  </data>
+  <data name="CustomerOrganizationRequired" xml:space="preserve">
+    <value>Nom de l’organisation est nécessaire.</value>
+  </data>
+  <data name="CustomerProfileAddressLine1Caption" xml:space="preserve">
+    <value>Adresse ligne 1</value>
+  </data>
+  <data name="CustomerProfileAddressLine1Required" xml:space="preserve">
+    <value>Adresse ligne 1 est requise.</value>
+  </data>
+  <data name="CustomerProfileAddressLine2Caption" xml:space="preserve">
+    <value>Adresse ligne 2</value>
+  </data>
+  <data name="CustomerProfileCityCaption" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="CustomerProfileCityRequired" xml:space="preserve">
+    <value>Ville est requise.</value>
+  </data>
+  <data name="CustomerProfileCompanyCountryCaption" xml:space="preserve">
+    <value>Pays</value>
+  </data>
+  <data name="CustomerProfileCompanyCountryRequired" xml:space="preserve">
+    <value>Pays est nécessaire.</value>
+  </data>
+  <data name="CustomerProfileCompanyInfoSectionCaption" xml:space="preserve">
+    <value>Informations sur la compagnie</value>
+  </data>
+  <data name="CustomerProfileContactInfoSectionCaption" xml:space="preserve">
+    <value>Informations de contact</value>
+  </data>
+  <data name="CustomerProfileDomainInfoCaption" xml:space="preserve">
+    <value>Le préfixe de votre domaine s’affiche après le @ dans votre adresse de courrier électronique de domaine. Il doit être unique et ne peut contenir aucune ponctuation. Exemple : « yourcompany ».</value>
+  </data>
+  <data name="CustomerProfileDomainPrefixCaption" xml:space="preserve">
+    <value>Préfixe de domaine</value>
+  </data>
+  <data name="CustomerProfileDomainPrefixRequired" xml:space="preserve">
+    <value>Préfixe de domaine est requis.</value>
+  </data>
+  <data name="CustomerProfileEmailAddressIdCaption" xml:space="preserve">
+    <value>Adresse de courriel</value>
+  </data>
+  <data name="CustomerProfileEmailAddressIdRequired" xml:space="preserve">
+    <value>Le champ Email n’est pas une adresse e-mail valide.</value>
+  </data>
+  <data name="CustomerProfileEmailWarningCaption" xml:space="preserve">
+    <value>Assurez-vous de qu'entrer une adresse email valide. Il sera le principal point de contact pour vous envoyer des informations importantes pour vous aider à démarrer et à mettre en place vos données de paiement.</value>
+  </data>
+  <data name="CustomerProfileFirstNameCaption" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="CustomerProfileFirstNameRequired" xml:space="preserve">
+    <value>Le prénom est requis.</value>
+  </data>
+  <data name="CustomerProfileLastNameCaption" xml:space="preserve">
+    <value>Nom de famille</value>
+  </data>
+  <data name="CustomerProfileLastNameRequired" xml:space="preserve">
+    <value>Nom de famille est nécessaire.</value>
+  </data>
+  <data name="DataProtectionUnprotectException" xml:space="preserve">
+    <value>Échec de déprotéger les données spécifiées.</value>
+  </data>
+  <data name="DomainNotAvailable" xml:space="preserve">
+    <value>Le domaine n’est pas disponible. Veuillez saisir un autre préfixe de domaine</value>
+  </data>
+  <data name="DomainPrefixValidationMessage" xml:space="preserve">
+    <value>S’il vous plaît entrez un préfixe de domaine valide</value>
+  </data>
+  <data name="ExplorerServiceNotInitializedException" xml:space="preserve">
+    <value>Le service de localisation n’a pas été initialisé.</value>
+  </data>
+  <data name="InvalidInputInFormCaption" xml:space="preserve">
+    <value>Un ou plusieurs champs ne sont pas valides. Veuillez les corriger et de les soumettre.</value>
+  </data>
+  <data name="PhoneHeaderCaption" xml:space="preserve">
+    <value>Numéro de téléphone</value>
+  </data>
+  <data name="PhoneHeaderRequired" xml:space="preserve">
+    <value>Numéro de téléphone est requis.</value>
+  </data>
+  <data name="RedisCacheConnectionException" xml:space="preserve">
+    <value>Impossible de se connecter à l’instance spécifiée.</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="Subscriptions" xml:space="preserve">
+    <value>Abonnements</value>
+  </data>
+  <data name="UserUnauthorizedException" xml:space="preserve">
+    <value>L’utilisateur authentifié n’est pas autorisé à effectuer cette opération.</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Chargement</value>
+  </data>
+  <data name="FailedToLoadPortal" xml:space="preserve">
+    <value>Pouvaient pas obtenir le contenu du portail</value>
+  </data>
+  <data name="PortalConfigurationNotFound" xml:space="preserve">
+    <value>Configuration : portail est introuvable</value>
+  </data>
+  <data name="InvalidPortalConfiguration" xml:space="preserve">
+    <value>Configuration portail semble être invalide</value>
+  </data>
+  <data name="Ellipsis" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="NavigateBackTo" xml:space="preserve">
+    <value>Revenir à :</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="MoreActionsTooltip" xml:space="preserve">
+    <value>Plus d’actions...</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>N°</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>Bien</value>
+  </data>
+  <data name="RetryCapital" xml:space="preserve">
+    <value>NOUVELLE TENTATIVE</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="AddCapital" xml:space="preserve">
+    <value>AJOUTER</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Précédent</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Prochaine</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="NotificationsSummary" xml:space="preserve">
+    <value>nouvelles notifications</value>
+  </data>
+  <data name="TemplateLoadFailureMessage" xml:space="preserve">
+    <value>Pas pu obtenir le contenu de la fonction</value>
+  </data>
+  <data name="TemplateLoadRetryMessage" xml:space="preserve">
+    <value>Obtenir le contenu de la fonction</value>
+  </data>
+  <data name="EmptyListMessage" xml:space="preserve">
+    <value>Aucune entité trouvée</value>
+  </data>
+  <data name="AccessDeniedMessage" xml:space="preserve">
+    <value>Vous n’avez pas les droits nécessaires pour accéder à cette zone</value>
+  </data>
+  <data name="BadInputGenericMessage" xml:space="preserve">
+    <value>Il y avait une erreur de saisie détectée. S’il vous plaît vérifier les entrées et réessayez.</value>
+  </data>
+  <data name="InvalidInput" xml:space="preserve">
+    <value>Il y avait un problème dans un des champs de saisie :</value>
+  </data>
+  <data name="CouldNotRetrieveCustomer" xml:space="preserve">
+    <value>Pas pu récupérer des détails du client. Veuillez réessayer ultérieurement.</value>
+  </data>
+  <data name="CouldNotRetrieveOffer" xml:space="preserve">
+    <value>Pas pu récupérer des détails de l’offre. Veuillez réessayer ultérieurement.</value>
+  </data>
+  <data name="ProductTitle" xml:space="preserve">
+    <value>Explorateur</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Ouverture de session</value>
+  </data>
+  <data name="NotificationSectionTooltip" xml:space="preserve">
+    <value>Notifications de l’actives</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Nouvelle tentative</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>Effacer tout</value>
+  </data>
+  <data name="UsernameLabel" xml:space="preserve">
+    <value>Nom d’utilisateur :</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Mot de passe :</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Se souvenir de moi</value>
+  </data>
+  <data name="First" xml:space="preserve">
+    <value>Première</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Dernière</value>
+  </data>
+  <data name="CustomersTableSection" xml:space="preserve">
+    <value>Visiteurs</value>
+  </data>
+  <data name="CustomersTableName" xml:space="preserve">
+    <value>Nom du client</value>
+  </data>
+  <data name="CustomersTableDomain" xml:space="preserve">
+    <value>Domaine</value>
+  </data>
+  <data name="CustomersTableIdentifier" xml:space="preserve">
+    <value>Identificateur de</value>
+  </data>
+  <data name="BillingType" xml:space="preserve">
+    <value>Type de facturation</value>
+  </data>
+  <data name="FriendlyName" xml:space="preserve">
+    <value>Nom convivial</value>
+  </data>
+  <data name="Identifier" xml:space="preserve">
+    <value>Identificateur de</value>
+  </data>
+  <data name="OfferName" xml:space="preserve">
+    <value>Nom de l’offre</value>
+  </data>
+  <data name="BillingInformation" xml:space="preserve">
+    <value>Informations de facturation</value>
+  </data>
+  <data name="Incidents" xml:space="preserve">
+    <value>Incidents</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Statut</value>
+  </data>
+  <data name="AddSubscriptions" xml:space="preserve">
+    <value>Ajouter des abonnements</value>
+  </data>
+  <data name="EmptyListCaption" xml:space="preserve">
+    <value>S’il vous plaît ajouter un abonnement</value>
+  </data>
+  <data name="SelectOfferErrorMessage" xml:space="preserve">
+    <value>Veuillez sélectionner une offre</value>
+  </data>
+  <data name="CustomerProfileStateCaption" xml:space="preserve">
+    <value>État/Province</value>
+  </data>
+  <data name="CustomerProfileZipPostalCaption" xml:space="preserve">
+    <value>Zip / code Postal</value>
+  </data>
+  <data name="CountryNameAT" xml:space="preserve">
+    <value>Autriche</value>
+  </data>
+  <data name="CountryNameAU" xml:space="preserve">
+    <value>Australie</value>
+  </data>
+  <data name="CountryNameBE" xml:space="preserve">
+    <value>Belgique</value>
+  </data>
+  <data name="CountryNameBG" xml:space="preserve">
+    <value>Bulgarie</value>
+  </data>
+  <data name="CountryNameCA" xml:space="preserve">
+    <value>Canada</value>
+  </data>
+  <data name="CountryNameCH" xml:space="preserve">
+    <value>Suisse</value>
+  </data>
+  <data name="CountryNameCY" xml:space="preserve">
+    <value>Chypre</value>
+  </data>
+  <data name="CountryNameCZ" xml:space="preserve">
+    <value>République tchèque</value>
+  </data>
+  <data name="CountryNameDE" xml:space="preserve">
+    <value>Allemagne</value>
+  </data>
+  <data name="CountryNameDK" xml:space="preserve">
+    <value>Danemark</value>
+  </data>
+  <data name="CountryNameEE" xml:space="preserve">
+    <value>Estonie</value>
+  </data>
+  <data name="CountryNameES" xml:space="preserve">
+    <value>Espagne</value>
+  </data>
+  <data name="CountryNameFI" xml:space="preserve">
+    <value>Finlande</value>
+  </data>
+  <data name="CountryNameFR" xml:space="preserve">
+    <value>France</value>
+  </data>
+  <data name="CountryNameGB" xml:space="preserve">
+    <value>Royaume-Uni</value>
+  </data>
+  <data name="CountryNameGR" xml:space="preserve">
+    <value>Grèce</value>
+  </data>
+  <data name="CountryNameHR" xml:space="preserve">
+    <value>Croatie (Hrvatska)</value>
+  </data>
+  <data name="CountryNameHU" xml:space="preserve">
+    <value>Hongrie</value>
+  </data>
+  <data name="CountryNameIE" xml:space="preserve">
+    <value>Irlande</value>
+  </data>
+  <data name="CountryNameIS" xml:space="preserve">
+    <value>Islande</value>
+  </data>
+  <data name="CountryNameIT" xml:space="preserve">
+    <value>Italie</value>
+  </data>
+  <data name="CountryNameJP" xml:space="preserve">
+    <value>Japon</value>
+  </data>
+  <data name="CountryNameLI" xml:space="preserve">
+    <value>Liechtenstein</value>
+  </data>
+  <data name="CountryNameLT" xml:space="preserve">
+    <value>Lituanie</value>
+  </data>
+  <data name="CountryNameLU" xml:space="preserve">
+    <value>Luxembourg</value>
+  </data>
+  <data name="CountryNameLV" xml:space="preserve">
+    <value>Lettonie</value>
+  </data>
+  <data name="CountryNameMC" xml:space="preserve">
+    <value>Monaco</value>
+  </data>
+  <data name="CountryNameMT" xml:space="preserve">
+    <value>Malte</value>
+  </data>
+  <data name="CountryNameNL" xml:space="preserve">
+    <value>Pays-Bas</value>
+  </data>
+  <data name="CountryNameNO" xml:space="preserve">
+    <value>Norvège</value>
+  </data>
+  <data name="CountryNameNZ" xml:space="preserve">
+    <value>Nouvelle-Zélande</value>
+  </data>
+  <data name="CountryNamePO" xml:space="preserve">
+    <value>Pologne</value>
+  </data>
+  <data name="CountryNamePT" xml:space="preserve">
+    <value>Portugal</value>
+  </data>
+  <data name="CountryNameRO" xml:space="preserve">
+    <value>Roumanie</value>
+  </data>
+  <data name="CountryNameSE" xml:space="preserve">
+    <value>Suède</value>
+  </data>
+  <data name="CountryNameSK" xml:space="preserve">
+    <value>Slovaquie</value>
+  </data>
+  <data name="CountryNameSL" xml:space="preserve">
+    <value>Slovénie</value>
+  </data>
+  <data name="CountryNameUS" xml:space="preserve">
+    <value>États-Unis</value>
+  </data>
+  <data name="AddCaption" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="Signout" xml:space="preserve">
+    <value>Se déconnecter</value>
+  </data>
+  <data name="SignOutToolTipCaption" xml:space="preserve">
+    <value>Se déconnecter de l’application</value>
+  </data>
+  <data name="AddSubscriptionsMessage" xml:space="preserve">
+    <value>Ajouter des abonnements supplémentaires</value>
+  </data>
+  <data name="RemoveFromCart" xml:space="preserve">
+    <value>Retirer du panier</value>
+  </data>
+  <data name="SelectMicrosoftOfferCaption" xml:space="preserve">
+    <value>Sélectionnez une ou plusieurs offres</value>
+  </data>
+  <data name="UserLicencesCaption" xml:space="preserve">
+    <value>Licenses</value>
+  </data>
+</root>

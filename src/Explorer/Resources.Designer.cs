@@ -61,6 +61,24 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I accept the terms and conditions.
+        /// </summary>
+        public static string AcceptTerms {
+            get {
+                return ResourceManager.GetString("AcceptTerms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must accept the terms and conditions.
+        /// </summary>
+        public static string AcceptTermsValidationMessage {
+            get {
+                return ResourceManager.GetString("AcceptTermsValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You do not have the rights needed to access this area.
         /// </summary>
         public static string AccessDeniedMessage {
@@ -70,20 +88,38 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resource::AppOnly::ActiveDirectory.
-        /// </summary>
-        public static string ADAppOnlyKey {
-            get {
-                return ResourceManager.GetString("ADAppOnlyKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ADD.
         /// </summary>
         public static string AddCapital {
             get {
                 return ResourceManager.GetString("AddCapital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string AddCaption {
+            get {
+                return ResourceManager.GetString("AddCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add subscriptions.
+        /// </summary>
+        public static string AddSubscriptions {
+            get {
+                return ResourceManager.GetString("AddSubscriptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add additional subscriptions.
+        /// </summary>
+        public static string AddSubscriptionsMessage {
+            get {
+                return ResourceManager.GetString("AddSubscriptionsMessage", resourceCulture);
             }
         }
         
@@ -102,6 +138,24 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         public static string BadInputGenericMessage {
             get {
                 return ResourceManager.GetString("BadInputGenericMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Billing Information.
+        /// </summary>
+        public static string BillingInformation {
+            get {
+                return ResourceManager.GetString("BillingInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Billing Type.
+        /// </summary>
+        public static string BillingType {
+            get {
+                return ResourceManager.GetString("BillingType", resourceCulture);
             }
         }
         
@@ -126,18 +180,585 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         /// <summary>
         ///   Looks up a localized string similar to Could not retrieve customer details. Please try again later..
         /// </summary>
-        public static string CouldNotRetrieveCustomers {
+        public static string CouldNotRetrieveCustomer {
             get {
-                return ResourceManager.GetString("CouldNotRetrieveCustomers", resourceCulture);
+                return ResourceManager.GetString("CouldNotRetrieveCustomer", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CustomerId.
+        ///   Looks up a localized string similar to Could not retrieve offer details. Please try again later..
         /// </summary>
-        public static string CustomerId {
+        public static string CouldNotRetrieveOffer {
             get {
-                return ResourceManager.GetString("CustomerId", resourceCulture);
+                return ResourceManager.GetString("CouldNotRetrieveOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Austria.
+        /// </summary>
+        public static string CountryNameAT {
+            get {
+                return ResourceManager.GetString("CountryNameAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Australia.
+        /// </summary>
+        public static string CountryNameAU {
+            get {
+                return ResourceManager.GetString("CountryNameAU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Belgium.
+        /// </summary>
+        public static string CountryNameBE {
+            get {
+                return ResourceManager.GetString("CountryNameBE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bulgaria.
+        /// </summary>
+        public static string CountryNameBG {
+            get {
+                return ResourceManager.GetString("CountryNameBG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Canada.
+        /// </summary>
+        public static string CountryNameCA {
+            get {
+                return ResourceManager.GetString("CountryNameCA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switzerland.
+        /// </summary>
+        public static string CountryNameCH {
+            get {
+                return ResourceManager.GetString("CountryNameCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cyprus.
+        /// </summary>
+        public static string CountryNameCY {
+            get {
+                return ResourceManager.GetString("CountryNameCY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Czech Republic.
+        /// </summary>
+        public static string CountryNameCZ {
+            get {
+                return ResourceManager.GetString("CountryNameCZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Germany.
+        /// </summary>
+        public static string CountryNameDE {
+            get {
+                return ResourceManager.GetString("CountryNameDE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Denmark.
+        /// </summary>
+        public static string CountryNameDK {
+            get {
+                return ResourceManager.GetString("CountryNameDK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estonia.
+        /// </summary>
+        public static string CountryNameEE {
+            get {
+                return ResourceManager.GetString("CountryNameEE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spain.
+        /// </summary>
+        public static string CountryNameES {
+            get {
+                return ResourceManager.GetString("CountryNameES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finland.
+        /// </summary>
+        public static string CountryNameFI {
+            get {
+                return ResourceManager.GetString("CountryNameFI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to France.
+        /// </summary>
+        public static string CountryNameFR {
+            get {
+                return ResourceManager.GetString("CountryNameFR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to United Kingdom.
+        /// </summary>
+        public static string CountryNameGB {
+            get {
+                return ResourceManager.GetString("CountryNameGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greece.
+        /// </summary>
+        public static string CountryNameGR {
+            get {
+                return ResourceManager.GetString("CountryNameGR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Croatia.
+        /// </summary>
+        public static string CountryNameHR {
+            get {
+                return ResourceManager.GetString("CountryNameHR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hungary.
+        /// </summary>
+        public static string CountryNameHU {
+            get {
+                return ResourceManager.GetString("CountryNameHU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ireland.
+        /// </summary>
+        public static string CountryNameIE {
+            get {
+                return ResourceManager.GetString("CountryNameIE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iceland.
+        /// </summary>
+        public static string CountryNameIS {
+            get {
+                return ResourceManager.GetString("CountryNameIS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Italy.
+        /// </summary>
+        public static string CountryNameIT {
+            get {
+                return ResourceManager.GetString("CountryNameIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Japan.
+        /// </summary>
+        public static string CountryNameJP {
+            get {
+                return ResourceManager.GetString("CountryNameJP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Liechtenstein.
+        /// </summary>
+        public static string CountryNameLI {
+            get {
+                return ResourceManager.GetString("CountryNameLI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lithuania.
+        /// </summary>
+        public static string CountryNameLT {
+            get {
+                return ResourceManager.GetString("CountryNameLT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Luxembourg.
+        /// </summary>
+        public static string CountryNameLU {
+            get {
+                return ResourceManager.GetString("CountryNameLU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latvia.
+        /// </summary>
+        public static string CountryNameLV {
+            get {
+                return ResourceManager.GetString("CountryNameLV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monaco.
+        /// </summary>
+        public static string CountryNameMC {
+            get {
+                return ResourceManager.GetString("CountryNameMC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Malta.
+        /// </summary>
+        public static string CountryNameMT {
+            get {
+                return ResourceManager.GetString("CountryNameMT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Netherlands.
+        /// </summary>
+        public static string CountryNameNL {
+            get {
+                return ResourceManager.GetString("CountryNameNL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Norway.
+        /// </summary>
+        public static string CountryNameNO {
+            get {
+                return ResourceManager.GetString("CountryNameNO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Zealand.
+        /// </summary>
+        public static string CountryNameNZ {
+            get {
+                return ResourceManager.GetString("CountryNameNZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poland.
+        /// </summary>
+        public static string CountryNamePO {
+            get {
+                return ResourceManager.GetString("CountryNamePO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Portugal.
+        /// </summary>
+        public static string CountryNamePT {
+            get {
+                return ResourceManager.GetString("CountryNamePT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Romania.
+        /// </summary>
+        public static string CountryNameRO {
+            get {
+                return ResourceManager.GetString("CountryNameRO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sweden.
+        /// </summary>
+        public static string CountryNameSE {
+            get {
+                return ResourceManager.GetString("CountryNameSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slovakia.
+        /// </summary>
+        public static string CountryNameSK {
+            get {
+                return ResourceManager.GetString("CountryNameSK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slovenia.
+        /// </summary>
+        public static string CountryNameSL {
+            get {
+                return ResourceManager.GetString("CountryNameSL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to United States.
+        /// </summary>
+        public static string CountryNameUS {
+            get {
+                return ResourceManager.GetString("CountryNameUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a new customer.
+        /// </summary>
+        public static string CustomerAddNew {
+            get {
+                return ResourceManager.GetString("CustomerAddNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer delete operations are only supported with the integration sandbox tenant..
+        /// </summary>
+        public static string CustomerDeleteInvalidException {
+            get {
+                return ResourceManager.GetString("CustomerDeleteInvalidException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Organization name.
+        /// </summary>
+        public static string CustomerOrganizationNameCaption {
+            get {
+                return ResourceManager.GetString("CustomerOrganizationNameCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Organization name is required..
+        /// </summary>
+        public static string CustomerOrganizationRequired {
+            get {
+                return ResourceManager.GetString("CustomerOrganizationRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address line 1.
+        /// </summary>
+        public static string CustomerProfileAddressLine1Caption {
+            get {
+                return ResourceManager.GetString("CustomerProfileAddressLine1Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address line 1 is required..
+        /// </summary>
+        public static string CustomerProfileAddressLine1Required {
+            get {
+                return ResourceManager.GetString("CustomerProfileAddressLine1Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address line 2.
+        /// </summary>
+        public static string CustomerProfileAddressLine2Caption {
+            get {
+                return ResourceManager.GetString("CustomerProfileAddressLine2Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        public static string CustomerProfileCityCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileCityCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City is required..
+        /// </summary>
+        public static string CustomerProfileCityRequired {
+            get {
+                return ResourceManager.GetString("CustomerProfileCityRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        public static string CustomerProfileCompanyCountryCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileCompanyCountryCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country is required..
+        /// </summary>
+        public static string CustomerProfileCompanyCountryRequired {
+            get {
+                return ResourceManager.GetString("CustomerProfileCompanyCountryRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Information.
+        /// </summary>
+        public static string CustomerProfileCompanyInfoSectionCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileCompanyInfoSectionCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Information.
+        /// </summary>
+        public static string CustomerProfileContactInfoSectionCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileContactInfoSectionCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your domain prefix will appear after the @ in your domain email address. It has to be unique and it can&apos;t contain any punctuations. Example: &apos;yourcompany&apos;..
+        /// </summary>
+        public static string CustomerProfileDomainInfoCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileDomainInfoCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domain prefix.
+        /// </summary>
+        public static string CustomerProfileDomainPrefixCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileDomainPrefixCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domain prefix is required..
+        /// </summary>
+        public static string CustomerProfileDomainPrefixRequired {
+            get {
+                return ResourceManager.GetString("CustomerProfileDomainPrefixRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email address.
+        /// </summary>
+        public static string CustomerProfileEmailAddressIdCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileEmailAddressIdCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Email field is not a valid e-mail address..
+        /// </summary>
+        public static string CustomerProfileEmailAddressIdRequired {
+            get {
+                return ResourceManager.GetString("CustomerProfileEmailAddressIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make sure you enter a valid email address. It will be the main point of contact to send you important information to get you started and to set up your payment data..
+        /// </summary>
+        public static string CustomerProfileEmailWarningCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileEmailWarningCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name.
+        /// </summary>
+        public static string CustomerProfileFirstNameCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileFirstNameCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name is required..
+        /// </summary>
+        public static string CustomerProfileFirstNameRequired {
+            get {
+                return ResourceManager.GetString("CustomerProfileFirstNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name.
+        /// </summary>
+        public static string CustomerProfileLastNameCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileLastNameCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name is required..
+        /// </summary>
+        public static string CustomerProfileLastNameRequired {
+            get {
+                return ResourceManager.GetString("CustomerProfileLastNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State/Province.
+        /// </summary>
+        public static string CustomerProfileStateCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileStateCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zip / Postal code.
+        /// </summary>
+        public static string CustomerProfileZipPostalCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileZipPostalCaption", resourceCulture);
             }
         }
         
@@ -178,7 +799,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to uprotect the data..
+        ///   Looks up a localized string similar to Failed to unprotect the specified data..
         /// </summary>
         public static string DataProtectionUnprotectException {
             get {
@@ -196,11 +817,47 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The domain is not available. Please enter another domain prefix.
+        /// </summary>
+        public static string DomainNotAvailable {
+            get {
+                return ResourceManager.GetString("DomainNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid domain prefix.
+        /// </summary>
+        public static string DomainPrefixValidationMessage {
+            get {
+                return ResourceManager.GetString("DomainPrefixValidationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ....
         /// </summary>
         public static string Ellipsis {
             get {
                 return ResourceManager.GetString("Ellipsis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please add a subscription.
+        /// </summary>
+        public static string EmptyListCaption {
+            get {
+                return ResourceManager.GetString("EmptyListCaption", resourceCulture);
             }
         }
         
@@ -214,7 +871,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You must call the InitializeAsync function before making this call..
+        ///   Looks up a localized string similar to The localization service has not been initialized..
         /// </summary>
         public static string ExplorerServiceNotInitializedException {
             get {
@@ -241,11 +898,47 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Friendly Name.
+        /// </summary>
+        public static string FriendlyName {
+            get {
+                return ResourceManager.GetString("FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identifier.
+        /// </summary>
+        public static string Identifier {
+            get {
+                return ResourceManager.GetString("Identifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incidents.
+        /// </summary>
+        public static string Incidents {
+            get {
+                return ResourceManager.GetString("Incidents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There was a problem in one of the fields you entered:.
         /// </summary>
         public static string InvalidInput {
             get {
                 return ResourceManager.GetString("InvalidInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One or more fields are invalid. Please correct them and then submit..
+        /// </summary>
+        public static string InvalidInputInFormCaption {
+            get {
+                return ResourceManager.GetString("InvalidInputInFormCaption", resourceCulture);
             }
         }
         
@@ -295,6 +988,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go back to:.
         /// </summary>
         public static string NavigateBackTo {
@@ -340,6 +1042,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offer Name.
+        /// </summary>
+        public static string OfferName {
+            get {
+                return ResourceManager.GetString("OfferName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
         public static string OK {
@@ -354,6 +1065,24 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         public static string PasswordLabel {
             get {
                 return ResourceManager.GetString("PasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number.
+        /// </summary>
+        public static string PhoneHeaderCaption {
+            get {
+                return ResourceManager.GetString("PhoneHeaderCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number is required..
+        /// </summary>
+        public static string PhoneHeaderRequired {
+            get {
+                return ResourceManager.GetString("PhoneHeaderRequired", resourceCulture);
             }
         }
         
@@ -376,7 +1105,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to connect to the sepcified Redis Cache instance..
+        ///   Looks up a localized string similar to Failed to connect to the specified instance..
         /// </summary>
         public static string RedisCacheConnectionException {
             get {
@@ -390,6 +1119,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         public static string RememberMe {
             get {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove from cart.
+        /// </summary>
+        public static string RemoveFromCart {
+            get {
+                return ResourceManager.GetString("RemoveFromCart", resourceCulture);
             }
         }
         
@@ -421,6 +1159,60 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select one or more offers.
+        /// </summary>
+        public static string SelectMicrosoftOfferCaption {
+            get {
+                return ResourceManager.GetString("SelectMicrosoftOfferCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select an offer.
+        /// </summary>
+        public static string SelectOfferErrorMessage {
+            get {
+                return ResourceManager.GetString("SelectOfferErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign out.
+        /// </summary>
+        public static string Signout {
+            get {
+                return ResourceManager.GetString("Signout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign out from the application.
+        /// </summary>
+        public static string SignOutToolTipCaption {
+            get {
+                return ResourceManager.GetString("SignOutToolTipCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscriptions.
         /// </summary>
         public static string Subscriptions {
@@ -448,15 +1240,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://schemas.microsoft.com/identity/claims/tenantid.
-        /// </summary>
-        public static string TenatIdClaimUri {
-            get {
-                return ResourceManager.GetString("TenatIdClaimUri", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Undo.
         /// </summary>
         public static string Undo {
@@ -466,11 +1249,29 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Username:.
+        ///   Looks up a localized string similar to Licenses.
+        /// </summary>
+        public static string UserLicencesCaption {
+            get {
+                return ResourceManager.GetString("UserLicencesCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User name:.
         /// </summary>
         public static string UsernameLabel {
             get {
                 return ResourceManager.GetString("UsernameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The authenticated user is not authorized to perform this operation..
+        /// </summary>
+        public static string UserUnauthorizedException {
+            get {
+                return ResourceManager.GetString("UserUnauthorizedException", resourceCulture);
             }
         }
         

@@ -6,19 +6,19 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
 {
+    using System.Collections.Generic;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
     using Configuration;
     using Configuration.WebPortal;
     using Filters.Mvc;
     using Logic;
     using Logic.Authentication;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Security.Claims;
-    using System.Threading.Tasks;
-    using System.Web.Mvc;
 
     /// <summary>
-    /// Manages the application home page requests.
+    /// Provides the ability to manage requests for the home page.
     /// </summary>
     public class HomeController : BaseController
     {
@@ -27,10 +27,11 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
         /// </summary>
         /// <param name="service">Provides access to all of the core services.</param>
         /// <exception cref="System.ArgumentNullException">
-        /// service   
+        /// <paramref name="service"/> is null.  
         /// </exception>
         public HomeController(IExplorerService service) : base(service)
-        { }
+        {
+        }
 
         /// <summary>
         /// Serves the error page to the browser.
@@ -40,7 +41,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
         public ActionResult Error(string message)
         {
             ViewBag.ErrorMessage = message;
-            return View();
+            return this.View();
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
                 clientConfiguration,
                 new JsonSerializerSettings() { StringEscapeHandling = StringEscapeHandling.Default });
 
-            return View();
+            return this.View();
         }
     }
 }

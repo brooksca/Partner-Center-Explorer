@@ -10,7 +10,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Represents a manaagement interface for retrieving access tokens.
+    /// Represents a management interface for retrieving access tokens.
     /// </summary>
     public interface ITokenManagement
     {
@@ -18,9 +18,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// Gets an access token from the authority using app only authentication.
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
         /// <param name="key">Key to be utilized for the access token caching strategy.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
         /// authority
         /// or
@@ -35,8 +35,8 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
         /// <param name="key">Key to be utilized for the access token caching strategy.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
         /// authority
         /// or
@@ -50,77 +50,105 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// Gets an access token from the authority using app + user authentication.
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
-        /// <param name="token">Assertion token representing the user.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
         /// authority
         /// or
         /// resource
-        /// or
-        /// token
         /// </exception>
-        AuthenticationToken GetAppPlusUserToken(string authority, string resource, string token);
+        AuthenticationToken GetAppPlusUserToken(string authority, string resource);
 
         /// <summary>
         /// Gets an access token from the authority using app + user authentication.
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
-        /// <param name="token">Assertion token represting the user.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
         /// authority
         /// or
         /// resource
-        /// or 
-        /// token
         /// </exception>
-        Task<AuthenticationToken> GetAppPlusUserTokenAsync(string authority, string resource, string token);
+        Task<AuthenticationToken> GetAppPlusUserTokenAsync(string authority, string resource);
 
         /// <summary>
-        /// Gets an instance of <see cref="IPartnerCredentials"/> used to access the Partner Center Managed API.
+        /// Gets an instance of <see cref="IPartnerCredentials"/> used to access the Partner Center API.
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
         /// <returns>
         /// An instance of <see cref="IPartnerCredentials" /> that represents the access token.
         /// </returns>
-        /// <exception cref="System.ArgumentException">
-        /// authority
+        /// <exception cref="ArgumentException">
+        /// <paramref name="authority"/> is empty or null.
         /// </exception>
-        /// <remarks>This function will use app only authentication to obtain the credentials.</remarks>
+        /// <remarks>
+        /// This function will use app only authentication to obtain the credentials.
+        /// </remarks>
         IPartnerCredentials GetPartnerCenterAppOnlyCredentials(string authority);
 
         /// <summary>
-        /// Gets an instance of <see cref="IPartnerCredentials"/> used to access the Partner Center Managed API.
+        /// Gets an instance of <see cref="IPartnerCredentials"/> used to access the Partner Center API.
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
         /// <returns>
         /// An instance of <see cref="IPartnerCredentials" /> that represents the access token.
         /// </returns>
-        /// <exception cref="System.ArgumentException">
-        /// authority
+        /// <exception cref="ArgumentException">
+        /// <paramref name="authority"/> is empty or null.
         /// </exception>
-        /// <remarks>This function will use app only authentication to obtain the credentials.</remarks>
+        /// <remarks>
+        /// This function will use app only authentication to obtain the credentials.
+        /// </remarks>
         Task<IPartnerCredentials> GetPartnerCenterAppOnlyCredentialsAsync(string authority);
+
+        /// <summary>
+        /// Gets an instance of <see cref="IPartnerCredentials"/> used to access the Partner Center API.
+        /// </summary>
+        /// <param name="authority">Address of the authority to issue the token.</param>
+        /// <returns>
+        /// An instance of <see cref="IPartnerCredentials" /> that represents the access token.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="authority"/> is empty or null.
+        /// </exception>
+        /// <remarks>
+        /// This function will use app plus user authentication to obtain the credentials.
+        /// </remarks>
+        IPartnerCredentials GetPartnerCenterAppPlusUserCredentials(string authority);
+
+        /// <summary>
+        /// Gets an instance of <see cref="IPartnerCredentials"/> used to access the Partner Center API.
+        /// </summary>
+        /// <param name="authority">Address of the authority to issue the token.</param>
+        /// <returns>
+        /// An instance of <see cref="IPartnerCredentials" /> that represents the access token.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="authority"/> is empty or null.
+        /// </exception>
+        /// <remarks>
+        /// This function will use app plus user authentication to obtain the credentials.
+        /// </remarks>
+        Task<IPartnerCredentials> GetPartnerCenterAppPlusUserCredentialsAsync(string authority);
 
         /// <summary>
         /// Gets an access token utilizing an authorization code. 
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
         /// <param name="code">Authorization code received from the service authorization endpoint.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
         /// <param name="redirectUri">Redirect URI used for obtain the authorization code.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
-        /// authority
+        /// <paramref name="authority"/> is empty or null.
         /// or
-        /// code
+        /// <paramref name="code"/> is empty or null.
         /// or
-        /// resource
+        /// <paramref name="resource"/> is empty or null.
         /// </exception>
         /// <exception cref="ArgumentNullException">
-        /// redirectUri
+        /// <paramref name="redirectUri"/> is null.
         /// </exception>
         AuthenticationToken GetTokenByAuthorizationCode(string authority, string code, string resource, Uri redirectUri);
 
@@ -129,9 +157,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
         /// <param name="code">Authorization code received from the service authorization endpoint.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
         /// <param name="redirectUri">Redirect URI used for obtain the authorization code.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
         /// authority
         /// or

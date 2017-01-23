@@ -17,14 +17,12 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Models
         /// <summary>
         /// Gets the expiry time in UTC for the token.
         /// </summary>
-        public DateTimeOffset ExpiresAt
-        { get; set; }
+        public DateTimeOffset ExpiresAt { get; private set; }
 
         /// <summary>
         /// Gets the token needed to authenticate with the partner API service.
         /// </summary>
-        public string PartnerServiceToken
-        { get; set; }
+        public string PartnerServiceToken { get; private set; }
 
         /// <summary>
         /// Indicates whether the partner credentials have expired or not.
@@ -33,7 +31,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Models
         ///   <c>true</c> if credentials have expired; otherwise <c>false</c>.
         /// </returns>
         /// <remarks>
-        /// This function is implemented differently than the builtin token types.
+        /// This function is implemented differently than the built in token types.
         /// Since this token is used for serialization purposes it does not have the
         /// Azure AD token. That being the case different logic haas to be used in
         /// order to verify that the token has not expired. Also, it is important to
@@ -42,7 +40,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Models
         /// </remarks>
         public bool IsExpired()
         {
-            return DateTime.UtcNow >= ExpiresAt;
+            return DateTime.UtcNow >= this.ExpiresAt;
         }
     }
 }

@@ -26,45 +26,40 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         {
             get
             {
-                return dependencies;
+                return this.dependencies;
             }
 
             set
             {
-                dependencies = value;
-                dependencies.Name = "Dependencies";
+                this.dependencies = value;
+                this.dependencies.Name = "Dependencies";
             }
         }
 
         /// <summary>
         /// Gets or sets the portal core assets.
         /// </summary>
-        public CoreSegment Core
-        { get; set; }
+        public CoreSegment Core { get; set; }
 
         /// <summary>
         /// Gets or sets the portal services assets.
         /// </summary>
-        public IEnumerable<AssetsSegment> Services
-        { get; set; }
+        public IEnumerable<AssetsSegment> Services { get; set; }
 
         /// <summary>
         /// Gets or sets the portal views assets.
         /// </summary>
-        public IEnumerable<AssetsSegment> Views
-        { get; set; }
+        public IEnumerable<AssetsSegment> Views { get; set; }
 
         /// <summary>
         /// Gets or sets the portal plugins assets.
         /// </summary>
-        public PluginsSegment Plugins
-        { get; set; }
+        public PluginsSegment Plugins { get; set; }
 
         /// <summary>
         /// Gets or sets the portal configuration.
         /// </summary>
-        public Dictionary<string, dynamic> Configuration
-        { get; set; }
+        public Dictionary<string, dynamic> Configuration { get; set; }
 
         /// <summary>
         /// Processes the configuration and ensures it is valid.
@@ -72,43 +67,34 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         /// <exception cref="InvalidOperationException">If the configuration is invalid.</exception>
         public void Process()
         {
-            if (Dependencies != null)
-            {
-                Dependencies.Validate();
-            }
+           this.Dependencies?.Validate();
 
-            if (Core == null || (Core.Startup == null && Core.NonStartup == null))
+            if (this.Core == null || (this.Core.Startup == null && this.Core.NonStartup == null))
             {
                 throw new InvalidOperationException("Portal core not present.");
             }
 
-            if (Core.Startup != null)
-            {
-                Core.Startup.Validate();
-            }
+            this.Core.Startup?.Validate();
 
-            if (Core.NonStartup != null)
-            {
-                Core.NonStartup.Validate();
-            }
+            this.Core.NonStartup?.Validate();
 
-            if (Services != null)
+            if (this.Services != null)
             {
-                foreach (AssetsSegment service in Services)
+                foreach (AssetsSegment service in this.Services)
                 {
                     service.Validate();
                 }
             }
 
-            if (Views != null)
+            if (this.Views != null)
             {
-                foreach (AssetsSegment view in Views)
+                foreach (AssetsSegment view in this.Views)
                 {
                     view.Validate();
                 }
             }
 
-            Plugins.Validate();
+            this.Plugins.Validate();
         }
 
         /// <summary>
@@ -133,13 +119,13 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
             {
                 get
                 {
-                    return startup;
+                    return this.startup;
                 }
 
                 set
                 {
-                    startup = value;
-                    startup.Name = "Startup";
+                    this.startup = value;
+                    this.startup.Name = "Startup";
                 }
             }
 
@@ -150,13 +136,13 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
             {
                 get
                 {
-                    return nonStartup;
+                    return this.nonStartup;
                 }
 
                 set
                 {
-                    nonStartup = value;
-                    nonStartup.Name = "Nonstartup";
+                    this.nonStartup = value;
+                    this.nonStartup.Name = "Nonstartup";
                 }
             }
         }

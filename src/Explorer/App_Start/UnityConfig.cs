@@ -6,12 +6,18 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer
 {
+    using System;
     using Logic;
     using Practices.Unity;
-    using System;
 
+    /// <summary>
+    /// Provides configurations for Unity.
+    /// </summary>
     public static class UnityConfig
     {
+        /// <summary>
+        /// The Unity container to be utilized for dependency injection.
+        /// </summary>
         private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
         {
             UnityContainer container = new UnityContainer();
@@ -22,6 +28,8 @@ namespace Microsoft.Store.PartnerCenter.Explorer
         /// <summary>
         /// Gets the configured Unity container.
         /// </summary>
+        /// <returns>
+        /// The configured Unity container.</returns>
         public static IUnityContainer GetConfiguredContainer()
         {
             return container.Value;
@@ -35,9 +43,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer
         /// </remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
-            // container.LoadConfiguration();
-
             container.RegisterType<IExplorerService, ExplorerService>();
         }
     }

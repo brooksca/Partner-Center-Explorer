@@ -6,73 +6,81 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
 {
+    using System;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
     using Cache;
     using Configuration;
     using IdentityModel.Clients.ActiveDirectory;
     using Models;
     using PartnerCenter.Extensions;
-    using System;
-    using System.Threading.Tasks;
 
     /// <summary>
-    /// Management interface for retrieving access tokens.
+    /// Provides the ability to manage access tokens.
     /// </summary>
     public class TokenManagement : ITokenManagement
     {
-        private IExplorerService _service;
-        private readonly string _key;
+        /// <summary>
+        /// Provides access to the application core services.
+        /// </summary>
+        private readonly IExplorerService service;
+
+        private readonly string key;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenManagement"/> class.
         /// </summary>
         /// <param name="service">Provides access to the application core services.</param>
         /// <exception cref="ArgumentNullException">
-        /// service 
+        /// <paramref name="service"/> is null.
         /// </exception>
         public TokenManagement(IExplorerService service)
         {
             service.AssertNotNull(nameof(service));
-            _service = service;
+            this.service = service;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenManagement"/> class.
         /// </summary>
         /// <param name="service">Provides access to the application core services.</param>
-        /// <param name="key">A unique indentifier for the cache entry.</param>
+        /// <param name="key">A unique identifier for the cache entry.</param>
         /// <exception cref="ArgumentException">
-        /// key
+        /// <paramref name="key"/> is empty or null.
         /// </exception>
         /// <exception cref="ArgumentNullException">
-        /// service 
+        /// <paramref name="service"/> is null.
         /// </exception>
         public TokenManagement(IExplorerService service, string key)
         {
             key.AssertNotEmpty(nameof(key));
             service.AssertNotNull(nameof(service));
 
-            _service = service;
-            _key = key;
+            this.service = service;
+            this.key = key;
         }
 
         /// <summary>
-        /// Gets an access token from the authority using app only authentication.
+        /// Gets the token for the current authenticated user.
         /// </summary>
-        /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
-        /// <exception cref="ArgumentException">
-        /// authority
-        /// or
-        /// resource
-        /// </exception>
-        public AuthenticationToken GetAppOnlyToken(string authority, string key, string resource)
+        private static string UserAssertionToken
         {
-            authority.AssertNotEmpty(nameof(authority));
-            key.AssertNotEmpty(nameof(key));
-            resource.AssertNotEmpty(nameof(resource));
+            get
+            {
+                System.IdentityModel.Tokens.BootstrapContext bootstrapContext;
 
-            return SynchronousExecute(() => GetAppOnlyTokenAsync(authority, key, resource));
+                try
+                {
+                    bootstrapContext = ClaimsPrincipal.Current.Identities.First().BootstrapContext as System.IdentityModel.Tokens.BootstrapContext;
+
+                    return bootstrapContext?.Token;
+                }
+                finally
+                {
+                    bootstrapContext = null;
+                }
+            }
         }
 
         /// <summary>
@@ -80,14 +88,37 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
         /// <param name="key">Key to be utilized for the access token caching strategy.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
-        /// authority
+        /// <paramref name="authority"/> is empty or null.
         /// or
-        /// key
+        /// <paramref name="key"/> is empty or null.
         /// or
-        /// resource
+        /// <paramref name="resource"/> is empty or null.
+        /// </exception>
+        public AuthenticationToken GetAppOnlyToken(string authority, string key, string resource)
+        {
+            authority.AssertNotEmpty(nameof(authority));
+            key.AssertNotEmpty(nameof(key));
+            resource.AssertNotEmpty(nameof(resource));
+
+            return SynchronousExecute(() => this.GetAppOnlyTokenAsync(authority, key, resource));
+        }
+
+        /// <summary>
+        /// Gets an access token from the authority using app only authentication.
+        /// </summary>
+        /// <param name="authority">Address of the authority to issue the token.</param>
+        /// <param name="key">Key to be utilized for the access token caching strategy.</param>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="authority"/> is empty or null.
+        /// or
+        /// <paramref name="key"/> is empty or null.
+        /// or
+        /// <paramref name="resource"/> is empty or null.
         /// </exception>
         public async Task<AuthenticationToken> GetAppOnlyTokenAsync(string authority, string key, string resource)
         {
@@ -110,7 +141,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
                 }
                 else
                 {
-                    tokenCache = new DistributedTokenCache(resource, key);
+                    tokenCache = new DistributedTokenCache(resource);
                     authContext = new AuthenticationContext(authority, tokenCache);
                 }
 
@@ -134,40 +165,33 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// Gets an access token from the authority using app + user authentication.
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
-        /// <param name="token">Assertion token representing the user.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
-        /// authority
+        /// <paramref name="authority"/> is empty or null.
         /// or
-        /// resource
-        /// or
-        /// token
+        /// <paramref name="resource"/> is empty or null.
         /// </exception>
-        public AuthenticationToken GetAppPlusUserToken(string authority, string resource, string token)
+        public AuthenticationToken GetAppPlusUserToken(string authority, string resource)
         {
             authority.AssertNotEmpty(nameof(authority));
             resource.AssertNotEmpty(nameof(resource));
-            token.AssertNotEmpty(nameof(token));
 
-            return SynchronousExecute(() => GetAppPlusUserTokenAsync(authority, resource, token));
+            return SynchronousExecute(() => this.GetAppPlusUserTokenAsync(authority, resource));
         }
 
         /// <summary>
         /// Gets an access token from the authority using app + user authentication.
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
-        /// <param name="token">Assertion token represting the user.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
-        /// authority
+        /// <paramref name="authority"/> is empty or null.
         /// or
-        /// resource
-        /// or 
-        /// token
+        /// <paramref name="resource"/> is empty or null.
         /// </exception>
-        public async Task<AuthenticationToken> GetAppPlusUserTokenAsync(string authority, string resource, string token)
+        public async Task<AuthenticationToken> GetAppPlusUserTokenAsync(string authority, string resource)
         {
             AuthenticationContext authContext;
             AuthenticationResult authResult;
@@ -175,7 +199,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
 
             authority.AssertNotEmpty(nameof(authority));
             resource.AssertNotEmpty(nameof(resource));
-            token.AssertNotEmpty(nameof(token));
 
             try
             {
@@ -185,7 +208,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
                 }
                 else
                 {
-                    tokenCache = new DistributedTokenCache(resource, _key);
+                    tokenCache = new DistributedTokenCache(resource);
                     authContext = new AuthenticationContext(authority, tokenCache);
                 }
 
@@ -194,7 +217,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
                     new ClientCredential(
                         ApplicationConfiguration.ApplicationId,
                         ApplicationConfiguration.ApplicationSecret),
-                    new UserAssertion(token, "urn:ietf:params:oauth:grant-type:jwt-bearer"));
+                    new UserAssertion(UserAssertionToken, "urn:ietf:params:oauth:grant-type:jwt-bearer"));
 
                 return new AuthenticationToken(authResult.AccessToken, authResult.ExpiresOn);
             }
@@ -214,14 +237,14 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// An instance of <see cref="IPartnerCredentials" /> that represents the access token.
         /// </returns>
         /// <exception cref="ArgumentException">
-        /// authority
+        /// <paramref name="authority"/> is empty or null.
         /// </exception>
         /// <remarks>This function will use app only authentication to obtain the credentials.</remarks>
         public IPartnerCredentials GetPartnerCenterAppOnlyCredentials(string authority)
         {
             authority.AssertNotEmpty(nameof(authority));
 
-            return SynchronousExecute(() => GetPartnerCenterAppOnlyCredentialsAsync(authority));
+            return SynchronousExecute(() => this.GetPartnerCenterAppOnlyCredentialsAsync(authority));
         }
 
         /// <summary>
@@ -232,18 +255,18 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// An instance of <see cref="IPartnerCredentials" /> that represents the access token.
         /// </returns>
         /// <exception cref="ArgumentException">
-        /// authority
+        /// <paramref name="authority"/> is empty or null.
         /// </exception>
         /// <remarks>This function will use app only authentication to obtain the credentials.</remarks>
         public async Task<IPartnerCredentials> GetPartnerCenterAppOnlyCredentialsAsync(string authority)
         {
             authority.AssertNotEmpty(nameof(authority));
 
-            string key = "Resource::AppOnly::PartnerCenter";
+            string key = "Resource::PartnerCenter::AppOnly";
 
             // Attempt to obtain the Partner Center token from the cache.
             IPartnerCredentials credentials =
-                 await _service.CachingService.FetchAsync<PartnerCenterTokenModel>(
+                 await this.service.CachingService.FetchAsync<PartnerCenterTokenModel>(
                      CacheDatabaseType.Authentication, key);
 
             if (credentials != null && !credentials.IsExpired())
@@ -255,10 +278,73 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
             credentials = await PartnerCredentials.Instance.GenerateByApplicationCredentialsAsync(
                 ApplicationConfiguration.PartnerCenterApplicationId,
                 ApplicationConfiguration.PartnerCenterApplicationSecret,
-                ApplicationConfiguration.AccountId);
+                ApplicationConfiguration.PartnerCenterApplicationTenantId);
 
-            await _service.CachingService.StoreAsync(
+            await this.service.CachingService.StoreAsync(
                 CacheDatabaseType.Authentication, key, credentials);
+
+            return credentials;
+        }
+
+        /// <summary>
+        /// Gets an instance of <see cref="IPartnerCredentials"/> used to access the Partner Center API.
+        /// </summary>
+        /// <param name="authority">Address of the authority to issue the token.</param>
+        /// <returns>
+        /// An instance of <see cref="IPartnerCredentials" /> that represents the access token.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="authority"/> is empty or null.
+        /// </exception>
+        /// <remarks>
+        /// This function will use app plus user authentication to obtain the credentials.
+        /// </remarks>
+        public IPartnerCredentials GetPartnerCenterAppPlusUserCredentials(string authority)
+        {
+            authority.AssertNotEmpty(nameof(authority));
+
+            return SynchronousExecute(() => this.GetPartnerCenterAppPlusUserCredentialsAsync(authority));
+        }
+
+        /// <summary>
+        /// Gets an instance of <see cref="IPartnerCredentials"/> used to access the Partner Center API.
+        /// </summary>
+        /// <param name="authority">Address of the authority to issue the token.</param>
+        /// <returns>
+        /// An instance of <see cref="IPartnerCredentials" /> that represents the access token.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="authority"/> is empty or null.
+        /// </exception>
+        /// <remarks>
+        /// This function will use app plus user authentication to obtain the credentials.
+        /// </remarks>
+        public async Task<IPartnerCredentials> GetPartnerCenterAppPlusUserCredentialsAsync(string authority)
+        {
+            authority.AssertNotEmpty(nameof(authority));
+
+            string key = $"Resource::PartnerCenter::{ClaimsPrincipal.Current.Identities.First().FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier").Value}";
+
+            // Attempt to obtain the Partner Center token from the cache.
+            IPartnerCredentials credentials =
+                 await this.service.CachingService.FetchAsync<PartnerCenterTokenModel>(
+                     CacheDatabaseType.Authentication, key);
+
+            if (credentials != null && !credentials.IsExpired())
+            {
+                return credentials;
+            }
+
+            AuthenticationToken token = await this.GetAppPlusUserTokenAsync(
+                 authority,
+                 ApplicationConfiguration.PartnerCenterEndpoint);
+
+            // The access token has expired, so a new one must be requested.
+            credentials = await PartnerCredentials.Instance.GenerateByUserCredentialsAsync(
+                ApplicationConfiguration.PartnerCenterApplicationId, token);
+
+            await this.service.CachingService.StoreAsync(
+               CacheDatabaseType.Authentication, key, credentials);
 
             return credentials;
         }
@@ -268,9 +354,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
         /// <param name="code">Authorization code received from the service authorization endpoint.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
         /// <param name="redirectUri">Redirect URI used for obtain the authorization code.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
         /// authority
         /// or
@@ -288,8 +374,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
             redirectUri.AssertNotNull(nameof(redirectUri));
             resource.AssertNotEmpty(nameof(resource));
 
-            return SynchronousExecute(() => GetTokenByAuthorizationCodeAsync(authority, code, resource, redirectUri));
-
+            return SynchronousExecute(() => this.GetTokenByAuthorizationCodeAsync(authority, code, resource, redirectUri));
         }
 
         /// <summary>
@@ -297,9 +382,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
         /// <param name="code">Authorization code received from the service authorization endpoint.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipent of the requested token.</param>
+        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
         /// <param name="redirectUri">Redirect URI used for obtain the authorization code.</param>
-        /// <returns>An instnace of <see cref="AuthenticationToken"/> that represented the access token.</returns>
+        /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
         /// authority
         /// or
@@ -332,11 +417,12 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
                 }
                 else
                 {
-                    tokenCache = new DistributedTokenCache(resource, _key);
+                    tokenCache = new DistributedTokenCache(resource);
                     authContext = new AuthenticationContext(authority, tokenCache);
                 }
 
-                authResult = await authContext.AcquireTokenByAuthorizationCodeAsync(code,
+                authResult = await authContext.AcquireTokenByAuthorizationCodeAsync(
+                    code,
                     redirectUri,
                     new ClientCredential(
                         ApplicationConfiguration.ApplicationId,
@@ -353,11 +439,11 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         }
 
         /// <summary>
-        /// Synchronously executes an asynchronous function.
+        /// Executes an asynchronous method synchronously
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="operation">The operation.</param>
-        /// <returns></returns>
+        /// <typeparam name="T">The type to be returned.</typeparam>
+        /// <param name="operation">The asynchronous operation to be executed.</param>
+        /// <returns>The result from the operation.</returns>
         private static T SynchronousExecute<T>(Func<Task<T>> operation)
         {
             try
@@ -366,7 +452,12 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
             }
             catch (AggregateException ex)
             {
-                throw ex.InnerException;
+                if (ex.InnerException != null)
+                {
+                    throw ex.InnerException;
+                }
+
+                throw;
             }
         }
     }

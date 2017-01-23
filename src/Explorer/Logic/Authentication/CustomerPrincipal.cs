@@ -6,8 +6,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
 {
-    using Microsoft.Store.PartnerCenter.Explorer.Configuration;
     using System.Security.Claims;
+    using Configuration;
 
     /// <summary>
     /// Encapsulates relevant information about the authenticated user.
@@ -15,11 +15,11 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
     public class CustomerPrincipal : ClaimsPrincipal
     {
         /// <summary>
-        /// Initialize a new instance of the <see cref="CustomerPrincipal"/> class.
+        /// Initializes a new instance of the <see cref="CustomerPrincipal"/> class.
         /// </summary>
         public CustomerPrincipal()
-            : base()
-        { }
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomerPrincipal"/> class.
@@ -27,50 +27,40 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// <param name="principal">A user claims principal created by Azure Active Directory.</param>
         public CustomerPrincipal(ClaimsPrincipal principal) : base(principal)
         {
-            CustomerId = principal.FindFirst(Resources.CustomerId)?.Value;
-            Email = principal.FindFirst(ClaimTypes.Email)?.Value;
-            Name = principal.FindFirst(ClaimTypes.Name)?.Value;
-            TenantId = principal.FindFirst(Resources.TenatIdClaimUri)?.Value;
+            this.CustomerId = principal.FindFirst("CustomerId")?.Value;
+            this.Email = principal.FindFirst(ClaimTypes.Email)?.Value;
+            this.Name = principal.FindFirst(ClaimTypes.Name)?.Value;
+            this.TenantId = principal.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid")?.Value;
         }
 
         /// <summary>
         /// Gets or sets the customer identifier.
         /// </summary>
-        public string CustomerId
-        { get; set; }
+        public string CustomerId { get; set; }
 
         /// <summary>
         /// Gets or sets the email address of the authenticated user.
         /// </summary>
-        public string Email
-        { get; set; }
+        public string Email { get; set; }
 
         /// <summary>
         /// Gets a value indicating whether the authenticated user is an administrator or not.
         /// </summary>
-        public bool IsAdmin
-        {
-            get { return ApplicationConfiguration.AccountId.Equals(TenantId, System.StringComparison.CurrentCultureIgnoreCase); }
-        }
+        public bool IsAdmin => ApplicationConfiguration.ApplicationTenantId.Equals(this.TenantId, System.StringComparison.CurrentCultureIgnoreCase);
 
         /// <summary>
         /// Gets a value indicating whether the sign in user is a current Partner Center customer or not.
         /// </summary>
-        public bool IsCustomer
-        {
-            get { return !string.IsNullOrEmpty(CustomerId); }
-        }
+        public bool IsCustomer => !string.IsNullOrEmpty(this.CustomerId);
 
         /// <summary>
         /// Gets or sets the name of the authenticated user. 
         /// </summary>
-        public string Name
-        { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the tenant identifier of the authenticate user. 
         /// </summary>
-        public string TenantId
-        { get; set; }
+        public string TenantId { get; set; }
     }
 }

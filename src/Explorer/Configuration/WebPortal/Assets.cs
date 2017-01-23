@@ -19,9 +19,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         /// </summary>
         public Assets()
         {
-            Css = new List<string>();
-            JavaScript = new List<string>();
-            Templates = new List<string>();
+            this.Css = new List<string>();
+            this.JavaScript = new List<string>();
+            this.Templates = new List<string>();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
             List<string> combinedTemplates = new List<string>(left.Templates);
             combinedTemplates.AddRange(right.Templates);
 
-            return new Assets() { Version = left.Version, Css = combinedCss, JavaScript = combinedJavaScript, Templates = combinedTemplates };
+            return new Assets { Version = left.Version, Css = combinedCss, JavaScript = combinedJavaScript, Templates = combinedTemplates };
         }
 
         /// <summary>
@@ -81,13 +81,13 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         /// <returns>A deep copy of the assets object.</returns>
         public object Clone()
         {
-            Assets cloneAssets = new Assets() { Version = Version };
-
-            cloneAssets.Css = Css.Clone();
-            cloneAssets.JavaScript = JavaScript.Clone();
-            cloneAssets.Templates = Templates.Clone();
-
-            return cloneAssets;
+            return new Assets
+            {
+                Version = this.Version,
+                Css = this.Css.Clone(),
+                JavaScript = this.JavaScript.Clone(),
+                Templates = this.Templates.Clone()
+            };
         }
 
         /// <summary>
@@ -96,31 +96,31 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         /// <exception cref="InvalidOperationException">If the asset properties are invalid.</exception>
         public void Validate()
         {
-            if (string.IsNullOrWhiteSpace(Version))
+            if (string.IsNullOrWhiteSpace(this.Version))
             {
                 throw new InvalidOperationException("Asset version is not set.");
             }
 
             // ensure our asset collections are set to something
-            if (Css == null)
+            if (this.Css == null)
             {
-                Css = new List<string>();
+                this.Css = new List<string>();
             }
 
-            if (JavaScript == null)
+            if (this.JavaScript == null)
             {
-                JavaScript = new List<string>();
+                this.JavaScript = new List<string>();
             }
 
-            if (Templates == null)
+            if (this.Templates == null)
             {
-                Templates = new List<string>();
+                this.Templates = new List<string>();
             }
 
             // validate asset collections to hold valid values
-            ValidateAssetCollections(Css);
-            ValidateAssetCollections(JavaScript);
-            ValidateAssetCollections(Templates);
+            this.ValidateAssetCollections(this.Css);
+            this.ValidateAssetCollections(this.JavaScript);
+            this.ValidateAssetCollections(this.Templates);
         }
 
         /// <summary>

@@ -6,9 +6,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Filters.Mvc
 {
-    using Logic.Authentication;
     using System.Web;
     using System.Web.Mvc;
+    using Logic.Authentication;
 
     public class Authorize : AuthorizeAttribute
     {
@@ -22,10 +22,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Filters.Mvc
         }
 
         /// <summary>
-        /// Gets or set the user role which is allowed access.
+        /// Gets or sets the user role which is allowed access.
         /// </summary>
-        public UserRole UserRole
-        { get; set; }
+        public UserRole UserRole { get; set; }
 
         /// <summary>
         /// Authorizes an incoming request based on the user role.

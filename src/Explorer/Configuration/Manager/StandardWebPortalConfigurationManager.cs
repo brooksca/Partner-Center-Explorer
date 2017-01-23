@@ -6,11 +6,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Manager
 {
-    using Bundling;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Bundling;
     using WebPortal;
 
     /// <summary>
@@ -21,17 +21,17 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Manager
         /// <summary>
         /// The aggregated portal startup assets.
         /// </summary>
-        private Lazy<Assets> startupAssets;
+        private static Lazy<Assets> startupAssets;
 
         /// <summary>
         /// The aggregated portal non startup assets.
         /// </summary>
-        private Lazy<Assets> nonStartupAssets;
+        private static Lazy<Assets> nonStartupAssets;
 
         /// <summary>
         /// Indicates whether the bundles have been generated yet.
         /// </summary>
-        private bool isBundlesGenerated = false;
+        private bool isBundlesGenerated;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StandardWebPortalConfigurationManager"/> class.
@@ -41,8 +41,8 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Manager
             : base(configurationFilePath)
         {
             // we only want to generate the assets once since all users of the system will be served the same assets
-            startupAssets = new Lazy<Assets>(GenerateStartupAssets);
-            nonStartupAssets = new Lazy<Assets>(GenerateNonStartupAssets);
+            startupAssets = new Lazy<Assets>(this.GenerateStartupAssets);
+            nonStartupAssets = new Lazy<Assets>(this.GenerateNonStartupAssets);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Manager
         /// <returns>A task which is complete when the bundles are updated.</returns>
         public override async Task UpdateBundles(Bundler bundler)
         {
-            if (isBundlesGenerated)
+            if (this.isBundlesGenerated)
             {
                 // only generate the bundles once since they will remain constant across the web application's life span
                 return;
@@ -61,7 +61,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Manager
             // call the standard bundling implementation
             await base.UpdateBundles(bundler);
 
-            isBundlesGenerated = true;
+            this.isBundlesGenerated = true;
         }
 
         /// <summary>
@@ -129,8 +129,8 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.Manager
             Assets views = Configuration.Views.AggregateAssets();
             Assets plugins = Configuration.Plugins.Commons.Assets.GetAssetsByVersion(Configuration.Plugins.Commons.DefaultAssetVersion);
 
-            plugins = Configuration.Plugins.Plugins.Aggregate
-                (plugins, (current, plugin) => current + plugin.Features.AggregateAssets());
+            plugins = Configuration.Plugins.Plugins
+                .Aggregate(plugins, (current, plugin) => current + plugin.Features.AggregateAssets());
 
             return nonStartup + services + views + plugins;
         }

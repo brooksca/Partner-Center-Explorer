@@ -22,22 +22,25 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Telemetry
         /// <param name="properties">Named string values you can use to search and classify events.</param>
         /// <param name="metrics">Measurements associated with this event.</param>
         public void TrackEvent(string eventName, IDictionary<string, string> properties = null, IDictionary<string, double> metrics = null)
-        { }
+        {
+        }
 
         /// <summary>
         /// Sends an exception for display the in diagnostic search.
         /// </summary>
         /// <param name="exception">The exception to log.</param>
         /// <param name="properties">Named string values you can use to classify and search for this exception.</param>
-        /// <param name="metrics">dditional values associated with this exception.</param>
+        /// <param name="metrics">Additional values associated with this exception.</param>
         public void TrackException(Exception exception, IDictionary<string, string> properties = null, IDictionary<string, double> metrics = null)
-        { }
+        {
+        }
 
         /// <summary>
         /// Send a trace message for display in the diagnostic search.
         /// </summary>
         /// <param name="message">The message to display</param>
         public void TrackTrace(string message)
-        { }
+        {
+        }
     }
 }

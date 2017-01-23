@@ -6,6 +6,7 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Models
 {
+    using System.Collections.Generic;
     using PartnerCenter.Models.Customers;
 
     /// <summary>
@@ -16,25 +17,26 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Models
         /// <summary>
         /// Gets or sets the customer's billing profile.
         /// </summary>
-        public CustomerBillingProfile BillingProfile
-        { get; set; }
+        public CustomerBillingProfile BillingProfile { get; set; }
 
         /// <summary>
         /// Gets or sets the customer's company profile.
         /// </summary>
-        public CustomerCompanyProfile CompanyProfile
-        { get; set; }
+        public CustomerCompanyProfile CompanyProfile { get; set; }
 
         /// <summary>
         /// Gets or sets the customer's commerce identifier.
         /// </summary>
-        public string CommerceId
-        { get; set; }
+        public string CommerceId { get; set; }
 
         /// <summary>
         /// Gets or sets the customer's identifier.
         /// </summary>
-        public string Id
-        { get; set; }
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets a collection of subscriptions that belong to the customer.
+        /// </summary>
+        public List<SubscriptionViewModel> Subscriptions { get; set; }
     }
 }

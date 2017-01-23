@@ -15,7 +15,10 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
     /// </summary>
     internal sealed class MachineKeyDataProtector : IDataProtector
     {
-        private readonly string[] _purposes;
+        /// <summary>
+        /// The purposes of the data being protected.
+        /// </summary>
+        private readonly string[] purposes;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MachineKeyDataProtector"/> class.
@@ -23,7 +26,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
         /// <param name="purposes">The purpose of the data being protected.</param>
         public MachineKeyDataProtector(string[] purposes)
         {
-            _purposes = purposes;
+            this.purposes = purposes;
         }
 
         /// <summary>
@@ -32,7 +35,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
         /// <param name="data">The data to be encrypted.</param>
         /// <returns>Base64 encoded string that represented the protected data.</returns>
         /// <exception cref="ArgumentException">
-        /// data
+        /// <paramref name="data"/> is empty or null.
         /// </exception>
         public string Protect(string data)
         {
@@ -43,7 +46,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
             try
             {
                 buffer = Encoding.ASCII.GetBytes(data);
-                return Convert.ToBase64String(MachineKey.Protect(buffer, _purposes));
+                return Convert.ToBase64String(MachineKey.Protect(buffer, this.purposes));
             }
             finally
             {
@@ -54,8 +57,11 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
         /// <summary>
         /// Unprotects the specified data, which was protected by the <see cref="Protect(string)"/> method.
         /// </summary>
-        /// <param name="data">The ciphertext data to unprotect.</param>
+        /// <param name="data">The cipher text data to unprotect.</param>
         /// <returns>The decrypted data in plaintext.</returns>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="data"/> is empty or null.
+        /// </exception>
         public string Unprotect(string data)
         {
             byte[] buffer;
@@ -66,7 +72,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
             try
             {
                 buffer = Convert.FromBase64String(data);
-                decrypt = MachineKey.Unprotect(buffer, _purposes);
+                decrypt = MachineKey.Unprotect(buffer, this.purposes);
 
                 if (decrypt == null)
                 {

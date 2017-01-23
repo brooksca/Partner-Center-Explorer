@@ -6,13 +6,13 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Tests.Controllers
 {
-    using Explorer.Controllers;
-    using Logic;
-    using PartnerCenter.Models.Offers;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Explorer.Controllers;
+    using Logic;
+    using Models;
     using VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Tests.Controllers
         [TestMethod]
         public async Task GetOffersValidationTestAsync()
         {
-            IEnumerable<Offer> offers;
+            IEnumerable<OfferViewModel> offers;
 
             try
             {

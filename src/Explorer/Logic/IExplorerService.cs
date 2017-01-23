@@ -6,8 +6,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Logic
 {
-    using Cache;
     using System.Threading.Tasks;
+    using Cache;
     using Telemetry;
 
     /// <summary>
@@ -16,33 +16,29 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
     public interface IExplorerService
     {
         /// <summary>
-        /// Service that provides caching functionality.
+        /// Gets the service that provides caching functionality.
         /// </summary>
-        ICacheService CachingService
-        { get; }
+        ICacheService CachingService { get; }
 
         /// <summary>
-        /// Provides localization functionality.
+        /// Gets the localization functionality.
         /// </summary>
-        ILocalization Localization
-        { get; }
+        ILocalization Localization { get; }
 
         /// <summary>
-        /// Provides the ability to interact with the Partner Center managed API.
+        /// Gets the Partner Center service reference.
         /// </summary>
-        IAggregatePartner PartnerCenter
-        { get; }
+        IAggregatePartner PartnerCenter { get; }
 
         /// <summary>
-        /// Provides a mechanism to record telemetry data.
+        /// Gets the telemetry service reference.
         /// </summary>
-        ITelemetryProvider Telemetry
-        { get; }
+        ITelemetryProvider Telemetry { get; }
 
         /// <summary>
         /// Initializes the Explorer service and all the dependent services.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
         Task InitializeAsync();
     }
 }

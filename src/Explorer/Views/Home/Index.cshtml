@@ -18,6 +18,10 @@
     @Styles.Render("~/StartupStyles/")
     @* Render the classes needed to start up the portal *@
     @Scripts.Render("~/StartupClasses/")
+
+    <!-- pick up jQuery Globalize from CDN. -->
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.js"></script>
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.cultures.js"></script>
 </head>
 <body>
     <div id="SplashScreen" data-bind="template: { name: SplashScreen.template, data: SplashScreen }">

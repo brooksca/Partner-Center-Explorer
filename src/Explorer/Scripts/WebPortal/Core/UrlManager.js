@@ -36,13 +36,13 @@ Microsoft.WebPortal.Core.UrlManager.prototype.onPortalInitialized = function () 
         var idx = 1;
         var json = "{";
 
-        while (idx <= featureList.length) {
+        while (idx <= featureList.length - 1) {
             if (json.length > 1) json += ","
             json += '"' + featureList[idx] + '":"' + featureList[++idx] + '"';
-            idx += 2;
-        }
+            idx++;
+        };
 
-        json += "}"
+        json += "}";
 
         featureToInvoke = Microsoft.WebPortal.Feature[featureList[0]] || featureToInvoke;
         contextToPass = featureList.length > 1 ? JSON.parse(json) : contextToPass;

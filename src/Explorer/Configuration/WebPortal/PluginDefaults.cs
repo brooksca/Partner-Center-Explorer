@@ -19,45 +19,38 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         /// Gets or sets the alternate color of the plugin's theme.
         /// </summary>
         [JsonProperty]
-        public string AlternateColor
-        { get; set; }
+        public string AlternateColor { get; set; }
 
         /// <summary>
         /// Gets or sets the plugin's theme color.
         /// </summary>
         [JsonProperty]
-        public string Color
-        { get; set; }
+        public string Color { get; set; }
 
         /// <summary>
-        /// Gets or sets the css class for the plugin.
+        /// Gets or sets the CSS class for the plugin.
         /// </summary>
         [JsonProperty]
-        public string CssClass
-        { get; set; }
+        public string CssClass { get; set; }
 
         /// <summary>
         /// Gets or sets the plugin display name.
         /// </summary>
         [JsonProperty]
-        public string DisplayName
-        { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the plugin is hidden or not.
         /// </summary>
         [JsonProperty]
-        public bool Hidden
-        { get; set; }
+        public bool Hidden { get; set; }
 
         /// <summary>
         /// Gets or sets the plugin's tile icon.
         /// </summary>
         [JsonProperty("Tile")]
-        public string Image
-        { get; set; }
-
-
+        public string Image { get; set; }
+        
         /// <summary>
         /// Checks if the plugin defaults are properly set or not.
         /// </summary>
@@ -65,22 +58,22 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         /// <exception cref="InvalidOperationException">If validation fails.</exception>
         public virtual void Validate(IDictionary<string, int> featureHashtable = null)
         {
-            if (string.IsNullOrWhiteSpace(DisplayName))
+            if (string.IsNullOrWhiteSpace(this.DisplayName))
             {
                 throw new InvalidOperationException("DisplayName not set");
             }
 
-            if (string.IsNullOrWhiteSpace(Image))
+            if (string.IsNullOrWhiteSpace(this.Image))
             {
                 throw new InvalidOperationException("Tile not set");
             }
 
-            if (string.IsNullOrWhiteSpace(Color))
+            if (string.IsNullOrWhiteSpace(this.Color))
             {
                 throw new InvalidOperationException("Color not set");
             }
 
-            if (string.IsNullOrWhiteSpace(AlternateColor))
+            if (string.IsNullOrWhiteSpace(this.AlternateColor))
             {
                 throw new InvalidOperationException("AlternateColor not set");
             }
@@ -94,12 +87,12 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         {
             return new PluginDefaults()
             {
-                AlternateColor = AlternateColor,
-                Color = Color,
-                CssClass = CssClass,
-                DisplayName = DisplayName,
-                Hidden = Hidden,
-                Image = Image
+                AlternateColor = this.AlternateColor,
+                Color = this.Color,
+                CssClass = this.CssClass,
+                DisplayName = this.DisplayName,
+                Hidden = this.Hidden,
+                Image = this.Image
             };
         }
     }

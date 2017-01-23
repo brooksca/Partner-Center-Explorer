@@ -6,26 +6,33 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer
 {
-    using Azure.ActiveDirectory.GraphClient;
-    using Configuration;
-    using Exceptions;
-    using global::Owin;
-    using Logic; 
-    using Logic.Authentication;
-    using Logic.Azure;
-    using Owin.Security;
-    using Owin.Security.Cookies;
-    using Owin.Security.OpenIdConnect;
-    using Practices.Unity;
-    using PartnerCenter.Models.Customers;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Threading.Tasks;
     using System.Web;
-
+    using Azure.ActiveDirectory.GraphClient;
+    using Configuration;
+    using Exceptions;
+    using global::Owin;
+    using Logic;
+    using Logic.Authentication;
+    using Logic.Azure;
+    using Owin.Security;
+    using Owin.Security.Cookies;
+    using Owin.Security.OpenIdConnect;
+    using PartnerCenter.Models.Customers;
+    using Practices.Unity;
+    
+    /// <summary>
+    /// Provides methods and properties used to start the application.
+    /// </summary>
     public partial class Startup
     {
+        /// <summary>
+        /// Configures authentication for the application.
+        /// </summary>
+        /// <param name="app">The application to be configured.</param>
         public void ConfigureAuth(IAppBuilder app)
         {
             IExplorerService service = MvcApplication.UnityContainer.Resolve<IExplorerService>();
@@ -49,6 +56,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer
 
                             // Pass in the context back to the app
                             context.OwinContext.Response.Redirect("/Home/Error");
+
                             // Suppress the exception
                             context.HandleResponse();
 
@@ -73,7 +81,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer
                                 context.AuthenticationTicket.Identity.AddClaim(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Role, role.DisplayName));
                             }
 
-                            if (!userTenantId.Equals(ApplicationConfiguration.AccountId, StringComparison.CurrentCultureIgnoreCase))
+                            if (!userTenantId.Equals(ApplicationConfiguration.ApplicationTenantId, StringComparison.CurrentCultureIgnoreCase))
                             {
                                 string customerId = string.Empty;
 
@@ -81,7 +89,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer
                                 {
                                     IAggregatePartner partner = PartnerService.Instance.CreatePartnerOperations(
                                         new TokenManagement(service).GetPartnerCenterAppOnlyCredentials(
-                                            $"{ApplicationConfiguration.ActiveDirectoryEndpoint}/{ApplicationConfiguration.AccountId}"));
+                                            $"{ApplicationConfiguration.ActiveDirectoryEndpoint}/{ApplicationConfiguration.ApplicationTenantId}"));
 
                                     Customer c = await partner.Customers.ById(userTenantId).GetAsync();
 
@@ -115,9 +123,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer
                         },
                         RedirectToIdentityProvider = (context) =>
                         {
-                            // This ensures that the address used for sign in and sign out is picked up dynamically from the request
-                            // this allows you to deploy your app (to Azure Web Sites, for example) without having to change settings
-                            // Remember that the base URL of the address used here must be provisioned in Azure AD beforehand.
                             string appBaseUrl = context.Request.Scheme + "://" + context.Request.Host + context.Request.PathBase;
                             context.ProtocolMessage.RedirectUri = appBaseUrl + "/";
                             context.ProtocolMessage.PostLogoutRedirectUri = appBaseUrl;
@@ -127,12 +132,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer
                     TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters
                     {
                         SaveSigninToken = true,
-                        // instead of using the default validation (validating against a single issuer value, as we do in line of business apps), 
-                        // we inject our own multitenant validation logic
-                        ValidateIssuer = false,
-                        // If the app needs access to the entire organization, then add the logic
-                        // of validating the Issuer here.
-                        // IssuerValidator
+                        ValidateIssuer = false
                     }
                 });
         }

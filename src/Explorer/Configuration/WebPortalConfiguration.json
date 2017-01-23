@@ -5,11 +5,11 @@
       {
         "Version": "Debug",
         "JavaScript": [
-          "~/Scripts/app.insights.js",
-          "~/Scripts/jquery-3.1.1.js",
-          "~/Scripts/jquery-ui-1.12.1.js",
-          "~/Scripts/knockout-3.4.0.debug.js",
-          "~/Scripts/jquery.validate.js"
+          "~/Scripts/WebPortal/Dependencies/app.insights.js",
+          "~/Scripts/WebPortal/Dependencies/jquery-1.11.2.js",
+          "~/Scripts/WebPortal/Dependencies/jquery-ui.js",
+          "~/Scripts/WebPortal/Dependencies/knockout-3.4.1.debug.js",
+          "~/Scripts/WebPortal/Dependencies/jquery.validate.js"
         ],
         "Css": [
         ]
@@ -17,11 +17,11 @@
       {
         "Version": "Release",
         "JavaScript": [
-          "~/Scripts/app.insights.min.js",
-          "~/Scripts/jquery-3.1.1.min.js",
-          "~/Scripts/jquery-ui-1.12.1.min.js",
-          "~/Scripts/knockout-3.4.0.js",
-          "~/Scripts/jquery.validate.min.js"
+          "~/Scripts/WebPortal/Dependencies/app.insights.min.js",
+          "~/Scripts/WebPortal/Dependencies/jquery-1.11.2.min.js",
+          "~/Scripts/WebPortal/Dependencies/jquery-ui.min.js",
+          "~/Scripts/WebPortal/Dependencies/knockout-3.4.1.js",
+          "~/Scripts/WebPortal/Dependencies/jquery.validate.min.js"
         ],
         "Css": [
         ]
@@ -254,6 +254,40 @@
           ]
         }
       ]
+    },
+    {
+      "Name": "AddSubscriptions",
+      "DefaultAssetVersion": "1.0",
+      "Assets": [
+        {
+          "Version": "1.0",
+          "JavaScript": [
+            "~/Scripts/Plugins/Views/AddSubscriptionsView.js"
+          ],
+          "Css": [
+          ],
+          "Templates": [
+            "~/Views/Controls/AddSubscriptions.cshtml"
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "NewCustomerProfile",
+      "DefaultAssetVersion": "1.0",
+      "Assets": [
+        {
+          "Version": "1.0",
+          "JavaScript": [
+            "~/Scripts/Plugins/Views/NewCustomerProfileView.js"
+          ],
+          "Css": [
+          ],
+          "Templates": [
+            "~/Views/Controls/NewCustomerProfile.cshtml"
+          ]
+        }
+      ]
     }
   ],
 
@@ -274,7 +308,8 @@
             "~/Scripts/Plugins/ErrorCode.js"
           ],
           "Css": [
-            "~/Content/Styles/Plugins/Common.css"
+            "~/Content/Styles/Plugins/Common.css",
+            "~/Content/Styles/Plugins/AddSubscriptions.css"
           ]
         }
       ]
@@ -312,6 +347,66 @@
                 ],
                 "Css": [
                   "~/Content/Styles/Plugins/CustomerPage.css"
+                ]
+              }
+            ]
+          },
+          {
+            "Name": "CustomerAddNew",
+            "DefaultAssetVersion": "1.0",
+            "Assets": [
+              {
+                "Version": "1.0",
+                "JavaScript": [
+                  "~/Scripts/Plugins/CustomerAddNewPagePresenter.js"
+                ],
+                "Css": [
+                  "~/Content/Styles/Plugins/CustomerAddNewPage.css"
+                ]
+              }
+            ]
+          },
+          {
+            "Name": "CustomerCreationConfirmation",
+            "DefaultAssetVersion": "1.0",
+            "Assets": [
+              {
+                "Version": "1.0",
+                "JavaScript": [
+                  "~/Scripts/Plugins/CustomerCreationConfirmationPagePresenter.js"
+                ],
+                "Css": [
+                  "~/Content/Styles/Plugins/CustomerCreationConfirmation.css"
+                ]
+              }
+            ]
+          },
+          {
+            "Name": "Subscription",
+            "DefaultAssetVersion": "1.0",
+            "Assets": [
+              {
+                "Version": "1.0",
+                "JavaScript": [
+                  "~/Scripts/Plugins/SubscriptionPagePresenter.js"
+                ],
+                "Css": [
+                  "~/Content/Styles/Plugins/SubscriptionPage.css"
+                ]
+              }
+            ]
+          },
+          {
+            "Name": "AddSubscriptions",
+            "DefaultAssetVersion": "1.0",
+            "Assets": [
+              {
+                "Version": "1.0",
+                "JavaScript": [
+                  "~/Scripts/Plugins/AddSubscriptionsPresenter.js"
+                ],
+                "Css": [
+                  "~/Content/Styles/Plugins/AddSubscriptionsPage.css"
                 ]
               }
             ]

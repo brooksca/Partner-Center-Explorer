@@ -13,10 +13,16 @@ Microsoft.WebPortal.CustomerPagePresenter = function (webPortal, feature, contex
         CustomerId: context.Id,
         ShowProgress: ko.observable(true),
         IsSet: ko.observable(false),
-    }
+    };
+
+    this.onSubscriptionClicked = function (data) {
+        var subscriptionInfo = { CustomerId: data.CustomerId, SubscriptionId: data.SubscriptionId }
+        // Activate the subscription page presenter and pass it the selected subscription.
+        webPortal.Journey.advance(Microsoft.WebPortal.Feature.Subscription, subscriptionInfo);
+    };
 
     this.webPortal = webPortal;
-}
+};
 
 // inherit BasePresenter
 $WebPortal.Helpers.inherit(Microsoft.WebPortal.CustomerPagePresenter, Microsoft.WebPortal.Core.TemplatePresenter);
@@ -45,13 +51,13 @@ Microsoft.WebPortal.CustomerPagePresenter.prototype.onRender = function () {
             var homeNavigation = function () {
                 // Activate the home page presenter.
                 self.webPortal.Journey.advance(Microsoft.WebPortal.Feature.Home);
-            }
+            };
 
             var customerNavigation = function () {
                 var customerInfo = { Id: summary.Id }
                 // Activate the customer page presenter and pass it the selected customer.
                 self.webPortal.Journey.advance(Microsoft.WebPortal.Feature.Customer, customerInfo);
-            }
+            };
 
             self.webPortal.Services.HeaderBar.resetBreadcrumbs();
             self.webPortal.Services.HeaderBar.addBreadcrumb(false, homeNavigation, 'Home');
@@ -80,6 +86,6 @@ Microsoft.WebPortal.CustomerPagePresenter.prototype.onRender = function () {
     }
 
     getCustomerSummary();
-}
+};
 
 //@ sourceURL=CustomerPagePresenter.js

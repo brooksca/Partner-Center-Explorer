@@ -505,4 +505,64 @@
   <data name="UserLicencesCaption" xml:space="preserve">
     <value>Licenses</value>
   </data>
+  <data name="CustomerProfileOffice365EmailCaption" xml:space="preserve">
+    <value>Ce sera le nom d’utilisateur que vous utilisez pour l’authentification.</value>
+  </data>
+  <data name="CustomerProfileOffice365UserNameCaption" xml:space="preserve">
+    <value>Nom d’utilisateur</value>
+  </data>
+  <data name="CustomerRegistrationFailureMessage" xml:space="preserve">
+    <value>Pas pu inscrire le client. Veuillez essayer plus tard ou contactez le support.</value>
+  </data>
+  <data name="CustomerRegistrationMessage" xml:space="preserve">
+    <value>Inscription client...</value>
+  </data>
+  <data name="CustomerRegistrationSuccessMessage" xml:space="preserve">
+    <value>Créé avec succès client</value>
+  </data>
+  <data name="DownstreamErrorPrefix" xml:space="preserve">
+    <value>Nous ne pouvons pas traiter votre demande en ce moment. Veuillez essayer plus tard ou contactez le support.</value>
+  </data>
+  <data name="InvalidAddress" xml:space="preserve">
+    <value>S’il vous plaît spécifier une adresse valide</value>
+  </data>
+  <data name="InvalidInputErrorPrefix" xml:space="preserve">
+    <value>S’il vous plaît corriger l’entrée non valide :</value>
+  </data>
+  <data name="OrderRegistrationFailureMessage" xml:space="preserve">
+    <value>Erreur d’enregistrement de commande</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="ContactInformation" xml:space="preserve">
+    <value>Renseignements sur les clients</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="ConfirmationMessage" xml:space="preserve">
+    <value>Merci. Renseignements sur les clients a été mis en place. S’il vous plaît lisez cette page et cliquez sur "Envoyer" pour passer la commande.</value>
+  </data>
+  <data name="CustomerPrimaryContactCaption" xml:space="preserve">
+    <value>Contact principal</value>
+  </data>
+  <data name="RegistrationConfirmationPasswordNoticeCaption" xml:space="preserve">
+    <value>S’il vous plaît copiez le compte d’utilisateur admin et le mot de passe et enregistrer dans un emplacement sécurisé. Vous ne serez pas en mesure de le récupérer après avoir quitté cette page.</value>
+  </data>
+  <data name="SetupInformation" xml:space="preserve">
+    <value>Détails</value>
+  </data>
+  <data name="AdminUserAccount" xml:space="preserve">
+    <value>Compte d’utilisateur admin</value>
+  </data>
+  <data name="MicrosoftId" xml:space="preserve">
+    <value>Microsoft ID</value>
+  </data>
+  <data name="EmptyOffersErrorMessage" xml:space="preserve">
+    <value>Vous devez sélectionner au moins une offre d’achat.</value>
+  </data>
+  <data name="ProcessingOrder" xml:space="preserve">
+    <value>Traitement de la commande...</value>
+  </data>
 </root>

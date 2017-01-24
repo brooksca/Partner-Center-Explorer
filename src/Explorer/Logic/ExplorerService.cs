@@ -18,6 +18,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
     /// </summary>
     public class ExplorerService : IExplorerService
     {
+        /// <summary>
+        /// A flag indicating whether or not the service has been initialized.
+        /// </summary>
         private static bool initialized;
 
         /// <summary>
@@ -50,22 +53,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
                 cache = new CacheService();
 
                 return cache;
-            }
-        }
-
-        /// <summary>
-        /// Gets the localization functionality.
-        /// </summary>
-        public ILocalization Localization
-        {
-            get
-            {
-                if (initialized && localization != null)
-                {
-                    return localization;
-                }
-
-                throw new LocalizationException(Resources.ExplorerServiceNotInitializedException);
             }
         }
 
@@ -116,6 +103,21 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
             await localization.InitializeAsync();
 
             initialized = true;
+        }
+
+        /// <summary>
+        /// Gets the localization functionality.
+        /// </summary>
+        /// <returns>An instance of <see cref="ILocalization"/></returns>
+        /// <exception cref="LocalizationException">The explorer service has not been initialized.</exception>
+        public ILocalization Localization()
+        {
+            if (initialized && localization != null)
+            {
+                return localization;
+            }
+
+            throw new LocalizationException(Resources.ExplorerServiceNotInitializedException);
         }
 
         /// <summary>

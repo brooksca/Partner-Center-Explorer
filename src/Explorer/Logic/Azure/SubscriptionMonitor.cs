@@ -24,10 +24,29 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
     /// </summary>
     public class SubscriptionMonitor : IDisposable, ISubscriptionMonitor
     {
+        /// <summary>
+        /// Name of the resource provider to be queried. 
+        /// </summary>
         private const string ResourceProviderName = "Azure.Health";
+
+        /// <summary>
+        /// Provides the ability to interact with the Azure Monitor API. 
+        /// </summary>
         private IInsightsClient client;
+
+        /// <summary>
+        /// Provides the ability to access core application services.
+        /// </summary>
         private IExplorerService service;
+
+        /// <summary>
+        /// A flag indicating whether or not this object has been disposed.
+        /// </summary>
         private bool disposed;
+
+        /// <summary>
+        /// The subscription identifier that should be utilized in querying the health.
+        /// </summary>
         private string subscriptionId;
 
         /// <summary>
@@ -64,7 +83,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionMonitor"/> class.
         /// </summary>
-        /// <param name="service">Provides access to the core application services.</param>
+        /// <param name="service">Provides access to core application services.</param>
         /// <param name="insightsClient">An instance of <see cref="IInsightsClient"/>.</param>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="service"/> is null.
@@ -80,6 +99,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
             this.service = service;
         }
 
+        /// <summary>
+        /// Provides access to core application services.
+        /// </summary>
         private IExplorerService Services => this.service;
 
         /// <summary>
@@ -142,9 +164,11 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
                 return;
             }
 
+            this.client.Dispose();
+
             if (disposing)
             {
-                this.client?.Dispose();
+                GC.SuppressFinalize(this);
             }
 
             this.disposed = true;

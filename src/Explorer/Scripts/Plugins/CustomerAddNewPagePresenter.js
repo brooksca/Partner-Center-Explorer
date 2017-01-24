@@ -40,7 +40,8 @@ Microsoft.WebPortal.CustomerAddNewPagePresenter = function (webPortal, feature, 
             // Call Create Customer if customer is not registered (or is retring due an error from the past).  
             var customerId = this.customerProfileView.viewModel.CustomerMicrosoftID();
             if (!customerId) {
-                customerNotification = new Microsoft.WebPortal.Services.Notification(Microsoft.WebPortal.Services.Notification.NotificationType.Progress, self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.CustomerRegistrationMessage);
+
+                customerNotification = new Microsoft.WebPortal.Services.Notification(Microsoft.WebPortal.Services.Notification.NotificationType.Progress, self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.CustomerRegistrationMessage);
                 self.webPortal.Services.Notifications.add(customerNotification);
 
                 new Microsoft.WebPortal.Utilities.RetryableServerCall(self.webPortal.Helpers.ajaxCall("api/customer",
@@ -56,7 +57,7 @@ Microsoft.WebPortal.CustomerAddNewPagePresenter = function (webPortal, feature, 
 
                         // turn the notification into a success
                         customerNotification.type(Microsoft.WebPortal.Services.Notification.NotificationType.Success);
-                        notificationMessage = self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.CustomerRegistrationSuccessMessage + " - " + registrationConfirmation.CompanyName + " (" + registrationConfirmation.MicrosoftId + ")";
+                        notificationMessage = self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.CustomerRegistrationSuccessMessage + " - " + registrationConfirmation.CompanyName + " (" + registrationConfirmation.MicrosoftId + ")";
                         customerNotification.message(notificationMessage);
                         customerNotification.buttons([
                             Microsoft.WebPortal.Services.Button.create(Microsoft.WebPortal.Services.Button.StandardButtons.OK, self.webPortal.Resources.Strings.OK, function () {
@@ -88,7 +89,7 @@ Microsoft.WebPortal.CustomerAddNewPagePresenter = function (webPortal, feature, 
                         }
 
                         // hand it off to the registration summary presenter
-                        self.webPortal.Journey.advance(Microsoft.WebPortal.Feature.RegistrationConfirmation, registrationConfirmationInfo);
+                        self.webPortal.Journey.advance(Microsoft.WebPortal.Feature.CustomerAddConfirmation, registrationConfirmationInfo);
                     })
                     // Failure of Create Customer API Call. 
                     .fail(function (result, status, error) {
@@ -106,23 +107,23 @@ Microsoft.WebPortal.CustomerAddNewPagePresenter = function (webPortal, feature, 
                         if (errorPayload) {
                             switch (errorPayload.ErrorCode) {
                                 case Microsoft.WebPortal.ErrorCode.InvalidAddress:
-                                    customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.InvalidAddress);
+                                    customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.InvalidAddress);
                                     break;
                                 case Microsoft.WebPortal.ErrorCode.DomainNotAvailable:
-                                    customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.DomainNotAvailable);
+                                    customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.DomainNotAvailable);
                                     break;
                                 case Microsoft.WebPortal.ErrorCode.InvalidInput:
-                                    customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.InvalidInputErrorPrefix + errorPayload.Details.ErrorMessage);
+                                    customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.InvalidInputErrorPrefix + errorPayload.Details.ErrorMessage);
                                     break;
                                 case Microsoft.WebPortal.ErrorCode.DownstreamServiceError:
-                                    customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.DownstreamErrorPrefix + errorPayload.Details.ErrorMessage);
+                                    customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.DownstreamErrorPrefix + errorPayload.Details.ErrorMessage);
                                     break;
                                 default:
-                                    customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.CustomerRegistrationFailureMessage);
+                                    customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.CustomerRegistrationFailureMessage);
                                     break;
                             }
                         } else {
-                            customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.CustomerRegistrationFailureMessage);
+                            customerNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.CustomerRegistrationFailureMessage);
                         }
                     })
                     .always(function () {

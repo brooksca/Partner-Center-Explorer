@@ -19,8 +19,19 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Cache
     /// <seealso cref="Microsoft.IdentityModel.Clients.ActiveDirectory.TokenCache" />
     public class DistributedTokenCache : TokenCache
     {
+        /// <summary>
+        /// Claim type for the object identifier claim.
+        /// </summary>
         private const string ObjectIdClaimType = "http://schemas.microsoft.com/identity/claims/objectidentifier";
+
+        /// <summary>
+        /// Resource that is being accessed.
+        /// </summary>
         private readonly string resource;
+
+        /// <summary>
+        /// Provides access to the core application services.
+        /// </summary>
         private IExplorerService service;
 
         /// <summary>

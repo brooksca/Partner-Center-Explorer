@@ -505,4 +505,64 @@
   <data name="UserLicencesCaption" xml:space="preserve">
     <value>ライセンス</value>
   </data>
+  <data name="CustomerProfileOffice365EmailCaption" xml:space="preserve">
+    <value>これは、認証に使用するユーザー名になります。</value>
+  </data>
+  <data name="CustomerProfileOffice365UserNameCaption" xml:space="preserve">
+    <value>ユーザー名</value>
+  </data>
+  <data name="CustomerRegistrationFailureMessage" xml:space="preserve">
+    <value>顧客を登録できませんでした。後で試すか、サポートにお問い合わせください。</value>
+  </data>
+  <data name="CustomerRegistrationMessage" xml:space="preserve">
+    <value>顧客を登録しています.</value>
+  </data>
+  <data name="CustomerRegistrationSuccessMessage" xml:space="preserve">
+    <value>正常に顧客を作成</value>
+  </data>
+  <data name="DownstreamErrorPrefix" xml:space="preserve">
+    <value>この時点であなたの要求を処理できておりません。後で試すか、サポートにお問い合わせください。</value>
+  </data>
+  <data name="InvalidAddress" xml:space="preserve">
+    <value>有効なアドレスを指定してください。</value>
+  </data>
+  <data name="InvalidInputErrorPrefix" xml:space="preserve">
+    <value>無効な入力を修正してください。</value>
+  </data>
+  <data name="OrderRegistrationFailureMessage" xml:space="preserve">
+    <value>注文登録エラー</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>アドレス</value>
+  </data>
+  <data name="ContactInformation" xml:space="preserve">
+    <value>顧客情報</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="ConfirmationMessage" xml:space="preserve">
+    <value>ありがとう。お客様の情報は、セットアップをされています。このページを確認してくださいと注文送信] をクリックします。</value>
+  </data>
+  <data name="CustomerPrimaryContactCaption" xml:space="preserve">
+    <value>主な連絡先</value>
+  </data>
+  <data name="RegistrationConfirmationPasswordNoticeCaption" xml:space="preserve">
+    <value>管理者ユーザー アカウントとパスワードをコピーして安全な場所に保存してください。後、このページを残して取得することはできません。</value>
+  </data>
+  <data name="SetupInformation" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="AdminUserAccount" xml:space="preserve">
+    <value>管理者ユーザー アカウント</value>
+  </data>
+  <data name="MicrosoftId" xml:space="preserve">
+    <value>マイクロソフトの ID</value>
+  </data>
+  <data name="EmptyOffersErrorMessage" xml:space="preserve">
+    <value>少なくとも 1 つの提供を購入するを選択してください。</value>
+  </data>
+  <data name="ProcessingOrder" xml:space="preserve">
+    <value>注文の処理.</value>
+  </data>
 </root>

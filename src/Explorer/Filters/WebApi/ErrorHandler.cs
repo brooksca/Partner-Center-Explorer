@@ -8,6 +8,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Filters.WebApi
 {
     using System.Web.Http.Filters;
 
+    /// <summary>
+    /// Implements custom exception handling for Web API controllers.
+    /// </summary>
     public class ErrorHandler : ExceptionFilterAttribute
     {
         /// <summary>

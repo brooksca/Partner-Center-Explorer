@@ -293,6 +293,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Cache\CacheDatabaseType.cs" />
     <Compile Include="Cache\CacheException.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Logic\Authentication\TokenType.cs" />
     <Compile Include="Logic\Azure\IncidentEvent.cs" />
     <Compile Include="Logic\Azure\SubscriptionMonitor.cs" />
@@ -404,7 +405,7 @@
     <Content Include="Content\Styles\Plugins\AddSubscriptionsPage.css" />
     <Content Include="Content\Styles\Plugins\Common.css" />
     <Content Include="Content\Styles\Plugins\CustomerAddNewPage.css" />
-    <Content Include="Content\Styles\Plugins\CustomerCreationConfirmation.css" />
+    <Content Include="Content\Styles\Plugins\CustomerAddConfirmation.css" />
     <Content Include="Content\Styles\Plugins\CustomerPage.css" />
     <Content Include="Content\Styles\Plugins\Error.css" />
     <Content Include="Content\Styles\Plugins\HomePage.css" />
@@ -432,13 +433,11 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Properties\PublishProfiles\partnercenterexplorer-dev - Web Deploy.pubxml" />
+    <Content Include="Scripts\Plugins\CommerceOperationType.js" />
     <Content Include="Scripts\WebPortal\Dependencies\app.insights.js" />
-    <Content Include="Scripts\WebPortal\Dependencies\app.insights.min.js">
-      <DependentUpon>app.insights.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\Plugins\AddSubscriptionsPresenter.js" />
     <Content Include="Scripts\Plugins\CustomerAddNewPagePresenter.js" />
-    <Content Include="Scripts\Plugins\CustomerCreationConfirmationPagePresenter.js" />
+    <Content Include="Scripts\Plugins\CustomerAddConfirmationPagePresenter.js" />
     <Content Include="Scripts\Plugins\CustomerPagePresenter.js" />
     <Content Include="Scripts\Plugins\ErrorCode.js" />
     <Content Include="Scripts\Plugins\HomePagePresenter.js" />
@@ -458,6 +457,9 @@
     <Content Include="Scripts\WebPortal\Core\UrlManager.js" />
     <Content Include="Scripts\WebPortal\Core\View.js" />
     <Content Include="Scripts\WebPortal\Core\WebPortal.js" />
+    <Content Include="Scripts\WebPortal\Dependencies\app.insights.min.js">
+      <DependentUpon>app.insights.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\WebPortal\Dependencies\jquery-1.11.2.js" />
     <Content Include="Scripts\WebPortal\Dependencies\jquery-1.11.2.min.js" />
     <Content Include="Scripts\WebPortal\Dependencies\jquery-ui.js" />
@@ -497,7 +499,8 @@
     <Content Include="Scripts\WebPortal\Views\List\List.js" />
     <Content Include="Scripts\WebPortal\Views\List\ListRenderer.js" />
     <Content Include="Scripts\WebPortal\Views\List\TablePageRenderer.js" />
-    <Content Include="Scripts\_references.js" />
+    <None Include="Properties\PublishProfiles\partnercenterexplorer-tip - Web Deploy.pubxml" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -530,9 +533,11 @@
     <Content Include="Views\Shared\AddSubscriptions.cshtml" />
     <Content Include="Views\Controls\AddSubscriptions.cshtml" />
     <Content Include="Views\Controls\NewCustomerProfile.cshtml" />
+    <Content Include="Views\Shared\RegistrationConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

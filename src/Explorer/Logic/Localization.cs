@@ -16,6 +16,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
     /// </summary>
     public class Localization : ILocalization
     {
+        /// <summary>
+        /// Provides access to the application core services.
+        /// </summary>
         private readonly IExplorerService service;
 
         /// <summary>

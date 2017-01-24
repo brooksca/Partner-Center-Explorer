@@ -305,6 +305,7 @@
         {
           "Version": "1.0",
           "JavaScript": [
+            "~/Scripts/Plugins/CommerceOperationType.js",
             "~/Scripts/Plugins/ErrorCode.js"
           ],
           "Css": [
@@ -367,16 +368,16 @@
             ]
           },
           {
-            "Name": "CustomerCreationConfirmation",
+            "Name": "CustomerAddConfirmation",
             "DefaultAssetVersion": "1.0",
             "Assets": [
               {
                 "Version": "1.0",
                 "JavaScript": [
-                  "~/Scripts/Plugins/CustomerCreationConfirmationPagePresenter.js"
+                  "~/Scripts/Plugins/CustomerAddConfirmationPagePresenter.js"
                 ],
                 "Css": [
-                  "~/Content/Styles/Plugins/CustomerCreationConfirmation.css"
+                  "~/Content/Styles/Plugins/CustomerAddConfirmation.css"
                 ]
               }
             ]

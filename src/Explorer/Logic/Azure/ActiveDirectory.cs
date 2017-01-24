@@ -20,10 +20,20 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
     /// </summary>
     public class ActiveDirectory : IActiveDirectory
     {
+        /// <summary>
+        /// Key for interfacing with the cache service when utilizing App Only authentication.  
+        /// </summary>
         private const string AdAppOnlyKey = "AppOnly::AzureAD";
+
+        /// <summary>
+        /// Provides the ability to interact with Azure AD. 
+        /// </summary>
         private readonly IActiveDirectoryClient client;
+
+        /// <summary>
+        /// Provides access to the core application services. 
+        /// </summary>
         private IExplorerService service;
-        private ITokenManagement tokenMgmt;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ActiveDirectory"/> class.
@@ -44,19 +54,19 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
             service.AssertNotNull(nameof(service));
             tenantId.AssertNotEmpty(nameof(tenantId));
 
+            ITokenManagement tokenMgmt = new TokenManagement(service);
             this.service = service;
-            this.tokenMgmt = new TokenManagement(service);
 
             if (authTokenType == TokenType.AppOnly)
             {
-                token = this.tokenMgmt.GetAppOnlyToken(
+                token = tokenMgmt.GetAppOnlyToken(
                     $"{ApplicationConfiguration.ActiveDirectoryEndpoint}/{tenantId}",
                     AdAppOnlyKey,
                     ApplicationConfiguration.ActiveDirectoryGraphEndpoint).Token;
             }
             else
             {
-                token = this.tokenMgmt.GetAppPlusUserToken(
+                token = tokenMgmt.GetAppPlusUserToken(
                     $"{ApplicationConfiguration.ActiveDirectoryEndpoint}/{tenantId}",
                     ApplicationConfiguration.ActiveDirectoryGraphEndpoint).Token;
             }
@@ -96,10 +106,10 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
             key.AssertNotEmpty(nameof(key));
             redirectUri.AssertNotNull(nameof(redirectUri));
 
+            ITokenManagement tokenMgmt = new TokenManagement(service, key);
             this.service = service;
-            this.tokenMgmt = new TokenManagement(service, key);
 
-            token = this.tokenMgmt.GetTokenByAuthorizationCode(
+            token = tokenMgmt.GetTokenByAuthorizationCode(
                 $"{ApplicationConfiguration.ActiveDirectoryEndpoint}/{tenantId}",
                 code,
                 ApplicationConfiguration.ActiveDirectoryGraphEndpoint,

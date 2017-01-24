@@ -39,26 +39,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Tests.Logic
         public ICacheService CachingService => _cache ?? (_cache = new TestCacheService());
 
         /// <summary>
-        /// Provides localization functionality.
-        /// </summary>
-        public ILocalization Localization
-        {
-            get
-            {
-                if (_localization == null)
-                {
-                    _localization = new StubILocalization()
-                    {
-                        CountryIso2CodeGet = () => "US",
-                        LocaleGet = () => ""
-                    };
-                }
-
-                return _localization;
-            }
-        }
-
-        /// <summary>
         /// Provides the ability to interact with the Partner Center managed API.
         /// </summary>
         public IAggregatePartner PartnerCenter => _partnerCenter ?? (_partnerCenter = GetTestPartnerCenter());
@@ -75,6 +55,23 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Tests.Logic
         public Task InitializeAsync()
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Provides localization functionality.
+        /// </summary>
+        public ILocalization Localization()
+        {
+            if (_localization == null)
+            {
+                _localization = new StubILocalization()
+                {
+                    CountryIso2CodeGet = () => "US",
+                    LocaleGet = () => ""
+                };
+            }
+
+            return _localization;
         }
 
         /// <summary>

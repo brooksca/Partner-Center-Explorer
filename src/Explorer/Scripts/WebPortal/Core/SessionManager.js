@@ -32,6 +32,7 @@ Microsoft.WebPortal.Core.SessionManager.prototype.initialize = function (eventId
     this.webPortal.registerFeaturePresenter(Microsoft.WebPortal.Feature.Home, Microsoft.WebPortal.HomePagePresenter);
     this.webPortal.registerFeaturePresenter(Microsoft.WebPortal.Feature.Customer, Microsoft.WebPortal.CustomerPagePresenter);
     this.webPortal.registerFeaturePresenter(Microsoft.WebPortal.Feature.CustomerAddNew, Microsoft.WebPortal.CustomerAddNewPagePresenter);
+    this.webPortal.registerFeaturePresenter(Microsoft.WebPortal.Feature.CustomerAddConfirmation, Microsoft.WebPortal.CustomerAddConfirmationPagePresenter);
     this.webPortal.registerFeaturePresenter(Microsoft.WebPortal.Feature.AddSubscriptions, Microsoft.WebPortal.AddSubscriptionsPresenter);
     this.webPortal.registerFeaturePresenter(Microsoft.WebPortal.Feature.Subscription, Microsoft.WebPortal.SubscriptionPagePresenter);
 }

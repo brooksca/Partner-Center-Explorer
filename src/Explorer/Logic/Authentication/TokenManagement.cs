@@ -26,6 +26,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// </summary>
         private readonly IExplorerService service;
 
+        /// <summary>
+        /// Key value utilize for interfacing with the cache service.
+        /// </summary>
         private readonly string key;
 
         /// <summary>

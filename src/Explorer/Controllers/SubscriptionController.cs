@@ -26,6 +26,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
     [RoutePrefix("api/subscription")]
     public class SubscriptionController : BaseApiController
     {
+        /// <summary>
+        /// Provides access to the appropriate subscription monitor service. 
+        /// </summary>
         private ISubscriptionMonitor monitor;
 
         /// <summary>
@@ -77,7 +80,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
 
                 subscriptionId.AssertNotEmpty(nameof(subscriptionId));
 
-                responseCulture = new CultureInfo(Services.Localization.Locale);
+                responseCulture = new CultureInfo(Services.Localization().Locale);
 
                 operations =
                     Services.PartnerCenter.With(RequestContextFactory.Instance.Create(

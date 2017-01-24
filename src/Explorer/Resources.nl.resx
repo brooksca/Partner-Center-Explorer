@@ -505,4 +505,64 @@
   <data name="UserLicencesCaption" xml:space="preserve">
     <value>Licenties</value>
   </data>
+  <data name="CustomerProfileOffice365EmailCaption" xml:space="preserve">
+    <value>Dit is de gebruikersnaam die u voor verificatie gebruikt.</value>
+  </data>
+  <data name="CustomerProfileOffice365UserNameCaption" xml:space="preserve">
+    <value>Gebruikersnaam</value>
+  </data>
+  <data name="CustomerRegistrationFailureMessage" xml:space="preserve">
+    <value>Kan niet registreren van de klant. Probeer het later of contact opnemen met support.</value>
+  </data>
+  <data name="CustomerRegistrationMessage" xml:space="preserve">
+    <value>Klant registratie...</value>
+  </data>
+  <data name="CustomerRegistrationSuccessMessage" xml:space="preserve">
+    <value>Klant gemaakt</value>
+  </data>
+  <data name="DownstreamErrorPrefix" xml:space="preserve">
+    <value>We kunnen niet voor het verwerken van uw verzoek op dit moment. Probeer het later of contact opnemen met support.</value>
+  </data>
+  <data name="InvalidAddress" xml:space="preserve">
+    <value>Geef een geldig adres</value>
+  </data>
+  <data name="InvalidInputErrorPrefix" xml:space="preserve">
+    <value>Corrigeer de ongeldige invoer:</value>
+  </data>
+  <data name="OrderRegistrationFailureMessage" xml:space="preserve">
+    <value>Order registratie fout</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="ContactInformation" xml:space="preserve">
+    <value>Klantgegevens</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Bevestiging</value>
+  </data>
+  <data name="ConfirmationMessage" xml:space="preserve">
+    <value>Dank u. Klantgegevens is opstelling geweest. Controleer deze pagina en klik op verzenden om de bestelling te plaatsen.</value>
+  </data>
+  <data name="CustomerPrimaryContactCaption" xml:space="preserve">
+    <value>Primaire contactpersoon</value>
+  </data>
+  <data name="RegistrationConfirmationPasswordNoticeCaption" xml:space="preserve">
+    <value>Kopieer de gebruikersaccount Beheerder en het wachtwoord en opslaan op een veilige plaats. U zal niet zitten kundig voor ophalen na het verlaten van deze pagina.</value>
+  </data>
+  <data name="SetupInformation" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="AdminUserAccount" xml:space="preserve">
+    <value>Gebruikersaccount Beheerder</value>
+  </data>
+  <data name="MicrosoftId" xml:space="preserve">
+    <value>Microsoft ID</value>
+  </data>
+  <data name="EmptyOffersErrorMessage" xml:space="preserve">
+    <value>U moet ten minste één bod tot aankoop.</value>
+  </data>
+  <data name="ProcessingOrder" xml:space="preserve">
+    <value>Verwerking van de bestelling...</value>
+  </data>
 </root>

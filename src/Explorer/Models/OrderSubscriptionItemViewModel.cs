@@ -34,7 +34,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Models
         public decimal SeatPrice { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription expiry date of the offer being ordered. 
+        /// Gets or sets the subscription expiration date of the offer being ordered. 
         /// </summary>
         public DateTime SubscriptionExpiryDate { get; set; }
 

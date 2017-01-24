@@ -80,6 +80,17 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
         }
 
         /// <summary>
+        /// Serves the HTML template for the registration confirmation page.
+        /// </summary>
+        /// <returns>The HTML template for the registration confirmation page.</returns>
+        [HttpGet]
+        [OutputCache(NoStore = true, Duration = 0)]
+        public ActionResult RegistrationConfirmation()
+        {
+            return this.PartialView(); 
+        }
+
+        /// <summary>
         /// Serves the HTML template for the subscription page presenter.
         /// </summary>
         /// <returns>The HTML template for the subscription page presenter.</returns>

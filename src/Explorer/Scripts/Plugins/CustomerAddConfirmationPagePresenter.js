@@ -1,6 +1,6 @@
 ﻿/// <reference path="~/Scripts/_references.js" />
 
-Microsoft.WebPortal.CustomerCreationConfirmationPagePresenter = function (webPortal, feature, registrationConfirmationViewModel) {
+Microsoft.WebPortal.CustomerAddConfirmationPagePresenter = function (webPortal, feature, registrationConfirmationViewModel) {
     /// <summary>
     /// Shows the registration confirmation page.
     /// </summary>
@@ -14,54 +14,50 @@ Microsoft.WebPortal.CustomerCreationConfirmationPagePresenter = function (webPor
 
     // object to pass to order API.
     self.viewModel.orderToPlace = {
-        Subscriptions: registrationConfirmationViewModel.SubscriptionsToOrder,
-        OperationType: Microsoft.WebPortal.CommerceOperationType.NewPurchase, //PurchaseSubscriptions.
-        CustomerId: registrationConfirmationViewModel.MicrosoftId // populate the Customer Id.             
+        CustomerId: registrationConfirmationViewModel.MicrosoftId,             
+        OperationType: Microsoft.WebPortal.CommerceOperationType.NewPurchase,
+        Subscriptions: registrationConfirmationViewModel.SubscriptionsToOrder
     };
 
-    var addressLine = this.viewModel.AddressLine1;
-    if (this.viewModel.AddressLine2) {
-        addressLine += " " + this.viewModel.AddressLine2;
+    var addressLine = self.viewModel.AddressLine1;
+
+    if (self.viewModel.AddressLine2) {
+        addressLine += " " + self.viewModel.AddressLine2;
     }
 
-    this.viewModel.Address = [
+    self.viewModel.Address = [
         addressLine,
-        this.viewModel.City + ", " + this.viewModel.State + " " + this.viewModel.ZipCode,
-        this.viewModel.Country
+        self.viewModel.City + ", " + self.viewModel.State + " " + self.viewModel.ZipCode,
+        self.viewModel.Country
     ];
 
-    this.viewModel.ContactInformation = [
-        this.viewModel.FirstName + " " + this.viewModel.LastName,
-        this.viewModel.Email,
-        this.viewModel.Phone
+    self.viewModel.ContactInformation = [
+        self.viewModel.FirstName + " " + self.viewModel.LastName,
+        self.viewModel.Email,
+        self.viewModel.Phone
     ];
 
-    this.onDoneClicked = function () {
-        // go back to the home page
-        // webPortal.Journey.start(Microsoft.WebPortal.Feature.Home);        
-
+    self.onDoneClicked = function () {
         // Prepare the order
-        self.raiseOrder();
+        self.processOrder();
     }
 
-    this.raiseOrder = function (customerNotification, registeredCustomer) {
+    self.processOrder = function (customerNotification, registeredCustomer) {
         /// <summary>
         /// Called when the customer has been created and hence order can be placed. 
         /// </summary>
 
         // order notification.        
         var orderNotification = new Microsoft.WebPortal.Services.Notification(Microsoft.WebPortal.Services.Notification.NotificationType.Progress,
-            self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.PreparingOrderAndRedirectingMessage);
+            self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.ProcessingOrder);
         self.webPortal.Services.Notifications.add(orderNotification);
 
-        new Microsoft.WebPortal.Utilities.RetryableServerCall(this.webPortal.Helpers.ajaxCall("api/Order/NewCustomerPrepareOrder", Microsoft.WebPortal.HttpMethod.Post, self.viewModel.orderToPlace, Microsoft.WebPortal.ContentType.Json, 120000), "RegisterCustomerOrder", []).execute()
-            // Success of Create CustomerOrder API Call. 
+        new Microsoft.WebPortal.Utilities.RetryableServerCall(self.webPortal.Helpers.ajaxCall("api/order/create", Microsoft.WebPortal.HttpMethod.Post, self.viewModel.orderToPlace, Microsoft.WebPortal.ContentType.Json, 120000), "RegisterCustomerOrder", []).execute()
             .done(function (result) {
                 orderNotification.dismiss();
-                // we need to now redirect to paypal based on the response from the API.             
-                window.location = result;
+
+                self.webPortal.Journey.start(Microsoft.WebPortal.Feature.Home);
             })
-            // Failure in Create CustomerOrder API call. 
             .fail(function (result, status, error) {
                 // on failure check if customerid is returned (or check using errCode). if returned then do something to set the ClientCustomerId
                 orderNotification.type(Microsoft.WebPortal.Services.Notification.NotificationType.Error);
@@ -77,10 +73,10 @@ Microsoft.WebPortal.CustomerCreationConfirmationPagePresenter = function (webPor
                 if (errorPayload) {
                     switch (errorPayload.ErrorCode) {
                         case Microsoft.WebPortal.ErrorCode.InvalidInput:
-                            orderNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.InvalidInputErrorPrefix + errorPayload.Details.ErrorMessage);
+                            orderNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.InvalidInputErrorPrefix + errorPayload.Details.ErrorMessage);
                             break;
                         case Microsoft.WebPortal.ErrorCode.DownstreamServiceError:
-                            orderNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.DownstreamErrorPrefix + errorPayload.Details.ErrorMessage);
+                            orderNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.DownstreamErrorPrefix + errorPayload.Details.ErrorMessage);
                             break;
                         case Microsoft.WebPortal.ErrorCode.PaymentGatewayPaymentError:
                         case Microsoft.WebPortal.ErrorCode.PaymentGatewayIdentityFailureDuringPayment:
@@ -88,11 +84,11 @@ Microsoft.WebPortal.CustomerCreationConfirmationPagePresenter = function (webPor
                             orderNotification.message(errorPayload.Details.ErrorMessage);
                             break;
                         default:
-                            orderNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.OrderRegistrationFailureMessage);
+                            orderNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.OrderRegistrationFailureMessage);
                             break;
                     }
                 } else {
-                    orderNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerRegistrationPage.OrderRegistrationFailureMessage);
+                    orderNotification.message(self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.OrderRegistrationFailureMessage);
                 }
 
             })
@@ -103,9 +99,9 @@ Microsoft.WebPortal.CustomerCreationConfirmationPagePresenter = function (webPor
 }
 
 // inherit BasePresenter
-$WebPortal.Helpers.inherit(Microsoft.WebPortal.CustomerCreationConfirmationPagePresenter, Microsoft.WebPortal.Core.TemplatePresenter);
+$WebPortal.Helpers.inherit(Microsoft.WebPortal.CustomerAddConfirmationPagePresenter, Microsoft.WebPortal.Core.TemplatePresenter);
 
-Microsoft.WebPortal.CustomerCreationConfirmationPagePresenter.prototype.onRender = function () {
+Microsoft.WebPortal.CustomerAddConfirmationPagePresenter.prototype.onRender = function () {
     /// <summary>
     /// Called when the presenter is about to be rendered.
     /// </summary>
@@ -114,4 +110,4 @@ Microsoft.WebPortal.CustomerCreationConfirmationPagePresenter.prototype.onRender
 
 }
 
-//@ sourceURL=CustomerCreationConfirmationPagePresenter.js
+//@ sourceURL=CustomerAddConfirmationPagePresenter.js

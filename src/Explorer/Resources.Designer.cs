@@ -106,6 +106,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add subscriptions.
         /// </summary>
         public static string AddSubscriptions {
@@ -120,6 +129,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         public static string AddSubscriptionsMessage {
             get {
                 return ResourceManager.GetString("AddSubscriptionsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Admin user account.
+        /// </summary>
+        public static string AdminUserAccount {
+            get {
+                return ResourceManager.GetString("AdminUserAccount", resourceCulture);
             }
         }
         
@@ -174,6 +192,33 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         public static string ClearAll {
             get {
                 return ResourceManager.GetString("ClearAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation.
+        /// </summary>
+        public static string Confirmation {
+            get {
+                return ResourceManager.GetString("Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you. Customer information has been setup. Please review this page and click submit to place the order..
+        /// </summary>
+        public static string ConfirmationMessage {
+            get {
+                return ResourceManager.GetString("ConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer information.
+        /// </summary>
+        public static string ContactInformation {
+            get {
+                return ResourceManager.GetString("ContactInformation", resourceCulture);
             }
         }
         
@@ -574,6 +619,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Primary contact.
+        /// </summary>
+        public static string CustomerPrimaryContactCaption {
+            get {
+                return ResourceManager.GetString("CustomerPrimaryContactCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address line 1.
         /// </summary>
         public static string CustomerProfileAddressLine1Caption {
@@ -745,6 +799,24 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This will be the username you use for authentication..
+        /// </summary>
+        public static string CustomerProfileOffice365EmailCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileOffice365EmailCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string CustomerProfileOffice365UserNameCaption {
+            get {
+                return ResourceManager.GetString("CustomerProfileOffice365UserNameCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to State/Province.
         /// </summary>
         public static string CustomerProfileStateCaption {
@@ -759,6 +831,33 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         public static string CustomerProfileZipPostalCaption {
             get {
                 return ResourceManager.GetString("CustomerProfileZipPostalCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not register the customer. Please try later or contact support..
+        /// </summary>
+        public static string CustomerRegistrationFailureMessage {
+            get {
+                return ResourceManager.GetString("CustomerRegistrationFailureMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registering customer....
+        /// </summary>
+        public static string CustomerRegistrationMessage {
+            get {
+                return ResourceManager.GetString("CustomerRegistrationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully created customer.
+        /// </summary>
+        public static string CustomerRegistrationSuccessMessage {
+            get {
+                return ResourceManager.GetString("CustomerRegistrationSuccessMessage", resourceCulture);
             }
         }
         
@@ -844,6 +943,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We are unable to process your request at this time. Please try later or contact support..
+        /// </summary>
+        public static string DownstreamErrorPrefix {
+            get {
+                return ResourceManager.GetString("DownstreamErrorPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ....
         /// </summary>
         public static string Ellipsis {
@@ -867,6 +975,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         public static string EmptyListMessage {
             get {
                 return ResourceManager.GetString("EmptyListMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must select at least one offer to purchase..
+        /// </summary>
+        public static string EmptyOffersErrorMessage {
+            get {
+                return ResourceManager.GetString("EmptyOffersErrorMessage", resourceCulture);
             }
         }
         
@@ -925,11 +1042,29 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please specify a valid address.
+        /// </summary>
+        public static string InvalidAddress {
+            get {
+                return ResourceManager.GetString("InvalidAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There was a problem in one of the fields you entered:.
         /// </summary>
         public static string InvalidInput {
             get {
                 return ResourceManager.GetString("InvalidInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please correct the invalid input:.
+        /// </summary>
+        public static string InvalidInputErrorPrefix {
+            get {
+                return ResourceManager.GetString("InvalidInputErrorPrefix", resourceCulture);
             }
         }
         
@@ -975,6 +1110,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         public static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft ID.
+        /// </summary>
+        public static string MicrosoftId {
+            get {
+                return ResourceManager.GetString("MicrosoftId", resourceCulture);
             }
         }
         
@@ -1060,6 +1204,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order registration error.
+        /// </summary>
+        public static string OrderRegistrationFailureMessage {
+            get {
+                return ResourceManager.GetString("OrderRegistrationFailureMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password:.
         /// </summary>
         public static string PasswordLabel {
@@ -1096,6 +1249,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Processing the order....
+        /// </summary>
+        public static string ProcessingOrder {
+            get {
+                return ResourceManager.GetString("ProcessingOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Explorer.
         /// </summary>
         public static string ProductTitle {
@@ -1110,6 +1272,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         public static string RedisCacheConnectionException {
             get {
                 return ResourceManager.GetString("RedisCacheConnectionException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please copy the admin user account and password and save in a secure location. You will not be able to retrieve it after you leave this page..
+        /// </summary>
+        public static string RegistrationConfirmationPasswordNoticeCaption {
+            get {
+                return ResourceManager.GetString("RegistrationConfirmationPasswordNoticeCaption", resourceCulture);
             }
         }
         
@@ -1173,6 +1344,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer {
         public static string SelectOfferErrorMessage {
             get {
                 return ResourceManager.GetString("SelectOfferErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string SetupInformation {
+            get {
+                return ResourceManager.GetString("SetupInformation", resourceCulture);
             }
         }
         

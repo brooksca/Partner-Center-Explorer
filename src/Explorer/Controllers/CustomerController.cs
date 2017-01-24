@@ -56,7 +56,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
         /// </exception>
         [@Authorize(UserRole = UserRole.Partner)]
         [HttpPost]
-        [Route("create")]
+        [Route("")]
         public async Task<CustomerViewModel> CreateAsync([FromBody] CustomerViewModel customerViewModel)
         {
             PartnerCenter.Models.CountryValidationRules.CountryValidationRules customerCountryValidationRules;
@@ -308,7 +308,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
                 correlationId = Guid.NewGuid();
 
                 principal = (CustomerPrincipal)HttpContext.Current.User;
-                responseCulture = new CultureInfo(Services.Localization.Locale);
+                responseCulture = new CultureInfo(Services.Localization().Locale);
 
                 operations =
                     Services.PartnerCenter.With(RequestContextFactory.Instance.Create(
@@ -409,7 +409,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
                 correlationId = Guid.NewGuid();
 
                 principal = (CustomerPrincipal)HttpContext.Current.User;
-                responseCulture = new CultureInfo(Services.Localization.Locale);
+                responseCulture = new CultureInfo(Services.Localization().Locale);
 
                 operations =
                     Services.PartnerCenter.With(RequestContextFactory.Instance.Create(

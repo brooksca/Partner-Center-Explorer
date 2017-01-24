@@ -21,11 +21,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
         ICacheService CachingService { get; }
 
         /// <summary>
-        /// Gets the localization functionality.
-        /// </summary>
-        ILocalization Localization { get; }
-
-        /// <summary>
         /// Gets the Partner Center service reference.
         /// </summary>
         IAggregatePartner PartnerCenter { get; }
@@ -40,5 +35,12 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
         /// </summary>
         /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
         Task InitializeAsync();
+
+        /// <summary>
+        /// Gets the localization functionality.
+        /// </summary>
+        /// <returns>An instance of <see cref="ILocalization"/></returns>
+        /// <exception cref="LocalizationException">The explorer service has not been initialized.</exception>
+        ILocalization Localization();
     }
 }

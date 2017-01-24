@@ -525,4 +525,64 @@
   <data name="UserLicencesCaption" xml:space="preserve">
     <value>Licenses</value>
   </data>
+  <data name="CustomerProfileOffice365EmailCaption" xml:space="preserve">
+    <value>This will be the username you use for authentication.</value>
+  </data>
+  <data name="CustomerProfileOffice365UserNameCaption" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="CustomerRegistrationFailureMessage" xml:space="preserve">
+    <value>Could not register the customer. Please try later or contact support.</value>
+  </data>
+  <data name="CustomerRegistrationMessage" xml:space="preserve">
+    <value>Registering customer...</value>
+  </data>
+  <data name="CustomerRegistrationSuccessMessage" xml:space="preserve">
+    <value>Successfully created customer</value>
+  </data>
+  <data name="DownstreamErrorPrefix" xml:space="preserve">
+    <value>We are unable to process your request at this time. Please try later or contact support.</value>
+  </data>
+  <data name="InvalidAddress" xml:space="preserve">
+    <value>Please specify a valid address</value>
+  </data>
+  <data name="InvalidInputErrorPrefix" xml:space="preserve">
+    <value>Please correct the invalid input:</value>
+  </data>
+  <data name="OrderRegistrationFailureMessage" xml:space="preserve">
+    <value>Order registration error</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="AdminUserAccount" xml:space="preserve">
+    <value>Admin user account</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="ConfirmationMessage" xml:space="preserve">
+    <value>Thank you. Customer information has been setup. Please review this page and click submit to place the order.</value>
+  </data>
+  <data name="ContactInformation" xml:space="preserve">
+    <value>Customer information</value>
+  </data>
+  <data name="CustomerPrimaryContactCaption" xml:space="preserve">
+    <value>Primary contact</value>
+  </data>
+  <data name="MicrosoftId" xml:space="preserve">
+    <value>Microsoft ID</value>
+  </data>
+  <data name="RegistrationConfirmationPasswordNoticeCaption" xml:space="preserve">
+    <value>Please copy the admin user account and password and save in a secure location. You will not be able to retrieve it after you leave this page.</value>
+  </data>
+  <data name="SetupInformation" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="EmptyOffersErrorMessage" xml:space="preserve">
+    <value>You must select at least one offer to purchase.</value>
+  </data>
+  <data name="ProcessingOrder" xml:space="preserve">
+    <value>Processing the order...</value>
+  </data>
 </root>

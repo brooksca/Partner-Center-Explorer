@@ -37,6 +37,10 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
         {
         }
 
+        /// <summary>
+        /// Obtain a list of available offers from Partner Center.
+        /// </summary>
+        /// <returns>A list of available offers from Partner Center.</returns>
         [@Authorize(UserRole = UserRole.Any)]
         [HttpGet]
         [Route("")]
@@ -58,7 +62,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
                 if (offers == null)
                 {
                     offers = await Services.PartnerCenter.Offers.ByCountry(
-                        Services.Localization.CountryIso2Code).GetAsync();
+                        Services.Localization().CountryIso2Code).GetAsync();
 
                     await Services.CachingService.StoreAsync(
                         CacheDatabaseType.DataStructures, "MicrosoftOffers", offers, TimeSpan.FromDays(1));
@@ -71,7 +75,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
                 // Capture the request for the customer summary for analysis.
                 eventProperties = new Dictionary<string, string>
                 {
-                    { "CountryIso2Code", Services.Localization.CountryIso2Code },
+                    { "CountryIso2Code", Services.Localization().CountryIso2Code },
                 };
 
                 // Track the event measurements for analysis.

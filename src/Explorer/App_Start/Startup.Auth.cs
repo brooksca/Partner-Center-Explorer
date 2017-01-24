@@ -14,10 +14,10 @@ namespace Microsoft.Store.PartnerCenter.Explorer
     using Azure.ActiveDirectory.GraphClient;
     using Configuration;
     using Exceptions;
-    using global::Owin;
     using Logic;
     using Logic.Authentication;
     using Logic.Azure;
+    using global::Owin;
     using Owin.Security;
     using Owin.Security.Cookies;
     using Owin.Security.OpenIdConnect;

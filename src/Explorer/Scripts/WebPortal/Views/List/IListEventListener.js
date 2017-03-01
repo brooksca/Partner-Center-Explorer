@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Views.List.IListEventListener = function () {
+﻿Microsoft.WebPortal.Views.List.IListEventListener = function () {
     /// <summary>
     /// Specifies the contract a list event listener must implement.
     /// </summary>

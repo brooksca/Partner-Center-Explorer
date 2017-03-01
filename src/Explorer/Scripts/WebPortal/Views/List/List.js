@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Views.List = function (webPortal, elementSelector, listener, isShown, animation) {
+﻿Microsoft.WebPortal.Views.List = function (webPortal, elementSelector, listener, isShown, animation) {
     /// <summary>
     /// A view that renders a list of items. You can specify columns, sorting, clicking, row selection options as well as list rendering styles
     /// such as paged or infinite scrolling. The list will communicate the events back to the associated listener which can handle the events.

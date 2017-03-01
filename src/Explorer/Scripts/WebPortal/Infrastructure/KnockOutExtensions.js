@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Infrastructure.KoExtensions = {
+﻿Microsoft.WebPortal.Infrastructure.KoExtensions = {
     apply: function (webPortal) {
         /// <summary>
         /// Adds Knock out binding extensions useful to the portal features.

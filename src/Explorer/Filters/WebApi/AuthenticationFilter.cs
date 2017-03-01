@@ -10,7 +10,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Filters.WebApi
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Http.Filters;
-    using Logic.Authentication;
+    using Security;
 
     /// <summary>
     /// Augments Web API authentication by replacing the principal with a more usable custom principal object.

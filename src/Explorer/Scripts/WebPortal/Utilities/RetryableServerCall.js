@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Utilities.RetryableServerCall = function (operation, name, retryPolicy) {
+﻿Microsoft.WebPortal.Utilities.RetryableServerCall = function (operation, name, retryPolicy) {
     /// <summary>
     /// Retries server AJAX calls according to the configured retry policy.
     /// </summary>

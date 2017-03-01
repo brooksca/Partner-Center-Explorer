@@ -12,6 +12,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Cache
     using Configuration;
     using Logic;
     using Newtonsoft.Json;
+    using Security;
     using StackExchange.Redis;
 
     /// <summary>

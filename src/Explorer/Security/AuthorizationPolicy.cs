@@ -4,8 +4,10 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
+namespace Microsoft.Store.PartnerCenter.Explorer.Security
 {
+    using Logic; 
+
     /// <summary>
     /// Represents the authorization policy utilized by this application.
     /// </summary>

@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Views.List.InfiniteScrollingRenderer = function (list) {
+﻿Microsoft.WebPortal.Views.List.InfiniteScrollingRenderer = function (list) {
     /// <summary>
     /// Renders an infinite scrolling list. As the user reaches the bottom of the list, new rows will be requested from the listener.
     /// </summary>

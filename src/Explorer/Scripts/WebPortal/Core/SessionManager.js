@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Core.SessionManager = function (webPortal) {
+﻿Microsoft.WebPortal.Core.SessionManager = function (webPortal) {
     /// <summary>
     /// Stores session information.
     /// </summary>
@@ -121,7 +119,7 @@ Microsoft.WebPortal.Core.SessionManager.prototype.fetchCustomerDetails = functio
     }
 
     var getCustomerServerCall =
-        new Microsoft.WebPortal.Utilities.RetryableServerCall(this.webPortal.Helpers.ajaxCall("api/CustomerAccounts", Microsoft.WebPortal.HttpMethod.Get))
+        new Microsoft.WebPortal.Utilities.RetryableServerCall(this.webPortal.Helpers.ajaxCall("api/customer", Microsoft.WebPortal.HttpMethod.Get))
 
     var self = this;
 
@@ -136,48 +134,6 @@ Microsoft.WebPortal.Core.SessionManager.prototype.fetchCustomerDetails = functio
             self.webPortal.Diagnostics.error("Failed to acquire Customer Information: " + error);
             resolver.reject();
         });
-}
-
-Microsoft.WebPortal.Core.SessionManager.prototype.fetchBrandingConfiguration = function (resolver) {
-    /// <summary>
-    /// Retrieves and the partner's branding configuration.
-    /// </summary>
-    /// <param name="resolver">A JQuery deferred object which will be notified with the branding configuration once it is
-    /// available, or get a rejection if there was a failure retrieving it.</param>
-
-    var getBrandingConfigurationServerCall =
-        new Microsoft.WebPortal.Utilities.RetryableServerCall(this.webPortal.Helpers.ajaxCall("api/AdminConsole/Branding", Microsoft.WebPortal.HttpMethod.Get))
-
-    var self = this;
-
-    getBrandingConfigurationServerCall.execute().done(function (brandingConfiguration) {
-        self.webPortal.Diagnostics.information("Acquired branding configuration");
-        resolver.resolve(brandingConfiguration);
-    }).fail(function (result, status, error) {
-        self.webPortal.Diagnostics.error("Failed to acquired branding configuration: " + error);
-        resolver.reject();
-    });
-}
-
-Microsoft.WebPortal.Core.SessionManager.prototype.fetchPaymentConfiguration = function (resolver) {
-    /// <summary>
-    /// Retrieves and the partner's payment configuration.
-    /// </summary>
-    /// <param name="resolver">A JQuery deferred object which will be notified with the payment configuration once it is
-    /// available, or get a rejection if there was a failure retrieving it.</param>
-
-    var getPaymentConfigurationServerCall =
-        new Microsoft.WebPortal.Utilities.RetryableServerCall(this.webPortal.Helpers.ajaxCall("api/AdminConsole/Payment", Microsoft.WebPortal.HttpMethod.Get))
-
-    var self = this;
-
-    getPaymentConfigurationServerCall.execute().done(function (paymentConfiguration) {
-        self.webPortal.Diagnostics.information("Acquired payment configuration");
-        resolver.resolve(paymentConfiguration);
-    }).fail(function (result, status, error) {
-        self.webPortal.Diagnostics.error("Failed to acquired payment configuration: " + error);
-        resolver.reject();
-    });
 }
 
 //@ sourceURL=SessionManager.js

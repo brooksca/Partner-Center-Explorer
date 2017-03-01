@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.HeaderBarSection = function (webPortal, id, template) {
+﻿Microsoft.WebPortal.Services.HeaderBarSection = function (webPortal, id, template) {
     /// <summary>
     /// A base class that represents a section in the header bar. Extend this to implement your custom header bar sections.
     /// </summary>

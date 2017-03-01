@@ -14,11 +14,11 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
     using System.Web.Http;
     using Filters.WebApi;
     using Logic;
-    using Logic.Authentication;
     using Models;
     using PartnerCenter.Models.Customers;
     using PartnerCenter.Models.Orders;
     using RequestContext;
+    using Security;
 
     /// <summary>
     /// Provides the ability to manage orders.
@@ -44,7 +44,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
         /// <returns>A summary for all subscriptions that were created.</returns>
         [@Authorize(UserRole = UserRole.None)]
         [HttpPost]
-        [Route("Create")]
+        [Route("create")]
         public async Task<IEnumerable<SubscriptionSummaryViewModel>> CreateAsync([FromBody]OrderViewModel orderViewModel)
         {
             Customer customer;

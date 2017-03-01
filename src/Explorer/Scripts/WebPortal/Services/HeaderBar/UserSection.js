@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.UserSection = function (webPortal, loggedInUser) {
+﻿Microsoft.WebPortal.Services.UserSection = function (webPortal, loggedInUser) {
     /// <summary>
     /// Renders the user information section in the header bar. Displays the user name and avatar icon and manages the user menu.
     /// </summary>

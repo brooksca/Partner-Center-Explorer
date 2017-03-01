@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.TitleSection = function (webPortal) {
+﻿Microsoft.WebPortal.Services.TitleSection = function (webPortal) {
     /// <summary>
     /// A header bar section that renders the product log, title, active feature and a drop down primary navigation.
     /// </summary>

@@ -1,4 +1,4 @@
-﻿Microsoft.WebPortal.Core.TemplatePresenter = function (webPortal, feature, title, templateUrl, templateErrorMessage, templateProgressMessage) {
+﻿Microsoft.WebPortal.Core.WidgetPresenter = function (webPortal, feature, title, widgetUrl, templateErrorMessage, templateProgressMessage) {
     /// <summary>
     /// The template presenter provides functionality that retrieve and render an HTML template from the server using the given template URL.
     /// HTML templates will be cached for performance improvement if the presenter is loaded again in the future.
@@ -13,14 +13,14 @@
     /// <param name="webPortal">The web portal instance.</param>
     /// <param name="feature">The feature this presenter owns.</param>
     /// <param name="title">The presenter title.</param>
-    /// <param name="templateUrl">The URL  of the HTML template to fetch and render.</param>
+    /// <param name="widgetUrl">The URL  of the HTML template to fetch and render.</param>
     /// <param name="templateErrorMessage">The error message to show in case of failure to retrieve the HTML template.</param>
     /// <param name="templateProgressMessage">The retry message to show in case of failure to retrieve the HTML template.</param>
 
     Microsoft.WebPortal.Core.Presenter.call(this, webPortal, feature, title);
 
-    this.webPortal.Helpers.throwIfNotSet(templateUrl, "templateUrl", "Microsoft.WebPortal.Core.TemplatePresenter.Constructor");
-    this.templateUrl = templateUrl;
+    this.webPortal.Helpers.throwIfNotSet(widgetUrl, "widgetUrl", "Microsoft.WebPortal.Core.WidgetPresenter.Constructor");
+    this.widgetUrl = widgetUrl;
 
     this.templateMessages = {
         errorMessage: templateErrorMessage || this.webPortal.Resources.Strings.TemplateLoadFailureMessage,
@@ -29,36 +29,30 @@
 }
 
 // extend the base presenter
-$WebPortal.Helpers.inherit(Microsoft.WebPortal.Core.TemplatePresenter, Microsoft.WebPortal.Core.Presenter);
+$WebPortal.Helpers.inherit(Microsoft.WebPortal.Core.WidgetPresenter, Microsoft.WebPortal.Core.Widget);
 
-Microsoft.WebPortal.Core.TemplatePresenter.prototype.activate = function (context) {
+Microsoft.WebPortal.Core.WidgetPresenter.prototype.activate = function (context) {
     /// <summary>
     /// Called when the presenter is activated.
     /// </summary>
-    /// <param name="context">An optional parameter.</param>
+    /// <param name="context">Context utilized to activate the widget.</param>
+
+    this.webPortal.Helpers.throwIfNotSet(context, "context", "Microsoft.WebPortal.Core.WidgetPresenter.activate");
+
 
     if (this.onActivate) {
         // the subclass provided an activation hook, call it
         this.onActivate(context);
     }
 
-    // TODO: refactor this, Get the HTML template from the session cache
-    this.template = this.webPortal.Session.featureTemplates[this.feature.name];
+    this._fetchMarkup(context);
 
-    if (this.template) {
-        // we have the HTML template cached, render it
-        this._renderUI();
-    } else {
-        // retrieve the HTML template used to render the devices from the server
-        this._fetchMarkup();
-    }
-
-    Microsoft.WebPortal.Core.Presenter.prototype.activate.call(this, context);
+    Microsoft.WebPortal.Core.Widget.prototype.activate.call(this, context);
 }
 
-Microsoft.WebPortal.Core.TemplatePresenter.prototype.deactivate = function (context) {
+Microsoft.WebPortal.Core.WidgetPresenter.prototype.deactivate = function (context) {
     /// <summary>
-    /// Called when the presenter is deactivated.
+    /// Called when the widget is deactivated.
     /// </summary>
     /// <param name="context">An optional parameter.</param>
 
@@ -67,12 +61,12 @@ Microsoft.WebPortal.Core.TemplatePresenter.prototype.deactivate = function (cont
         this.onDeactivate(context);
     }
 
-    Microsoft.WebPortal.Core.Presenter.prototype.deactivate.call(this, context);
+    Microsoft.WebPortal.Core.Widget.prototype.deactivate.call(this, context);
 }
 
-Microsoft.WebPortal.Core.TemplatePresenter.prototype.destroy = function (context) {
+Microsoft.WebPortal.Core.WidgetPresenter.prototype.destroy = function (context) {
     /// <summary>
-    /// Called when the presenter is to be destroyed.
+    /// Called when the widget is to be destroyed.
     /// </summary>
     /// <param name="context">An optional parameter.</param>
 
@@ -81,16 +75,16 @@ Microsoft.WebPortal.Core.TemplatePresenter.prototype.destroy = function (context
         this.onDestroy(context);
     }
 
-    Microsoft.WebPortal.Core.Presenter.prototype.destroy.call(this, context);
+    Microsoft.WebPortal.Core.Widget.prototype.destroy.call(this, context);
 }
 
-Microsoft.WebPortal.Core.TemplatePresenter.prototype._renderUI = function () {
+Microsoft.WebPortal.Core.WidgetPresenter.prototype._renderUI = function () {
     /// <summary>
     /// Renders the HTML template and binds to view models.
     /// </summary>
 
     var self = this;
-    
+
     this.webPortal.ContentPanel.render(this.template, $.Deferred().progress(function () {
         // template has been rendered and is in the process of showing
         if (self.onRender) {
@@ -106,7 +100,7 @@ Microsoft.WebPortal.Core.TemplatePresenter.prototype._renderUI = function () {
     }));
 }
 
-Microsoft.WebPortal.Core.TemplatePresenter.prototype._fetchMarkup = function () {
+Microsoft.WebPortal.Core.WidgetPresenter.prototype._fetchMarkup = function (context) {
     /// <summary>
     /// Retrieves the HTML template from the server and renders it.
     /// </summary>
@@ -114,7 +108,12 @@ Microsoft.WebPortal.Core.TemplatePresenter.prototype._fetchMarkup = function () 
     this.webPortal.ContentPanel.showProgress(true);
 
     var fetchMarkupOperation = this.webPortal.ServerCallManager.create(this.feature,
-        this.webPortal.Helpers.ajaxCall(this.templateUrl, Microsoft.WebPortal.HttpMethod.Get), "FetchMarkUp(" + this.title() + ")");
+        this.webPortal.Helpers.ajaxCall(
+            this.widgetUrl,
+            Microsoft.WebPortal.HttpMethod.Post,
+            context,
+            Microsoft.WebPortal.ContentType.Json,
+            120000), "FetchMarkUp(" + this.title() + ")", []);
 
     var self = this;
 
@@ -127,9 +126,6 @@ Microsoft.WebPortal.Core.TemplatePresenter.prototype._fetchMarkup = function () 
                 // this success is a result of a retry, dismiss the progress notification
                 notification.Dismiss();
             }
-
-            // cache the template for future use
-            self.template = self.webPortal.Session.featureTemplates[self.feature.name] = htmlTemplate;
 
             // render the template
             self._renderUI();
@@ -168,4 +164,4 @@ Microsoft.WebPortal.Core.TemplatePresenter.prototype._fetchMarkup = function () 
     fetchFunction();
 }
 
-//@ sourceURL=TemplatePresenter.js
+//@ sourceURL=WidgetPresenter.js

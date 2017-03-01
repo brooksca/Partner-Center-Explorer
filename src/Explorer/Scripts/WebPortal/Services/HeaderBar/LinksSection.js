@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.LinksSection = function (webPortal) {
+﻿Microsoft.WebPortal.Services.LinksSection = function (webPortal) {
     /// <summary>
     /// Renders the links the header bar.
     /// </summary>

@@ -11,7 +11,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
     using Configuration;
     using Configuration.Manager;
     using Filters.Mvc;
-    using Logic.Authentication;
+    using Security;
 
     /// <summary>
     /// Serves HTML templates to the browser.

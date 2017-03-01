@@ -8,7 +8,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
 {
     using System.Web.Http;
     using Logic;
-    using Practices.Unity;
 
     /// <summary>
     /// Base controller for all API controllers.
@@ -23,7 +22,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseApiController"/> class.
         /// </summary>
-        /// <param name="service">Provides access to the core application services.</param>
+        /// <param name="service">Provides access to core application services.</param>
         /// <exception cref="System.ArgumentNullException">
         /// <paramref name="service"/> is null.
         /// </exception>
@@ -37,6 +36,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
         /// <summary>
         /// Provides access to the core application services.
         /// </summary>
-        protected IExplorerService Services => this.service ?? MvcApplication.UnityContainer.Resolve<IExplorerService>();
+        protected IExplorerService Services => this.service;
     }
 }

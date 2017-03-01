@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.CommerceOperationType = {
+﻿Microsoft.WebPortal.CommerceOperationType = {
 
     /// <summary>
     /// A brand new purchase.
@@ -16,6 +14,6 @@ Microsoft.WebPortal.CommerceOperationType = {
     /// Existing subscription renewal.
     /// </summary>
     Renewal: 2
-}
+};
 
 //@ sourceURL=CommerceOperationType.js

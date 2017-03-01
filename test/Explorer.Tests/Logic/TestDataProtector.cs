@@ -6,9 +6,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Tests.Logic
 {
-    using Explorer.Logic;
     using System;
     using System.Text;
+    using Security;
 
     /// <summary>
     /// Provides data protection exclusively for testing purposes.

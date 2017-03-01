@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
+namespace Microsoft.Store.PartnerCenter.Explorer.Security
 {
     using System.Security.Claims;
     using Configuration;
@@ -59,7 +59,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the tenant identifier of the authenticate user. 
+        /// Gets or sets the tenant identifier of the authenticated user. 
         /// </summary>
         public string TenantId { get; set; }
     }

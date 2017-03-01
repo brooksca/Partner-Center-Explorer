@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Views.NewCustomerProfileView = function (webPortal, elementSelector, isShown, animation) {
+﻿Microsoft.WebPortal.Views.NewCustomerProfileView = function (webPortal, elementSelector, isShown, animation) {
     /// <summary>
     /// A view that render input fields for a new customer company and contact information.
     /// </summary>

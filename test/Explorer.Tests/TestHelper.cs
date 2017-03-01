@@ -6,14 +6,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Tests
 {
-    using Azure.ActiveDirectory.GraphClient;
-    using Explorer.Logic.Authentication;
-    using PartnerCenter.Models.Customers;
     using System;
     using System.Collections.Generic;
     using System.Configuration;
     using System.Threading.Tasks;
     using System.Web;
+    using PartnerCenter.Models.Customers;
+    using Security;
+    using Security.Fakes;
 
     /// <summary>
     /// Helper class that provides common objects used for unit testing.
@@ -41,29 +41,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Tests
         public static string TailspinToysTenantId => ConfigurationManager.AppSettings["TailspinToysTenantId"];
 
         /// <summary>
-        /// Gets an instance of <see cref="IActiveDirectoryClient"/> used exclusively for unit tests.
-        /// </summary>
-        public static IActiveDirectoryClient ActiveDirectoryClient
-        {
-            get
-            {
-                return new Azure.ActiveDirectory.GraphClient.Fakes.StubIActiveDirectoryClient()
-                {
-                    UsersGet = () => GetUsers()
-                };
-            }
-        }
-
-        /// <summary>
         /// Gets an instance of <see cref="ITokenManagement"/> used exclusively for unit tests.
         /// </summary>
         public static ITokenManagement TokenMgmt
         {
             get
             {
-                return new Explorer.Logic.Authentication.Fakes.StubITokenManagement()
+                return new StubITokenManagement()
                 {
-                    GetAppOnlyTokenAsyncStringStringString = (authority, key, resource) =>
+                    GetAppOnlyTokenAsyncStringString = (authority, resource) =>
                         Task.FromResult(new AuthenticationToken("access", DateTime.Now.AddMinutes(30)))
                 };
             }
@@ -80,10 +66,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Tests
             {
                 new Customer()
                 {
-                    BillingProfile = new CustomerBillingProfile()
-                    { /* intentionally left empty */ },
+                    BillingProfile = new CustomerBillingProfile(),
                     CommerceId = ContosoTenantId,
-                    CompanyProfile = new CustomerCompanyProfile()
+                    CompanyProfile = new CustomerCompanyProfile
                     {
                         CompanyName = "Contoso"
                     },
@@ -91,10 +76,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Tests
                 },
                 new Customer()
                 {
-                    BillingProfile = new CustomerBillingProfile()
-                    { /* intentionally left empty */ },
+                    BillingProfile = new CustomerBillingProfile(),
                     CommerceId = FabrikamTenantId,
-                    CompanyProfile = new CustomerCompanyProfile()
+                    CompanyProfile = new CustomerCompanyProfile
                     {
                         CompanyName = "Fabrikam"
                     },
@@ -102,10 +86,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Tests
                 },
                 new Customer()
                 {
-                    BillingProfile = new CustomerBillingProfile()
-                    { /* intentionally left empty */ },
+                    BillingProfile = new CustomerBillingProfile(),
                     CommerceId = TailspinToysTenantId,
-                    CompanyProfile = new CustomerCompanyProfile()
+                    CompanyProfile = new CustomerCompanyProfile
                     {
                         CompanyName = "Tailspin Toys"
                     },
@@ -125,7 +108,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Tests
 
             return new HttpContext(new HttpRequest(null, "http://tempuri.org", null), new HttpResponse(null))
             {
-                User = new CustomerPrincipal()
+                User = new CustomerPrincipal
                 {
                     CustomerId = id,
                     Email = "test@unit.com",
@@ -133,11 +116,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Tests
                     TenantId = id
                 }
             };
-        }
-
-        private static IUserCollection GetUsers()
-        {
-            return null;
         }
     }
 }

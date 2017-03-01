@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.ActionsManager = function (webPortal, elementSelector, maxActionsInBar, actionsTemplate) {
+﻿Microsoft.WebPortal.Services.ActionsManager = function (webPortal, elementSelector, maxActionsInBar, actionsTemplate) {
     /// <summary>
     /// The actions manager maintains and renders actions which the user can invoke. It provides APIs to add and remove actions.
     /// Actions can be enabled or disabled. Actions also can be simple or compound.

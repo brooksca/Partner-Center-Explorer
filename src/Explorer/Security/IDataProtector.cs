@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.Store.PartnerCenter.Explorer.Logic
+namespace Microsoft.Store.PartnerCenter.Explorer.Security
 {
     /// <summary>
     /// Represents a data protection strategy.

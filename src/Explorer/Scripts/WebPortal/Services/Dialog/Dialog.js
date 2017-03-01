@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.Dialog = function (webPortal, animation, dialogTemplate, cssClass) {
+﻿Microsoft.WebPortal.Services.Dialog = function (webPortal, animation, dialogTemplate, cssClass) {
     /// <summary>
     /// The dialog service. Provides a pop up dialog which can render KO templates and show a set of standard buttons.
     /// </summary>

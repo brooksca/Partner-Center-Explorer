@@ -10,14 +10,14 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Authentication;
     using Configuration;
     using Microsoft.Azure.Insights;
     using Microsoft.Azure.Insights.Models;
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
-    using Microsoft.Rest.Azure.OData;
     using Models;
+    using Rest;
+    using Rest.Azure;
+    using Rest.Azure.OData;
+    using Security;
 
     /// <summary>
     /// Provides the ability to monitor an Azure subscription.
@@ -32,12 +32,22 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
         /// <summary>
         /// Provides the ability to interact with the Azure Monitor API. 
         /// </summary>
-        private IInsightsClient client;
+        private readonly IInsightsClient client;
 
         /// <summary>
-        /// Provides the ability to access core application services.
+        /// Provides the ability to access core services.
         /// </summary>
-        private IExplorerService service;
+        private readonly IExplorerService services;
+        
+        /// <summary>
+        /// The subscription identifier that should be utilized in querying the health.
+        /// </summary>
+        private readonly string subscriptionId;
+
+        /// <summary>
+        /// The tenant identifier that owns the subscription.
+        /// </summary>
+        private readonly string tenantId;
 
         /// <summary>
         /// A flag indicating whether or not this object has been disposed.
@@ -45,14 +55,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
         private bool disposed;
 
         /// <summary>
-        /// The subscription identifier that should be utilized in querying the health.
-        /// </summary>
-        private string subscriptionId;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionMonitor"/> class.
         /// </summary>
-        /// <param name="service">Provides access to the core application services.</param>
+        /// <param name="services">Provides access to the core application services.</param>
         /// <param name="tenantId">Identifier for the tenant.</param>
         /// <param name="subscriptionId">Identifier for the subscription.</param>
         /// <exception cref="ArgumentException">
@@ -61,48 +66,44 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
         /// <paramref name="subscriptionId"/> is empty or null.
         /// </exception>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="service"/> is null.
+        /// <paramref name="services"/> is null.
         /// </exception>
-        public SubscriptionMonitor(IExplorerService service, string tenantId, string subscriptionId)
+        public SubscriptionMonitor(IExplorerService services, string tenantId, string subscriptionId)
         {
-            service.AssertNotNull(nameof(service));
+            services.AssertNotNull(nameof(services));
             tenantId.AssertNotEmpty(nameof(tenantId));
             subscriptionId.AssertNotEmpty(nameof(subscriptionId));
 
-            ITokenManagement tokenMgmt = new TokenManagement(service);
+            ITokenManagement tokenMgmt = new TokenManagement(services);
 
             string token = tokenMgmt.GetAppPlusUserToken(
                 $"{ApplicationConfiguration.ActiveDirectoryEndpoint}/{tenantId}",
                 ApplicationConfiguration.AzureManagementEndpoint).Token;
 
             this.client = new InsightsClient(new TokenCredentials(token));
-            this.service = service;
+            this.services = services;
             this.subscriptionId = subscriptionId;
+            this.tenantId = tenantId;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionMonitor"/> class.
         /// </summary>
-        /// <param name="service">Provides access to core application services.</param>
+        /// <param name="services">Provides access to core application services.</param>
         /// <param name="insightsClient">An instance of <see cref="IInsightsClient"/>.</param>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="service"/> is null.
+        /// <paramref name="services"/> is null.
         /// or 
         /// <paramref name="insightsClient"/> is null.
         /// </exception>
-        public SubscriptionMonitor(IExplorerService service, IInsightsClient insightsClient)
+        public SubscriptionMonitor(IExplorerService services, IInsightsClient insightsClient)
         {
-            service.AssertNotNull(nameof(service));
+            services.AssertNotNull(nameof(services));
             insightsClient.AssertNotNull(nameof(insightsClient));
 
             this.client = insightsClient;
-            this.service = service;
+            this.services = services;
         }
-
-        /// <summary>
-        /// Provides access to core application services.
-        /// </summary>
-        private IExplorerService Services => this.service;
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -121,11 +122,15 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
         {
             DateTime queryEndDate;
             DateTime queryStartDate;
+            DateTime startTime;
+            Dictionary<string, double> eventMeasurements;
+            Dictionary<string, string> eventProperties;
             IPage<EventData> events;
             ODataQuery<EventData> query;
 
             try
             {
+                startTime = DateTime.Now;
                 this.client.SubscriptionId = this.subscriptionId;
 
                 queryEndDate = DateTime.UtcNow;
@@ -137,6 +142,22 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Azure
                     && (eventData.ResourceProvider == ResourceProviderName)));
 
                 events = await this.client.Events.ListAsync(query);
+
+                // Capture the request for the customer summary for analysis.
+                eventProperties = new Dictionary<string, string>
+                {
+                    { "SubscriptionId", this.subscriptionId },
+                    { "TenantId", this.tenantId }
+                };
+
+                // Track the event measurements for analysis.
+                eventMeasurements = new Dictionary<string, double>
+                {
+                    { "ElapsedMilliseconds", DateTime.Now.Subtract(startTime).TotalMilliseconds },
+                    { "NumberOfEvents", events.Count() }
+                };
+
+                this.services.Telemetry.TrackEvent("GetIncidentsAsync", eventProperties, eventMeasurements);
 
                 return events.Select(x => new IncidentModel
                 {

@@ -66,6 +66,8 @@
             "~/Scripts/WebPortal/Core/SessionManager.js",
             "~/Scripts/WebPortal/Core/Presenter.js",
             "~/Scripts/WebPortal/Core/TemplatePresenter.js",
+            "~/Scripts/WebPortal/Core/Widget.js",
+            "~/Scripts/WebPortal/Core/WidgetPresenter.js",
             "~/Scripts/WebPortal/Core/View.js",
             "~/Scripts/WebPortal/Core/ContentPanel.js",
             "~/Scripts/WebPortal/Core/Journey.js",

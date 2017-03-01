@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.ActionsService = function (webPortal, serviceName, elementSelector) {
+﻿Microsoft.WebPortal.Services.ActionsService = function (webPortal, serviceName, elementSelector) {
     /// <summary>
     /// Implements an actions service which supports adding and removing simple and compound actions.
     /// </summary>

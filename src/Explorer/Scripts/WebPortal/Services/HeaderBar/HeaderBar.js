@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.HeaderBar = function (webPortal) {
+﻿Microsoft.WebPortal.Services.HeaderBar = function (webPortal) {
     /// <summary>
     /// The portal header bar service.
     /// </summary>

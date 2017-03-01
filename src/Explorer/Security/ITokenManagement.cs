@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
+namespace Microsoft.Store.PartnerCenter.Explorer.Security
 {
     using System;
     using System.Threading.Tasks;
@@ -18,33 +18,27 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// Gets an access token from the authority using app only authentication.
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="key">Key to be utilized for the access token caching strategy.</param>
         /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
         /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
-        /// authority
-        /// or
-        /// key
-        /// or
-        /// resource
+        /// <paramref name="authority"/> is empty or null.
+        /// or 
+        /// <paramref name="resource"/> is empty or null.
         /// </exception>
-        AuthenticationToken GetAppOnlyToken(string authority, string key, string resource);
+        AuthenticationToken GetAppOnlyToken(string authority, string resource);
 
         /// <summary>
         /// Gets an access token from the authority using app only authentication.
         /// </summary>
         /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="key">Key to be utilized for the access token caching strategy.</param>
         /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
         /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
-        /// authority
-        /// or
-        /// key
-        /// or
-        /// resource
+        /// <paramref name="authority"/> is empty or null.
+        /// or 
+        /// <paramref name="resource"/> is empty or null.
         /// </exception>
-        Task<AuthenticationToken> GetAppOnlyTokenAsync(string authority, string key, string resource);
+        Task<AuthenticationToken> GetAppOnlyTokenAsync(string authority, string resource);
 
         /// <summary>
         /// Gets an access token from the authority using app + user authentication.
@@ -53,9 +47,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
         /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
-        /// authority
+        /// <paramref name="authority"/> is empty or null.
         /// or
-        /// resource
+        /// <paramref name="resource"/> is empty or null.
         /// </exception>
         AuthenticationToken GetAppPlusUserToken(string authority, string resource);
 
@@ -66,9 +60,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
         /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
         /// <returns>An instance of <see cref="AuthenticationToken"/> that represented the access token.</returns>
         /// <exception cref="ArgumentException">
-        /// authority
+        /// <paramref name="authority"/> is empty or null.
         /// or
-        /// resource
+        /// <paramref name="resource"/> is empty or null.
         /// </exception>
         Task<AuthenticationToken> GetAppPlusUserTokenAsync(string authority, string resource);
 

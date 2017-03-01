@@ -6,14 +6,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Explorer.Tests.Cache
 {
-    using Explorer.Cache;
-    using Explorer.Logic;
-    using Logic;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Runtime.Caching;
     using System.Threading.Tasks;
+    using Explorer.Cache;
+    using Logic;
+    using Newtonsoft.Json;
+    using Security;
 
     /// <summary>
     /// Provides in-memory caching utilized exclusively for unit testing.
@@ -22,7 +22,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Tests.Cache
     {
         private readonly IDataProtector _protector;
         private static MemoryCache _cache;
-        private static object _lock = new object();
+        private static readonly object _lock = new object();
 
         /// <summary>
         /// Initialize a new instance of the <see cref="TestCacheService"/> class.

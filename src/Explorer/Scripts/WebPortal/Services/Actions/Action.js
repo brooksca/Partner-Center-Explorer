@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.Action = function (id, displayName, handler, icon, tooltip, children, enabled) {
+﻿Microsoft.WebPortal.Services.Action = function (id, displayName, handler, icon, tooltip, children, enabled) {
     /// <summary>
     /// Defines an action that can be displayed in the header bar.
     /// </summary>

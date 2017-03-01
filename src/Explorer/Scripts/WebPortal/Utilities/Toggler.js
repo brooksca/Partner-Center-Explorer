@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Utilities.Toggler = {
+﻿Microsoft.WebPortal.Utilities.Toggler = {
     injectToggling: function (targetObject, showFunction, hideFunction, isShown) {
         /// <summary>
         /// Adds toggling behavior to the provided object. The object will support show(), hide(), toggle() and isShown() methods. The inner

@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.CustomerAddConfirmationPagePresenter = function (webPortal, feature, registrationConfirmationViewModel) {
+﻿Microsoft.WebPortal.CustomerAddConfirmationPagePresenter = function (webPortal, feature, registrationConfirmationViewModel) {
     /// <summary>
     /// Shows the registration confirmation page.
     /// </summary>
@@ -52,7 +50,11 @@ Microsoft.WebPortal.CustomerAddConfirmationPagePresenter = function (webPortal, 
             self.webPortal.Resources.Strings.Plugins.CustomerAddNewPage.ProcessingOrder);
         self.webPortal.Services.Notifications.add(orderNotification);
 
-        new Microsoft.WebPortal.Utilities.RetryableServerCall(self.webPortal.Helpers.ajaxCall("api/order/create", Microsoft.WebPortal.HttpMethod.Post, self.viewModel.orderToPlace, Microsoft.WebPortal.ContentType.Json, 120000), "RegisterCustomerOrder", []).execute()
+        new Microsoft.WebPortal.Utilities.RetryableServerCall(self.webPortal.Helpers.ajaxCall(
+            "api/order/create",
+            Microsoft.WebPortal.HttpMethod.Post,
+            self.viewModel.orderToPlace,
+            Microsoft.WebPortal.ContentType.Json, 120000), "CreateCustomerOrder", []).execute()
             .done(function (result) {
                 orderNotification.dismiss();
 

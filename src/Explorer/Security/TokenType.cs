@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.Store.PartnerCenter.Explorer.Logic.Authentication
+namespace Microsoft.Store.PartnerCenter.Explorer.Security
 {
     /// <summary>
     /// Defines the possible token types.

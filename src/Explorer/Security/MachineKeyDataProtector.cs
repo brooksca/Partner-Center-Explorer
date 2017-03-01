@@ -4,11 +4,12 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Microsoft.Store.PartnerCenter.Explorer.Logic
+namespace Microsoft.Store.PartnerCenter.Explorer.Security
 {
     using System;
     using System.Text;
     using System.Web.Security;
+    using Logic;
 
     /// <summary>
     /// Provides data protection using the machine encryption.

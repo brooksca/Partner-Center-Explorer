@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Views.AddSubscriptionsView = function (webPortal, elementSelector, defaultOffer, isShown, animation) {
+﻿Microsoft.WebPortal.Views.AddSubscriptionsView = function (webPortal, elementSelector, defaultOffer, isShown, animation) {
     /// <summary>
     /// A view that renders UX showing a list of subscriptions to be added from a drop down list.
     /// </summary>
@@ -134,7 +132,7 @@ Microsoft.WebPortal.Views.AddSubscriptionsView.prototype.onAddOfferClicked = fun
     });
 
     var portaloffersFetchProgress = $.Deferred();
-    self.webPortal.Session.fetchPortalOffers(portaloffersFetchProgress);
+    self.webPortal.Session.fetchMicrosoftOffers(portaloffersFetchProgress);
 
     portaloffersFetchProgress.done(function (portalOffers) {
         self.OfferSelectionWizardViewModel = {

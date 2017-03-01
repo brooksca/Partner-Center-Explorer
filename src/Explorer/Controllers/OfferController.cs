@@ -14,10 +14,10 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
     using Cache;
     using Filters.WebApi;
     using Logic;
-    using Logic.Authentication;
     using Models;
     using PartnerCenter.Models;
     using PartnerCenter.Models.Offers;
+    using Security;
 
     /// <summary>
     /// Provides the ability to manage Partner Center offers.

@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.PrimaryNavigation = function (webPortal, animation, primaryNavigationTemplate) {
+﻿Microsoft.WebPortal.Services.PrimaryNavigation = function (webPortal, animation, primaryNavigationTemplate) {
     /// <summary>
     /// The primary navigation service.
     /// </summary>

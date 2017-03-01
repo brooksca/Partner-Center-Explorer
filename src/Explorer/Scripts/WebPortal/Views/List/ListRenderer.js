@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Views.List.ListRenderer = function (list, bodyTemplate, footerTemplate) {
+﻿Microsoft.WebPortal.Views.List.ListRenderer = function (list, bodyTemplate, footerTemplate) {
     /// <summary>
     /// Renders the list in a particular style.
     /// </summary>

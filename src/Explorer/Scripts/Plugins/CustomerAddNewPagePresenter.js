@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.CustomerAddNewPagePresenter = function (webPortal, feature, context) {
+﻿Microsoft.WebPortal.CustomerAddNewPagePresenter = function (webPortal, feature, context) {
     /// <summary>
     /// Manages the offers experience. 
     /// </summary>
@@ -86,10 +84,12 @@ Microsoft.WebPortal.CustomerAddNewPagePresenter = function (webPortal, feature, 
                             State: registeredCustomer.State,
                             UserName: registeredCustomer.UserName,
                             ZipCode: registeredCustomer.ZipCode
-                        }
+                        };
 
                         // hand it off to the registration summary presenter
-                        self.webPortal.Journey.advance(Microsoft.WebPortal.Feature.CustomerAddConfirmation, registrationConfirmationInfo);
+                        // self.webPortal.Journey.advance(Microsoft.WebPortal.Feature.CustomerAddConfirmation, registrationConfirmationInfo);
+
+                        self.webPortal.Journey.advanceFeature(Microsoft.WebPortal.CustomerAddConfirmation, registrationConfirmationInfo);
                     })
                     // Failure of Create Customer API Call. 
                     .fail(function (result, status, error) {
@@ -130,10 +130,8 @@ Microsoft.WebPortal.CustomerAddNewPagePresenter = function (webPortal, feature, 
                         self.isPosting = false;
                     });
             }
-        } else {
-            // the form is invalid
         }
-    }
+    };
 
     this.getSubscriptions = function () {
         var orders = [];
@@ -147,7 +145,7 @@ Microsoft.WebPortal.CustomerAddNewPagePresenter = function (webPortal, feature, 
         }
 
         return orders;
-    }
+    };
 
     this.getCustomerInformation = function () {
         var customerInformation = {
@@ -165,10 +163,10 @@ Microsoft.WebPortal.CustomerAddNewPagePresenter = function (webPortal, feature, 
             LastName: this.customerProfileView.viewModel.LastName(),
             Phone: this.customerProfileView.viewModel.Phone(),
             DomainPrefix: this.customerProfileView.viewModel.DomainPrefix()
-        }
+        };
 
         return customerInformation;
-    }
+    };
 };
 
 // inherit BasePresenter

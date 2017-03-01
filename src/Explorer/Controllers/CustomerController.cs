@@ -18,13 +18,13 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
     using Configuration;
     using Filters.WebApi;
     using Logic;
-    using Logic.Authentication;
     using Models;
     using Newtonsoft.Json;
     using PartnerCenter.Models;
     using PartnerCenter.Models.Customers;
     using PartnerCenter.Models.Subscriptions;
     using RequestContext;
+    using Security;
 
     /// <summary>
     /// Provides the ability to manage customers.
@@ -89,9 +89,8 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
                 startTime = DateTime.Now;
                 correlationId = Guid.NewGuid();
 
-                operations =
-                    Services.PartnerCenter.With(RequestContextFactory.Instance.Create(
-                        correlationId));
+                operations = Services.PartnerCenter.With(
+                        RequestContextFactory.Instance.Create(correlationId));
 
                 principal = (CustomerPrincipal)HttpContext.Current.User;
 

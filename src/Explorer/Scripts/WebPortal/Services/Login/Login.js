@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.Login = function (webPortal) {
+﻿Microsoft.WebPortal.Services.Login = function (webPortal) {
     /// <summary>
     /// The Login service. Maintains the login state and broadcasts user login events.
     /// </summary>

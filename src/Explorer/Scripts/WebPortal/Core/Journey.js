@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Core.Journey = function (webPortal) {
+﻿Microsoft.WebPortal.Core.Journey = function (webPortal) {
     /// <summary>
     /// This class manages the sequence of features the users engage with in the portal. The user can go back to previous
     /// steps he was in or start a whole new journey.
@@ -58,6 +56,46 @@ Microsoft.WebPortal.Core.Journey.prototype.start = function (feature, context) {
 
             // activate the presenter
             presenter.activate(context);
+        }));
+    }, this);
+}
+
+Microsoft.WebPortal.Core.Journey.prototype.startContext = function (feature, context) {
+    /// <summary>
+    /// Starts a new journey. All exisiting journey features will be destroyed.
+    /// </summary>
+    /// <param name="feature">The feature to activate. Use Microsoft.WebPortal.Features enum.</param>
+    /// <param name="context">A context object to pass to the feature presenter.</param>
+    
+    this.throttler.throttle(function () {
+        this.webPortal.Helpers.throwIfNotSet(feature, "feature", "Microsoft.WebPortal.Core.Journey.start");
+
+        // grab the feature's presenter
+        var presenterClass = this.webPortal.getFeaturePresenter(feature);
+
+        // set the content panel effect
+        this.webPortal.ContentPanel.setAnimation(this.journeyStartAnimation);
+
+        var journey = this.journey();
+        var self = this;
+
+        this.webPortal.ContentPanel.clear($.Deferred().done(function () {
+            // destroy the current journey's presenters in reverse order
+            for (var i = journey.length - 1; i >= 0; --i) {
+                journey[i].destroy(context);
+            }
+
+            // cleanup existing journey
+            self.journey.removeAll();
+
+            // create the feature presenter
+            var presenter = new presenterClass(self.webPortal, feature, context);
+
+            // add the new new feature presenter to the journey
+            self.journey.push(presenter);
+
+            // activate the presenter
+            presenter.activateContext(context);
         }));
     }, this);
 }

@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.UserMenuService = function (webPortal, elementSelector) {
+﻿Microsoft.WebPortal.Services.UserMenuService = function (webPortal, elementSelector) {
     /// <summary>
     /// Implements the user menu service which manages the user information (avatar and user name) and displays a menu of user related actions.
     /// </summary>

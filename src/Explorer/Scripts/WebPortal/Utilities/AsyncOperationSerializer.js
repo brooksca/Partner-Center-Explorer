@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Utilities.AsyncOperationSerializer = function () {
+﻿Microsoft.WebPortal.Utilities.AsyncOperationSerializer = function () {
     /// <summary>
     /// This class ensures that asynchronous operations are run sequentially. This is useful when you want to perform an animation let's say when adding an
     /// item to a menu but only after the previous animations are done. This is also useful to guarantee object integrity if the user clicks too fast on something

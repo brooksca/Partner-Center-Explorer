@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.NotificationsSection = function (webPortal) {
+﻿Microsoft.WebPortal.Services.NotificationsSection = function (webPortal) {
     /// <summary>
     /// Renders the notifications icon and number if there are pending notifications.
     /// </summary>

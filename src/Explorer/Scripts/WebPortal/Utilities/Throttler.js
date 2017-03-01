@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Utilities.Throttler = function (throttlingPeriod, resourceName) {
+﻿Microsoft.WebPortal.Utilities.Throttler = function (throttlingPeriod, resourceName) {
     /// <summary>
     /// Throttles access to resources based on a given period. Any incoming requests within the throttling period since the last request
     /// will be denied.

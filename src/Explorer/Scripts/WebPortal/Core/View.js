@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Core.View = function (webPortal, elementSelector, isShown, childViews, animation) {
+﻿Microsoft.WebPortal.Core.View = function (webPortal, elementSelector, isShown, childViews, animation) {
     /// <summary>
     /// The base view class. All views should inherit from this class. A view is an abstraction that shows or hides UX to users. It maintains the data and the view
     /// state and takes care of disposing the resources when it is no longer needed. One or more views are typically utilized by a presenter. Views also support hierarchies,

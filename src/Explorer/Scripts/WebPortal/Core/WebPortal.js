@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-/*
+﻿/*
     define the namespace of the web portal.
 */
 var Microsoft = {
@@ -216,6 +214,21 @@ var Microsoft = {
                 Signaled when all the notifications have been cleared.
             */
             NotificationsCleared: 1014,
+
+            /*
+                Fired when a widget is activated.
+            */
+            WidgetActivated: 1015,
+
+            /*
+                Fired when a feature is deactivated.
+            */
+            WidgetDeactivated: 1016,
+
+            /*
+                Fired when a feature is destroyed.
+            */
+            WidgetDestroyed: 1017,
 
             // Feature events
 

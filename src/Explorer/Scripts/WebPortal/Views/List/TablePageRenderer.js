@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Views.List.TablePageRenderer = function (list) {
+﻿Microsoft.WebPortal.Views.List.TablePageRenderer = function (list) {
     /// <summary>
     /// Renders a paged list. The footer will contain links used to navigate to pages.
     /// </summary>

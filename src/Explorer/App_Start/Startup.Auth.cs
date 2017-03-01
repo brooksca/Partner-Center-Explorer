@@ -10,19 +10,17 @@ namespace Microsoft.Store.PartnerCenter.Explorer
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Threading.Tasks;
-    using System.Web;
-    using Azure.ActiveDirectory.GraphClient;
     using Configuration;
     using Exceptions;
+    using Graph;
     using Logic;
-    using Logic.Authentication;
-    using Logic.Azure;
     using global::Owin;
     using Owin.Security;
     using Owin.Security.Cookies;
     using Owin.Security.OpenIdConnect;
     using PartnerCenter.Models.Customers;
     using Practices.Unity;
+    using Security; 
     
     /// <summary>
     /// Provides methods and properties used to start the application.
@@ -67,16 +65,11 @@ namespace Microsoft.Store.PartnerCenter.Explorer
                             string userTenantId = context.AuthenticationTicket.Identity.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
                             string signedInUserObjectId = context.AuthenticationTicket.Identity.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier").Value;
 
-                            IActiveDirectory ad = new ActiveDirectory(
-                                service,
-                                userTenantId,
-                                context.Code,
-                                signedInUserObjectId,
-                                new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Path)));
+                            IGraphClient client = new GraphClient(service, userTenantId);
 
-                            List<IDirectoryRole> roles = await ad.GetDirectoryRolesAsync(signedInUserObjectId);
+                            List<DirectoryRole> roles = await client.GetDirectoryRolesAsync(signedInUserObjectId);
 
-                            foreach (IDirectoryRole role in roles)
+                            foreach (DirectoryRole role in roles)
                             {
                                 context.AuthenticationTicket.Identity.AddClaim(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Role, role.DisplayName));
                             }
@@ -117,7 +110,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer
                                     // see the unauthenticated experience but they can't configure the portal nor can purchase
                                     Trace.TraceInformation($"Blocked log in from non admin partner user: {signedInUserObjectId}");
 
-                                    throw new AuthorizationException(System.Net.HttpStatusCode.Unauthorized, "You must have global admin rights.");
+                                    throw new AuthorizationException("You must have global admin rights.", System.Net.HttpStatusCode.Unauthorized);
                                 }
                             }
                         },

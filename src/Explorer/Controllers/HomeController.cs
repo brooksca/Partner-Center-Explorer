@@ -14,12 +14,13 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
     using Configuration.WebPortal;
     using Filters.Mvc;
     using Logic;
-    using Logic.Authentication;
     using Newtonsoft.Json;
+    using Security;
 
     /// <summary>
     /// Provides the ability to manage requests for the home page.
     /// </summary>
+    /// <seealso cref="BaseController" />
     public class HomeController : BaseController
     {
         /// <summary>

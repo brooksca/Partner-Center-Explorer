@@ -14,11 +14,11 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
     using System.Web.Http;
     using Filters.WebApi;
     using Logic;
-    using Logic.Authentication;
     using Models;
     using PartnerCenter.Models.Customers;
     using PartnerCenter.Models.Subscriptions;
     using RequestContext;
+    using Security;
 
     /// <summary>
     /// Provides the ability to manage subscriptions.
@@ -120,7 +120,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
                 {
                     CompanyName = customer.CompanyProfile.CompanyName,
                     CustomerId = customerId,
-                    FriendlyName = subscription.FriendlyName, 
+                    FriendlyName = subscription.FriendlyName,
                     Incidents = incidents,
                     SubscriptionId = subscriptionId
                 };
@@ -150,16 +150,18 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
             customerId.AssertNotEmpty(nameof(customerId));
             subscriptionId.AssertNotEmpty(nameof(subscriptionId));
 
-            if (this.monitor == null)
+            if (this.monitor != null)
             {
-                if (billingType == PartnerCenter.Models.Invoices.BillingType.License)
-                {
-                    this.monitor = new Logic.Office.SubscriptionMonitor(Services, customerId, subscriptionId);
-                }
-                else
-                {
-                    this.monitor = new Logic.Azure.SubscriptionMonitor(Services, customerId, subscriptionId);
-                }
+                return this.monitor;
+            }
+
+            if (billingType == PartnerCenter.Models.Invoices.BillingType.License)
+            {
+                this.monitor = new Logic.Office.SubscriptionMonitor(Services, customerId, subscriptionId);
+            }
+            else
+            {
+                this.monitor = new Logic.Azure.SubscriptionMonitor(Services, customerId, subscriptionId);
             }
 
             return this.monitor;

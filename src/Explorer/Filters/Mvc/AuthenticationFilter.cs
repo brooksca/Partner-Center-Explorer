@@ -9,7 +9,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Filters.Mvc
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Mvc.Filters;
-    using Logic.Authentication;
+    using Security;
 
     /// <summary>
     /// Augments MVC authentication by replacing the principal with a more usable customer portal principal object.

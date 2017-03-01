@@ -7,7 +7,7 @@
 namespace Microsoft.Store.PartnerCenter.Explorer.Filters.WebApi
 {
     using System.Web.Http.Controllers;
-    using Logic.Authentication;
+    using Security;
 
     /// <summary>
     /// Implements portal authorization for Web API controllers.

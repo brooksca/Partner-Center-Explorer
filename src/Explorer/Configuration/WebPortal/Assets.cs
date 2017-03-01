@@ -8,6 +8,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Represents a collection of client asset files.
@@ -118,9 +119,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
             }
 
             // validate asset collections to hold valid values
-            this.ValidateAssetCollections(this.Css);
-            this.ValidateAssetCollections(this.JavaScript);
-            this.ValidateAssetCollections(this.Templates);
+            ValidateAssetCollections(this.Css);
+            ValidateAssetCollections(this.JavaScript);
+            ValidateAssetCollections(this.Templates);
         }
 
         /// <summary>
@@ -128,17 +129,16 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration.WebPortal
         /// </summary>
         /// <param name="assetsCollection">The asset collection to validate.</param>
         /// <exception cref="InvalidOperationException">If the asset properties are invalid.</exception>
-        private void ValidateAssetCollections(IEnumerable<string> assetsCollection)
+        private static void ValidateAssetCollections(IEnumerable<string> assetsCollection)
         {
-            if (assetsCollection != null)
+            if (assetsCollection == null)
             {
-                foreach (string asset in assetsCollection)
-                {
-                    if (string.IsNullOrWhiteSpace(asset))
-                    {
-                        throw new InvalidOperationException("Can't have an empty asset, please ensure all asset strings are set.");
-                    }
-                }
+                return;
+            }
+
+            if (assetsCollection.Any(string.IsNullOrWhiteSpace))
+            {
+                throw new InvalidOperationException("Can't have an empty asset, please ensure all asset strings are set.");
             }
         }
     }

@@ -8,9 +8,9 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
 {
     using System;
     using System.Threading.Tasks;
-    using Authentication;
     using Cache;
     using Configuration;
+    using Security; 
     using Telemetry;
 
     /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
         /// <summary>
         /// Initializes the application core services.
         /// </summary>
-        /// <returns>A <see cref="Task"/> that represents the asynchronous operations.</returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
         public async Task InitializeAsync()
         {
             if (initialized && localization != null)

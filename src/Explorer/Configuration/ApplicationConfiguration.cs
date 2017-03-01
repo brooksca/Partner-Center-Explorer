@@ -20,7 +20,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration
         /// <summary>
         /// A lazy reference to client configuration.
         /// </summary>
-        private static Lazy<IDictionary<string, dynamic>> clientConfiguration = new Lazy<IDictionary<string, dynamic>>(
+        private static readonly Lazy<IDictionary<string, dynamic>> ClientConfig = new Lazy<IDictionary<string, dynamic>>(
             () => WebPortalConfigurationManager.GenerateConfigurationDictionary().Result);
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration
         /// <summary>
         /// Gets the client configuration dictionary. 
         /// </summary>
-        public static IDictionary<string, dynamic> ClientConfiguration => clientConfiguration.Value;
+        public static IDictionary<string, dynamic> ClientConfiguration => ClientConfig.Value;
 
         /// <summary>
         /// Gets the application identifier value.
@@ -62,6 +62,11 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Configuration
         /// Gets the application tenant identifier.
         /// </summary>
         public static string ApplicationTenantId => ConfigurationManager.AppSettings["Explorer.ApplicationTenantId"];
+
+        /// <summary>
+        /// Gets the Microsoft Graph endpoint.
+        /// </summary>
+        public static string GraphEndpoint => ConfigurationManager.AppSettings["GraphEndpoint"];
 
         /// <summary>
         /// Gets a value indicating whether or not the Partner Center tenant is an integration sandbox. 

@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.SubscriptionPagePresenter = function (webPortal, feature, context) {
+﻿Microsoft.WebPortal.SubscriptionPagePresenter = function (webPortal, feature, context) {
     /// <summary>
     /// Manages the home page experience. 
     /// </summary>

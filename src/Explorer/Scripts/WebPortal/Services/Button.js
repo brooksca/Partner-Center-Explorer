@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.Button = function (id, displayName, icon, handler) {
+﻿Microsoft.WebPortal.Services.Button = function (id, displayName, icon, handler) {
     /// <summary>
     /// Represents a button that performs an action on a notification or a dialog wizard. Use this constructor to create
     /// generic buttons. To use the standard set of buttons (YES, NO, OK, CANCEL, RETRY, BACK, NEXT), call the static create method 

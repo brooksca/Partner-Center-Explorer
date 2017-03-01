@@ -10,7 +10,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer
     using Unity.WebApi;
 
     /// <summary>
-    /// Provides the configurations for the WebAPI. 
+    /// Provides the configurations for the Web API. 
     /// </summary>
     public static class WebApiConfig
     {

@@ -34,6 +34,6 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Controllers
         /// <summary>
         /// Provides access to the core application services.
         /// </summary>
-        protected IExplorerService Services => this.service ?? MvcApplication.UnityContainer.Resolve<IExplorerService>();
+        protected IExplorerService Services => this.service;
     }
 }

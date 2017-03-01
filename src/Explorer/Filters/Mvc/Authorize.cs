@@ -8,7 +8,7 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Filters.Mvc
 {
     using System.Web;
     using System.Web.Mvc;
-    using Logic.Authentication;
+    using Security; 
 
     /// <summary>
     /// Implements portal authorization for MVC controllers.

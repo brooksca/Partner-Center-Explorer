@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.Notification = function (type, message, buttons) {
+﻿Microsoft.WebPortal.Services.Notification = function (type, message, buttons) {
     /// <summary>
     /// Defines a notification. Use this class to create and configure notifications. Pass a notification type from 
     /// the Microsoft.WebPortal.Services.Notification.NotificationType enumeration, a message and an array of Button objects to attach behavior to the notification.

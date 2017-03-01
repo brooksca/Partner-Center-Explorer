@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.AddSubscriptionsPresenter = function (webPortal, feature, context) {
+﻿Microsoft.WebPortal.AddSubscriptionsPresenter = function (webPortal, feature, context) {
     /// <summary>
     /// Manages the offers experience. 
     /// </summary>
@@ -12,7 +10,7 @@ Microsoft.WebPortal.AddSubscriptionsPresenter = function (webPortal, feature, co
 
     this.onCancelClicked = function () {
         webPortal.Journey.retract();
-    }
+    };
 
     var self = this;
     var isPosting = false;
@@ -29,7 +27,7 @@ Microsoft.WebPortal.AddSubscriptionsPresenter = function (webPortal, feature, co
             });
         }
         return orders;
-    }
+    };
 
     this.onSubmitClicked = function () {
         if (isPosting) {
@@ -96,19 +94,19 @@ Microsoft.WebPortal.AddSubscriptionsPresenter = function (webPortal, feature, co
         } else {
             // the form is invalid
         }
-    }
-}
+    };
+};
 
 // inherit BasePresenter
 $WebPortal.Helpers.inherit(Microsoft.WebPortal.AddSubscriptionsPresenter, Microsoft.WebPortal.Core.TemplatePresenter);
 
-Microsoft.WebPortal.AddSubscriptionsPresenter.prototype.onActivate = function () {
+Microsoft.WebPortal.AddSubscriptionsPresenter.prototype.onActivate = function() {
     /// <summary>
     /// Called when the presenter is activated.
     /// </summary>
-}
+};
 
-Microsoft.WebPortal.AddSubscriptionsPresenter.prototype.onRender = function () {
+Microsoft.WebPortal.AddSubscriptionsPresenter.prototype.onRender = function() {
     /// <summary>
     /// Called when the presenter is about to be rendered.
     /// </summary>
@@ -116,9 +114,9 @@ Microsoft.WebPortal.AddSubscriptionsPresenter.prototype.onRender = function () {
     ko.applyBindings(this, $("#Form")[0]);
 
     this.addSubscriptionsView.render();
-}
+};
 
-Microsoft.WebPortal.AddSubscriptionsPresenter.prototype.onShow = function () {
+Microsoft.WebPortal.AddSubscriptionsPresenter.prototype.onShow = function() {
     /// <summary>
     /// Called when content is shown.
     /// </summary>
@@ -129,15 +127,15 @@ Microsoft.WebPortal.AddSubscriptionsPresenter.prototype.onShow = function () {
     if (this.addSubscriptionsView.subscriptionsList.rows().length <= 0) {
         this.addSubscriptionsView.onAddOfferClicked();
     }
-}
+};
 
-Microsoft.WebPortal.AddSubscriptionsPresenter.prototype.onDeactivate = function () {
+Microsoft.WebPortal.AddSubscriptionsPresenter.prototype.onDeactivate = function() {
     /// <summary>
     /// Called when the presenter is no longer active.
     /// </summary>
 
     // hide the offers dialog in case it was shown
     this.webPortal.Services.Dialog.hide();
-}
+};
 
 //@ sourceURL=AddSubscriptionsPresenter.js

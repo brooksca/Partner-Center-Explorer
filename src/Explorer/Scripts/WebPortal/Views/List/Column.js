@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Views.List.Column = function (field, style, sortable, clickable, title, tooltip, headerTemplate, cellTemplate) {
+﻿Microsoft.WebPortal.Views.List.Column = function (field, style, sortable, clickable, title, tooltip, headerTemplate, cellTemplate) {
     /// <summary>
     /// Defines a list column.
     /// </summary>

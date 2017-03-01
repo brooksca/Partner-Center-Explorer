@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.CustomerPagePresenter = function (webPortal, feature, context) {
+﻿Microsoft.WebPortal.CustomerPagePresenter = function (webPortal, feature, context) {
     /// <summary>
     /// Manages the home page experience. 
     /// </summary>

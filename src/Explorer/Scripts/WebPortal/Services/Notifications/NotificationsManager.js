@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.NotificationsManager = function (webPortal, animation, notificationsPanelTemplate) {
+﻿Microsoft.WebPortal.Services.NotificationsManager = function (webPortal, animation, notificationsPanelTemplate) {
     /// <summary>
     /// Manages notifications and their rendering. Provides methods to show or hide the notification panel and to add or remove
     /// notifications to/from it.

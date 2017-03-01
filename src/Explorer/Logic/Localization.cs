@@ -17,14 +17,14 @@ namespace Microsoft.Store.PartnerCenter.Explorer.Logic
     public class Localization : ILocalization
     {
         /// <summary>
-        /// Provides access to the application core services.
+        /// Provides access to core services.
         /// </summary>
         private readonly IExplorerService service;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Localization"/> class.
         /// </summary>
-        /// <param name="service">Provides access to various services</param>
+        /// <param name="service">Provides access to core services.</param>
         /// <exception cref="System.ArgumentNullException">
         /// <paramref name="service"/> is null.
         /// </exception>

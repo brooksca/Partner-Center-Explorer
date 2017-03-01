@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Utilities.BaseAnimation = function (duration) {
+﻿Microsoft.WebPortal.Utilities.BaseAnimation = function (duration) {
     /// <summary>
     /// A base class for animations. Relies on sub classes to implement actual animation behavior.
     /// All animations must extend from this base class.

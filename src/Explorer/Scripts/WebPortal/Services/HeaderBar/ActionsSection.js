@@ -1,6 +1,4 @@
-﻿/// <reference path="~/Scripts/_references.js" />
-
-Microsoft.WebPortal.Services.ActionsSection = function (webPortal) {
+﻿Microsoft.WebPortal.Services.ActionsSection = function (webPortal) {
     /// <summary>
     /// Renders the actions the user can invoke on the current feature.
     /// </summary>
